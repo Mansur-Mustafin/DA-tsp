@@ -6,6 +6,8 @@
 #include <climits>
 #include "Graph.h"
 #include <chrono>
+#include <limits>
+#include <queue>
 
 using namespace std;
 
@@ -142,5 +144,40 @@ void Graph::Task1() {
     }
     cout << "0" << endl;
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
+}
+
+
+
+
+
+vector<pair<int, float>>  Graph::primMST() {
+
+    int n = adj.size();
+    vector<pair<int, float>>  parent (n, {-2, 0.0});
+    vector<float> dist(n, numeric_limits<float>::max());
+    vector<bool> visited(n, false);
+    priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> pq;
+
+    parent[0] = {-1, 0.0};
+    dist[0] = 0;
+    pq.push({0, 0});
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+
+        if (visited[u]) continue;
+        visited[u] = true;
+
+        for (const Edge &e : adj[u]) {
+            if (!visited[e.to] && e.dist < dist[e.to]) {
+                dist[e.to] = e.dist;
+                parent[e.to] = {u, e.dist};
+                pq.push({e.dist, e.to});
+            }
+        }
+    }
+
+    return parent;
 }
 

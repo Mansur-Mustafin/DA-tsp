@@ -14,10 +14,11 @@ using namespace std;
 class Node {
 public:
     int id;
-    double lat;
-    double log;
+    double latitude;
+    double longitude;
     friend istream &operator>>(istream &in, Node &node);
     friend ostream &operator<<(ostream &out, const Node &node);
+    double getDistance(const Node& toNode);
 };
 
 
