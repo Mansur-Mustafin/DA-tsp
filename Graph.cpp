@@ -150,7 +150,7 @@ void Graph::Task1() {
 
 
 
-vector<pair<int, float>>  Graph::primMST() {
+vector<vector<Edge>> Graph::primMST() {
 
     int n = adj.size();
     vector<pair<int, float>>  parent (n, {-2, 0.0});
@@ -178,6 +178,14 @@ vector<pair<int, float>>  Graph::primMST() {
         }
     }
 
-    return parent;
+    vector<vector<Edge>> mst (parent.size());
+
+    for(int i = 0; i < parent.size(); i ++){
+        if(parent[i].first != -1){
+            mst[parent[i].first].push_back({i, (parent[i].second)});
+        }
+    }
+
+    return mst;
 }
 

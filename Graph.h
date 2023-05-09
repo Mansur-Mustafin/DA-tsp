@@ -21,7 +21,7 @@ public:
     void print_edges();
     void print_nodes();
     void Task1();
-    vector<pair<int, float>>  primMST();
+    vector<vector<Edge>> primMST();
 
     // fields
     vector<vector<Edge>> adj;
