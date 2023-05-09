@@ -3,7 +3,7 @@
 
 int main() {
     Graph g("shipping.csv");
-    //g.print_edges();
+    g.print_edges();
 
     g.Task1();
 

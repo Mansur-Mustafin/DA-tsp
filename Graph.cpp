@@ -30,22 +30,13 @@ int Graph::input_edge(const string &input_name, bool have_nodes) {
         getline(fin, s); // header line
         while(getline(fin, from, ',')){
             fin >> e;
-            //cout << from << e << endl;
             int f = stoi(from);
-            if(adj.size() > f){
-                adj[f].push_back(e);
-            }else{
-                while(adj.size() <= f)
-                    adj.push_back({});
-                adj[f].push_back(e);
+            int maxNode = max(e.to, f);
+            while(adj.size() <= maxNode){
+                adj.emplace_back();
             }
-            if(adj.size() > e.to){
-                adj[e.to].push_back({f, e.dist});
-            }else{
-                while(adj.size() <= e.to)
-                    adj.push_back({});
-                adj[e.to].push_back({f, e.dist});
-            }
+            adj[f].push_back(e);
+            adj[e.to].push_back({f, e.dist});
             m = m > e.to ? m : e.to;
         }
     }else{
@@ -99,18 +90,18 @@ void Graph::print_nodes() {
 
 }
 
-bool findStart(vector<Edge> v){
+float findStart(const vector<Edge>& v){
     for(auto el : v){
         if(el.to == 0){
-            return true;
+            return el.dist;
         }
     }
-    return false;
+    return 0.0;
 }
 
 void Graph::tspBackTracking(vector<bool> &v, int currPos, int n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath) {
     if (count == n && findStart(adj[currPos])) {
-        if (cost + adj[currPos][0].dist < ans) {
+        if (cost + findStart(adj[currPos]) < ans) {
             ans = cost + adj[currPos][0].dist;
             bestPath = path;
         }
@@ -139,9 +130,9 @@ void Graph::Task1() {
     vector<int> path = {0};
     vector<int> bestPath;
 
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = chrono::high_resolution_clock::now();
     tspBackTracking(v, 0, n, 1, 0, ans, path, bestPath);
-    auto end = std::chrono::high_resolution_clock::now();
+    auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
     cout << "Minimum cost: " << ans << endl;

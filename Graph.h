@@ -20,7 +20,6 @@ public:
     Graph(const string &input_edge_name, const string &input_node_name = "");
     void print_edges();
     void print_nodes();
-    void tspBackTracking(vector<bool> &v, int currPos, int n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath);
     void Task1();
 
     // fields
@@ -30,6 +29,7 @@ public:
     string file_nodes_name = "";
 
 private:
+    void tspBackTracking(vector<bool> &v, int currPos, int n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath);
     int input_vertex(const string &input_name);
     int input_edge(const string &input_name, bool have_nodes);
 };
