@@ -8,6 +8,7 @@
 #include <chrono>
 #include <limits>
 #include <queue>
+#include <iomanip>
 
 using namespace std;
 
@@ -146,12 +147,7 @@ void Graph::Task1() {
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
 }
 
-
-
-
-
 vector<vector<Edge>> Graph::primMST() {
-
     int n = adj.size();
     vector<pair<int, float>>  parent (n, {-2, 0.0});
     vector<float> dist(n, numeric_limits<float>::max());
@@ -187,5 +183,56 @@ vector<vector<Edge>> Graph::primMST() {
     }
 
     return mst;
+}
+
+void preorderWalk(int node, const vector<vector<Edge>> &adj, vector<bool> &visited, vector<int> &path) {
+    visited[node] = true;
+    path.push_back(node);
+
+    for (const Edge &edge : adj[node]) {
+        if (!visited[edge.to]) {
+            preorderWalk(edge.to, adj, visited, path);
+        }
+    }
+}
+
+
+
+void Graph::Task2(){
+    auto start = chrono::high_resolution_clock::now();
+    vector<vector<Edge>> p = primMST();
+
+    int startNode = 0;
+    vector<bool> visited(p.size(), false);
+    vector<int> path;
+
+    preorderWalk(startNode, p, visited, path);
+
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> backtracking_duration = end - start;
+
+    double ans = 0.0;
+    for(int s = 0; s < path.size() - 1; s++){
+        ans += getDistance(path[s], path[s + 1]);
+    }
+    ans += getDistance(path[path.size() - 1], 0);
+
+    cout << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
+    cout << "Path: ";
+    for (int node : path) {
+        cout << node << " -> ";
+    }
+    cout << "0" << endl;
+    cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
+}
+
+float Graph::getDistance(int from, int to) {
+    for(auto el : adj[from]){
+        if(el.to == to){
+            return el.dist;
+        }
+    }
+    cout << "not found: " << from << " " << to << endl;
+    return nodes[from].getDistance(nodes[to]);
 }
 
