@@ -179,6 +179,7 @@ vector<vector<Edge>> Graph::primMST() {
     for(int i = 0; i < parent.size(); i ++){
         if(parent[i].first != -1){
             mst[parent[i].first].push_back({i, (parent[i].second)});
+            mst[i].push_back({parent[i].first, parent[i].second}); // TODO check if is needed. (make mst bidirectional)
         }
     }
 
