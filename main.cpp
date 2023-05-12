@@ -4,11 +4,10 @@
 
 
 int main() {
-    Graph g("shipping.csv");
+    Graph g("edges_25.csv");
     //g.Task1();
     cout << "----------------------------------" << endl;
     g.Task2();
-
 
 
     //g.print_edges();

@@ -103,10 +103,14 @@ float findStart(const vector<Edge>& v){
 }
 
 void Graph::tspBackTracking(vector<bool> &v, int currPos, int n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath) {
+    // Pruning
+    if (cost >= ans) return;
+
     if (count == n && findStart(adj[currPos])) {
         if (cost + findStart(adj[currPos]) < ans) {
-            ans = cost + adj[currPos][0].dist;
+            ans = cost + findStart(adj[currPos]);
             bestPath = path;
+            cout << "find best path: " << ans << endl;
         }
         return;
     }
