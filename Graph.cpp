@@ -3,7 +3,6 @@
 //
 
 #include <fstream>
-#include <climits>
 #include "Graph.h"
 #include <chrono>
 #include <limits>
@@ -24,7 +23,7 @@ Graph::Graph(const string &input_edge_name, const string &input_node_name) {
 }
 
 int Graph::input_edge(const string &input_name, bool have_nodes) {
-    Edge e;
+    Edge e{};
     string s;
     string from;
     int m = -1;
@@ -102,8 +101,8 @@ float findStart(const vector<Edge>& v){
     return 0.0;
 }
 
-void Graph::tspBackTracking(vector<bool> &v, int currPos, int n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath) {
-    // Pruning
+void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath) {
+
     if (cost >= ans) return;
 
     if (count == n && findStart(adj[currPos])) {
@@ -127,7 +126,7 @@ void Graph::tspBackTracking(vector<bool> &v, int currPos, int n, int count, floa
 }
 
 void Graph::Task1() {
-    int n = adj.size();
+    size_t n = adj.size();
     vector<bool> v(n);
     for (int i = 0; i < n; i++)
         v[i] = false;
@@ -160,7 +159,7 @@ vector<vector<Edge>> Graph::primMST() {
 
     parent[0] = {-1, 0.0};
     dist[0] = 0;
-    pq.push({0, 0});
+    pq.emplace(0, 0);
 
     while (!pq.empty()) {
         int u = pq.top().second;
@@ -173,7 +172,7 @@ vector<vector<Edge>> Graph::primMST() {
             if (!visited[e.to] && e.dist < dist[e.to]) {
                 dist[e.to] = e.dist;
                 parent[e.to] = {u, e.dist};
-                pq.push({e.dist, e.to});
+                pq.emplace(e.dist, e.to);
             }
         }
     }
@@ -200,8 +199,6 @@ void preorderWalk(int node, const vector<vector<Edge>> &adj, vector<bool> &visit
         }
     }
 }
-
-
 
 void Graph::Task2(){
     auto start = chrono::high_resolution_clock::now();
