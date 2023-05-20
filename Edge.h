@@ -14,7 +14,7 @@ using namespace std;
 class Edge {
 public:
     //int s;
-    int to;
+    int to = -1;
     float dist = 1e9;
     //int prev_pos = 0;
     friend istream &operator>>(istream &in, Edge &edge);
