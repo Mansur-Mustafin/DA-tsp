@@ -24,10 +24,10 @@ public:
     Graph(const string &input_edge_name, const string &input_node_name = "");
     void print_edges();
     void print_nodes();
-    void Task1();
-    void Task2();
-    void Task3();
-    void Task4();
+    void Task1(bool print_path = true);
+    void Task2(bool print_path = true);
+    void Task3(bool print_path = true);
+    void Task4(bool print_path = true);
 
 
     // fields
@@ -45,9 +45,10 @@ private:
     double rho = 0.1;
     double UP_EPS = 1e9;
 
-    double ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
+
     float getDistance(int from, int to);
     double getValue(vector <int>& v);
+    vector <int> ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
     vector <int> getSample(int t, vector <int>& v);
     vector <int> simulatedAnnealing(int n);
     vector<vector<Edge>> primMST();
