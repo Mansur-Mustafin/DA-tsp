@@ -12,6 +12,10 @@
 #include <vector>
 #include <set>
 #include <queue>
+#include <cmath>
+#include <fstream>
+#include <algorithm>
+#include <random>
 
 using namespace std;
 
@@ -22,6 +26,8 @@ public:
     void print_nodes();
     void Task1();
     void Task2();
+    void Task3();
+    void Task4();
 
 
     // fields
@@ -31,7 +37,19 @@ public:
     string file_nodes_name = "";
 
 private:
+    //ACO fields
+    int max_iter = 100;
+    int num_ants = 10;
+    double alpha = 1.0;
+    double beta = 2.0;
+    double rho = 0.1;
+    double UP_EPS = 1e9;
+
+    double ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
     float getDistance(int from, int to);
+    double getValue(vector <int>& v);
+    vector <int> getSample(int t, vector <int>& v);
+    vector <int> simulatedAnnealing(int n);
     vector<vector<Edge>> primMST();
     void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath);
     int input_vertex(const string &input_name);

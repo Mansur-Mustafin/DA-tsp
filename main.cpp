@@ -2,10 +2,15 @@
 #include "Graph.h"
 
 int main() {
-    Graph g("edges_25.csv");
-    //g.Task1();
+    Graph g("stadiums.csv");
+    cout << "----------------------------------" << endl;
+    g.Task1();
     cout << "----------------------------------" << endl;
     g.Task2();
+    cout << "----------------------------------" << endl;
+    g.Task3();
+    cout << "----------------------------------" << endl;
+    g.Task4();
 
     return 0;
 }
