@@ -101,6 +101,18 @@ float findStart(const vector<Edge>& v){
     return 0.0;
 }
 
+float Graph::getDistance(int from, int to) {
+    for(auto el : adj[from]){
+        if(el.to == to){
+            return el.dist;
+        }
+    }
+    cout << "not found: " << from << " " << to << endl;
+    return nodes[from].getDistance(nodes[to]);
+}
+
+// TODO Task1 ----------------------------------------------------------------------------------------------------------
+
 void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath) {
 
     if (cost >= ans) return;
@@ -149,6 +161,8 @@ void Graph::Task1() {
     cout << "0" << endl;
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
 }
+
+// TODO Task2 ----------------------------------------------------------------------------------------------------------
 
 vector<vector<Edge>> Graph::primMST() {
     int n = adj.size();
@@ -228,13 +242,106 @@ void Graph::Task2(){
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
 }
 
-float Graph::getDistance(int from, int to) {
-    for(auto el : adj[from]){
-        if(el.to == to){
-            return el.dist;
+// TODO Task3 ----------------------------------------------------------------------------------------------------------
+
+double Graph::ACO(std::vector<std::vector<double>>& distance_matrix, int max_iter,
+                  int num_ants, double alpha, double beta, double rho) {
+    int n = distance_matrix.size();
+    std::vector<int> best_path(n);
+    double best_distance = std::numeric_limits<double>::max();
+
+    std::vector<std::vector<double>> pheromone(n, std::vector<double>(n, 1.0));
+
+    for (int iter = 0; iter < max_iter; iter++) {
+        std::vector<std::vector<int>> ant_paths(num_ants, std::vector<int>(n));
+
+        for (int ant = 0; ant < num_ants; ant++) {
+            std::vector<int> visited(n, 0);
+            int start = std::rand() % n;
+            ant_paths[ant][0] = start;
+            visited[start] = 1;
+
+            for (int i = 1; i < n; i++) {
+                int current = ant_paths[ant][i - 1];
+                double total_pheromone = 0.0;
+                for (int j = 0; j < n; j++) {
+                    if (visited[j] == 0) {
+                        total_pheromone += pow(pheromone[current][j], alpha) * pow(1.0 / distance_matrix[current][j], beta);
+                    }
+                }
+
+                double rnd = (double)std::rand() / RAND_MAX;
+                double selection_prob = 0.0;
+                int next = -1;
+                for (int j = 0; j < n; j++) {
+                    if (visited[j] == 0) {
+                        selection_prob += pow(pheromone[current][j], alpha) * pow(1.0 / distance_matrix[current][j], beta) / total_pheromone;
+                        if (rnd <= selection_prob) {
+                            next = j;
+                            break;
+                        }
+                    }
+                }
+
+                ant_paths[ant][i] = next;
+                visited[next] = 1;
+            }
+        }
+
+        for (int ant = 0; ant < num_ants; ant++) {
+            double distance = 0.0;
+            for (int i = 0; i < n - 1; i++) {
+                distance += distance_matrix[ant_paths[ant][i]][ant_paths[ant][i + 1]];
+            }
+            distance += distance_matrix[ant_paths[ant][n - 1]][ant_paths[ant][0]];
+
+            if (distance < best_distance) {
+                best_distance = distance;
+                best_path = ant_paths[ant];
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                pheromone[i][j] *= (1.0 - rho);
+            }
+        }
+        for (int ant = 0; ant < num_ants; ant++) {
+            for (int i = 0; i < n - 1; i++) {
+                int from = ant_paths[ant][n - 1];
+                int to = ant_paths[ant][0];
+                pheromone[from][to] += 1.0 / best_distance;
+                for (int i = 0; i < n - 1; i++) {
+                    from = ant_paths[ant][i];
+                    to = ant_paths[ant][i + 1];
+                    pheromone[from][to] += 1.0 / best_distance;
+                }
+            }
         }
     }
-    cout << "not found: " << from << " " << to << endl;
-    return nodes[from].getDistance(nodes[to]);
+    std::cout << "ACO Path: ";
+    for(int i= best_path.size()-1; i >=0; i--){
+        std::cout << best_path[i] << " -> ";
+    }
+    cout << best_path.back() << "\n";
+    return best_distance;
 }
 
+
+
+void Graph::Task3(){
+    auto start = chrono::high_resolution_clock::now();
+    int n = adj.size();
+    std::vector<std::vector<double>> distance_matrix(n, std::vector<double>(n, UP_EPS));
+    for(int i=0; i < adj.size(); ++i){
+        for(int j=0; j < adj[i].size(); ++j){
+            if( adj[i][j].to != -1 )
+                distance_matrix[i][adj[i][j].to] = adj[i][j].dist;
+        }
+    }
+    double shortest_distance = ACO(distance_matrix, max_iter, num_ants, alpha, beta, rho);
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> aco_duration = end - start;
+    std::cout << "ACO.Minimum cost: " << shortest_distance << std::endl;
+    std::cout << "Execution time: " << aco_duration.count() << std::endl;
+}
