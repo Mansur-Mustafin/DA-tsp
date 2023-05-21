@@ -20,6 +20,11 @@ Graph::Graph(const string &input_edge_name, const string &input_node_name) {
     }
     file_edge_name = input_edge_name;
     file_nodes_name = input_node_name;
+    V = adj.size();
+    if(V < 2){
+        cout << "Go home" << endl;
+        exit(-1);
+    }
 }
 
 int Graph::input_edge(const string &input_name, bool have_nodes) {
@@ -100,7 +105,7 @@ float findStart(const vector<Edge>& v){
     return 0.0;
 }
 
-float Graph::getDistance(int from, int to) {
+double Graph::getDistance(int from, int to) {
     for(auto el : adj[from]){
         if(el.to == to){
             return el.dist;
@@ -363,6 +368,15 @@ vector<int> generateRandomPermutation(int n) {
     return permutation;
 }
 
+bool randomBool(double p) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<> dis(0.0, 1.0);
+
+    double randomValue = dis(gen);
+    return randomValue < p;
+}
+
 int getRand(int l, int r) {
     random_device rd;
     mt19937 gen(rd());
@@ -374,62 +388,70 @@ int getRand(int l, int r) {
 
 }
 
-double Graph::getValue(vector <int>& v) {
+double Graph::getValue(vector <int>& v, bool out) {
     double sum = 0;
-    for (int i = 0; i < v.size(); i++)
+    for (int i = 0; i < v.size(); i++){
         sum += getDistance(v[i], v[(i + 1) % v.size()]);
+        if(out) cout << sum << endl;
+    }
     return sum;
 }
 
-vector <int> regenerate(vector <int> v, int l, int r) {
-
-    vector <int> permutation = generateRandomPermutation(r - l + 1); // example generateRandomPermutation(5) ~ {4, 1, 3, 2, 0}
-
-
-    vector <int> temp (v.size());
-    copy(v.begin(), v.end(), temp.begin());
-
-    for (int i = l; i <= r; i++)
-        temp[i] = v[permutation[i - l] + l];
-
-    return temp;
+int Graph::id(int a) {
+    if (a >= V) return 0;
+    return a;
 }
 
-vector <int> Graph::getSample(int t, vector <int>& v) {  // 1 градус ~ (v.size() + 99) / 100
+void Graph::getSample(double t, vector <int>& v, double& curValue) {
 
-    int length = min((t * v.size() + 99) / 100, v.size() - 1), l = getRand(1, max((int) v.size() - length, 1)), r = l + length - 1, cnt = 0;
-    double originValue = getValue(v), curValue = originValue + 1;
+    int l = getRand(1, v.size() - 1), r = getRand(1, v.size() - 1);
 
-    vector <int> temp;
-    while (curValue > originValue && cnt++ < 5) {
-        temp = regenerate(v, l, r);
+    if(l > r) swap(l, r);
 
-        double tempValue = getValue(temp);
-        if (tempValue < curValue) {
-            v = temp;
-            curValue = tempValue;
-        }
+    if(l == r) return;
+
+    double tmpValue = curValue - getDistance(v[l], v[id(l + 1)]) \
+                                - getDistance(v[l - 1], v[l]) \
+                                - getDistance(v[r - 1], v[r]) \
+                                - getDistance(v[r], v[id(r + 1)]) \
+                                + getDistance(v[l - 1], v[r]) \
+                                + getDistance(v[r], v[id(l + 1)]) \
+                                + getDistance(v[r - 1], v[l]) \
+                                + getDistance(v[l], v[id(r + 1)]);
+
+    if(r - l == 1){
+        tmpValue = curValue + getDistance(v[l], v[id(r + 1)])
+                            + getDistance(v[r], v[l - 1])
+                            - getDistance(v[l],v[l - 1])
+                            - getDistance(v[r],v[id(r + 1)]);
     }
 
-    return v;
+
+    bool p = randomBool(exp((curValue - tmpValue) / t));
+
+    if(p){
+        swap(v[l], v[r]);
+        curValue = tmpValue;
+    }
+
 }
 
 vector <int> Graph::simulatedAnnealing(int n) {
 
-    int t = 100;
+    double t = 1e4;
 
     vector <int> ans = generateRandomPermutation(n);
-
     for(size_t i = 0; i < ans.size(); i++){
         if(!ans[i]){
             swap(ans[i], ans[0]);
         }
     }
+    double value = getValue(ans);
 
-    while (t--)
-        for(int i = 0; i < 10; i++){
-            ans = getSample(t, ans);
-        }
+    while(t > 0){
+        getSample(t, ans, value);
+        t -= 0.022;
+    }
 
     return ans;
 }

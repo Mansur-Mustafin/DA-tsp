@@ -22,7 +22,7 @@ ostream &operator<<(ostream &out, const Node &node) {
     return out;
 }
 
-float Node::getDistance(const Node& toNode) {
+double Node::getDistance(const Node& toNode) {
     double lat1 = latitude;
     double lon1 = longitude;
     double lat2 = toNode.latitude;
