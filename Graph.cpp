@@ -167,7 +167,7 @@ void Graph::Task1(bool print_path) {
 // TODO Task2 ----------------------------------------------------------------------------------------------------------
 
 vector<vector<Edge>> Graph::primMST() {
-    int n = adj.size();
+    size_t n = adj.size();
     vector<pair<int, float>>  parent (n, {-2, 0.0});
     vector<float> dist(n, numeric_limits<float>::max());
     vector<bool> visited(n, false);
@@ -339,7 +339,6 @@ void Graph::Task3(bool print_path){
 
     cout << "--** ACO **--" << endl;
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
-
     if(print_path){
         cout << "Path: ";
         for (int node : path) {
@@ -347,7 +346,6 @@ void Graph::Task3(bool print_path){
         }
         cout << "0" << endl;
     }
-
     cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
 }
 
@@ -365,7 +363,6 @@ vector<int> generateRandomPermutation(int n) {
 }
 
 int getRand(int l, int r) {
-
     random_device rd;
     mt19937 gen(rd());
 
@@ -385,14 +382,14 @@ double Graph::getValue(vector <int>& v) {
 
 vector <int> regenerate(vector <int> v, int l, int r) {
 
-    vector <int> permut = generateRandomPermutation(r - l + 1); // example generateRandomPermutation(5) ~ {4, 1, 3, 2, 0}
+    vector <int> permutation = generateRandomPermutation(r - l + 1); // example generateRandomPermutation(5) ~ {4, 1, 3, 2, 0}
 
 
     vector <int> temp (v.size());
     copy(v.begin(), v.end(), temp.begin());
 
     for (int i = l; i <= r; i++)
-        temp[i] = v[permut[i - l] + l];
+        temp[i] = v[permutation[i - l] + l];
 
     return temp;
 }
@@ -430,7 +427,6 @@ vector <int> Graph::simulatedAnnealing(int n) {
 
     while (t--)
         for(int i = 0; i < 10; i++){
-            //cout << "hello" << endl;
             ans = getSample(t, ans);
         }
 
@@ -440,7 +436,7 @@ vector <int> Graph::simulatedAnnealing(int n) {
 void Graph::Task4(bool print_path){
     auto start = chrono::high_resolution_clock::now();
 
-    vector <int> path = simulatedAnnealing(adj.size());
+    vector <int> path = simulatedAnnealing((int) adj.size());
 
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;

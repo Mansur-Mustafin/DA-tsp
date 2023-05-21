@@ -18,7 +18,7 @@ public:
     double longitude;
     friend istream &operator>>(istream &in, Node &node);
     friend ostream &operator<<(ostream &out, const Node &node);
-    double getDistance(const Node& toNode);
+    float getDistance(const Node& toNode);
 };
 
 

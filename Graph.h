@@ -43,7 +43,7 @@ private:
     double alpha = 1.0;
     double beta = 2.0;
     double rho = 0.1;
-    double UP_EPS = 1e9;
+    float UP_EPS = 1e9;
 
 
     float getDistance(int from, int to);
