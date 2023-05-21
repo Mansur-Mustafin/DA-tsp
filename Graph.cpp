@@ -337,7 +337,8 @@ void Graph::Task3(bool print_path){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
 
-    cout << "--** ACO **--" << endl;
+    //cout << "--** ACO **--" << endl;
+    cout << "--** Test1 **--" << endl;
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
     if(print_path){
         cout << "Path: ";
@@ -441,7 +442,8 @@ void Graph::Task4(bool print_path){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
 
-    cout << "--** Simulated Annealing **--" << endl;
+    //cout << "--** Simulated Annealing **--" << endl;
+    cout << "--** Test2 **--" << endl;
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
     if(print_path){
