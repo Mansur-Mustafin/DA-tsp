@@ -20,7 +20,7 @@ istream &operator>>(istream &in, Edge &edge) {
         edge.to = stoi(s);
     }else return in;
     getline(in, s);
-    edge.dist = stof(s);
+    edge.dist = stod(s);
     return in;
 }
 

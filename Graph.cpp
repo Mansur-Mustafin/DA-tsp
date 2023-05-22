@@ -20,6 +20,11 @@ Graph::Graph(const string &input_edge_name, const string &input_node_name) {
     }
     file_edge_name = input_edge_name;
     file_nodes_name = input_node_name;
+    V = adj.size();
+    if(V < 2){
+        cout << "Go home" << endl;
+        exit(-1);
+    }
 }
 
 int Graph::input_edge(const string &input_name, bool have_nodes) {
@@ -89,7 +94,6 @@ void Graph::print_nodes() {
             cout << n << endl;
         }
     }
-
 }
 
 float findStart(const vector<Edge>& v){
@@ -101,13 +105,12 @@ float findStart(const vector<Edge>& v){
     return 0.0;
 }
 
-float Graph::getDistance(int from, int to) {
+double Graph::getDistance(int from, int to) {
     for(auto el : adj[from]){
         if(el.to == to){
             return el.dist;
         }
     }
-    cout << "not found: " << from << " " << to << endl;
     return nodes[from].getDistance(nodes[to]);
 }
 
@@ -136,7 +139,7 @@ void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, f
     }
 }
 
-void Graph::Task1() {
+void Graph::Task1(bool print_path) {
     size_t n = adj.size();
     vector<bool> v(n);
     for (int i = 0; i < n; i++)
@@ -152,19 +155,24 @@ void Graph::Task1() {
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
-    cout << "Backtracking Minimum cost: " << fixed << setprecision(2) << ans << endl;
-    cout << "Path: ";
-    for (int i : bestPath) {
-        cout << i << " -> ";
+    cout << "--** Backtracking **--" << endl;
+    cout << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
+
+    if(print_path){
+        cout << "Path: ";
+        for (int node : path) {
+            cout << node << " -> ";
+        }
+        cout << "0" << endl;
     }
-    cout << "0" << endl;
+
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
 }
 
 // TODO Task2 ----------------------------------------------------------------------------------------------------------
 
 vector<vector<Edge>> Graph::primMST() {
-    int n = adj.size();
+    size_t n = adj.size();
     vector<pair<int, float>>  parent (n, {-2, 0.0});
     vector<float> dist(n, numeric_limits<float>::max());
     vector<bool> visited(n, false);
@@ -213,7 +221,7 @@ void preorderWalk(int node, const vector<vector<Edge>> &adj, vector<bool> &visit
     }
 }
 
-void Graph::Task2(){
+void Graph::Task2(bool print_path){
     auto start = chrono::high_resolution_clock::now();
     vector<vector<Edge>> p = primMST();
 
@@ -226,36 +234,35 @@ void Graph::Task2(){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
-    double ans = 0.0;
-    for(int s = 0; s < path.size() - 1; s++){
-        ans += getDistance(path[s], path[s + 1]);
-    }
-    ans += getDistance(path[path.size() - 1], 0);
+    cout << "--** Triangular approximation **--" << endl;
+    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
-    cout << "Triangular approximation Minimum cost: " << fixed << setprecision(2) << ans << endl;
-    cout << "Path: ";
-    for (int node : path) {
-        cout << node << " -> ";
+    if(print_path){
+        cout << "Path: ";
+        for (int node : path) {
+            cout << node << " -> ";
+        }
+        cout << "0" << endl;
     }
-    cout << "0" << endl;
+
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
 }
 
 // TODO Task3 ----------------------------------------------------------------------------------------------------------
 
-double Graph::ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter,
+vector <int> Graph::ACO(vector<vector<float>>& distance_matrix, int max_iter,
                   int num_ants, double alpha, double beta, double rho) {
     int n = distance_matrix.size();
-    std::vector<int> best_path(n);
-    double best_distance = std::numeric_limits<double>::max();
+    vector<int> best_path(n);
+    double best_distance = numeric_limits<double>::max();
 
-    std::vector<std::vector<float>> pheromone(n, std::vector<float>(n, 1.0));
+    vector<vector<float>> pheromone(n, vector<float>(n, 1.0));
 
     for (int iter = 0; iter < max_iter; iter++) {
-        std::vector<std::vector<int>> ant_paths(num_ants, std::vector<int>(n));
+        vector<vector<int>> ant_paths(num_ants, vector<int>(n));
 
         for (int ant = 0; ant < num_ants; ant++) {
-            std::vector<int> visited(n, 0);
+            vector<int> visited(n, 0);
             ant_paths[ant][0] = 0;  // Начальная точка всегда 0
             visited[0] = 1;
 
@@ -268,7 +275,7 @@ double Graph::ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter
                     }
                 }
 
-                double rnd = (double)std::rand() / RAND_MAX;
+                double rnd = (double)rand() / RAND_MAX;
                 double selection_prob = 0.0;
                 int next = -1;
                 for (int j = 0; j < n; j++) {
@@ -294,7 +301,7 @@ double Graph::ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter
             for (int i = 0; i < n - 1; i++) {
                 distance += distance_matrix[ant_paths[ant][i]][ant_paths[ant][i + 1]];
             }
-            distance += distance_matrix[ant_paths[ant][n - 1]][0];  // Конечная точка - 0
+            distance += distance_matrix[ant_paths[ant][n - 1]][0];  // stop in: 0
 
             if (distance < best_distance) {
                 best_distance = distance;
@@ -316,30 +323,36 @@ double Graph::ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter
             pheromone[ant_paths[ant][n - 1]][0] += 1.0 / best_distance;  // Ребро от последней точки к 0
         }
     }
-    std::cout << "ACO Path: ";
-    for (int i = 0; i < best_path.size(); ++i) {
-        std::cout << best_path[i] << " -> ";
-    }
-    cout << "0\n";
-    return best_distance;
+
+    return best_path;
 }
 
 
-void Graph::Task3(){
+void Graph::Task3(bool print_path){
     auto start = chrono::high_resolution_clock::now();
     int n = adj.size();
-    std::vector<std::vector<float>> distance_matrix(n, std::vector<float>(n, UP_EPS));
+    vector<vector<float>> distance_matrix(n, vector<float>(n, UP_EPS));
     for(int i=0; i < adj.size(); ++i){
         for(int j=0; j < adj[i].size(); ++j){
             if( adj[i][j].to != -1 )
                 distance_matrix[i][adj[i][j].to] = adj[i][j].dist;
         }
     }
-    double shortest_distance = ACO(distance_matrix, max_iter, num_ants, alpha, beta, rho);
+    vector <int> path = ACO(distance_matrix, max_iter, num_ants, alpha, beta, rho);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
-    std::cout << "ACO. Minimum cost: " << fixed << setprecision(2) << shortest_distance << std::endl;
-    std::cout << "Execution time: " << aco_duration.count() << " seconds" << std::endl;
+
+    //cout << "--** ACO **--" << endl;
+    cout << "--** Test1 **--" << endl;
+    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+    if(print_path){
+        cout << "Path: ";
+        for (int node : path) {
+            cout << node << " -> ";
+        }
+        cout << "0" << endl;
+    }
+    cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
 }
 
 // TODO TASK4 ----------------------------------------------------------------------------------------------------------
@@ -355,8 +368,16 @@ vector<int> generateRandomPermutation(int n) {
     return permutation;
 }
 
-int getRand(int l, int r) {
+bool randomBool(double p) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<> dis(0.0, 1.0);
 
+    double randomValue = dis(gen);
+    return randomValue < p;
+}
+
+int getRand(int l, int r) {
     random_device rd;
     mt19937 gen(rd());
 
@@ -367,79 +388,93 @@ int getRand(int l, int r) {
 
 }
 
-double Graph::getValue(vector <int>& v) {
+double Graph::getValue(vector <int>& v, bool out) {
     double sum = 0;
-    for (int i = 0; i < v.size(); i++)
+    for (int i = 0; i < v.size(); i++){
         sum += getDistance(v[i], v[(i + 1) % v.size()]);
+        if(out) cout << sum << endl;
+    }
     return sum;
 }
 
-vector <int> regenerate(vector <int> v, int l, int r) {
-
-    vector <int> permut = generateRandomPermutation(r - l + 1); // example generateRandomPermutation(5) ~ {4, 1, 3, 2, 0}
-
-
-    vector <int> temp (v.size());
-    copy(v.begin(), v.end(), temp.begin());
-
-    for (int i = l; i <= r; i++)
-        temp[i] = v[permut[i - l] + l];
-
-    return temp;
+int Graph::id(int a) {
+    if (a >= V) return 0;
+    return a;
 }
 
-vector <int> Graph::getSample(int t, vector <int>& v) {  // 1 градус ~ (v.size() + 99) / 100
+void Graph::getSample(double t, vector <int>& v, double& curValue) {
 
-    int length = min((t * v.size() + 99) / 100, v.size() - 1), l = getRand(1, max((int) v.size() - length, 1)), r = l + length - 1, cnt = 0;
-    double originValue = getValue(v), curValue = originValue + 1;
+    int l = getRand(1, v.size() - 1), r = getRand(1, v.size() - 1);
 
-    vector <int> temp;
-    while (curValue > originValue && cnt++ < 5) {
-        temp = regenerate(v, l, r);
+    if(l > r) swap(l, r);
 
-        double tempValue = getValue(temp);
-        if (tempValue < curValue) {
-            v = temp;
-            curValue = tempValue;
-        }
+    if(l == r) return;
+
+    double tmpValue = curValue - getDistance(v[l], v[id(l + 1)]) \
+                                - getDistance(v[l - 1], v[l]) \
+                                - getDistance(v[r - 1], v[r]) \
+                                - getDistance(v[r], v[id(r + 1)]) \
+                                + getDistance(v[l - 1], v[r]) \
+                                + getDistance(v[r], v[id(l + 1)]) \
+                                + getDistance(v[r - 1], v[l]) \
+                                + getDistance(v[l], v[id(r + 1)]);
+
+    if(r - l == 1){
+        tmpValue = curValue + getDistance(v[l], v[id(r + 1)])
+                            + getDistance(v[r], v[l - 1])
+                            - getDistance(v[l],v[l - 1])
+                            - getDistance(v[r],v[id(r + 1)]);
     }
 
-    return v;
+
+    bool p = randomBool(exp((curValue - tmpValue) / t));
+
+    if(p){
+        swap(v[l], v[r]);
+        curValue = tmpValue;
+    }
+
 }
 
 vector <int> Graph::simulatedAnnealing(int n) {
 
-    int t = 100;
+    double t = 1e4;
 
     vector <int> ans = generateRandomPermutation(n);
-
     for(size_t i = 0; i < ans.size(); i++){
         if(!ans[i]){
             swap(ans[i], ans[0]);
         }
     }
+    double value = getValue(ans);
 
-    while (t--)
-        for(int i = 0; i < 10; i++){
-            //cout << "hello" << endl;
-            ans = getSample(t, ans);
-        }
+    while(t > 0){
+        getSample(t, ans, value);
+        t -= 0.022;
+    }
 
     return ans;
 }
 
-void Graph::Task4(){
+void Graph::Task4(bool print_path){
     auto start = chrono::high_resolution_clock::now();
 
-    vector <int> path = simulatedAnnealing(adj.size());
+    vector <int> path = simulatedAnnealing((int) adj.size());
 
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
-    std::cout << "Simulated Annealing Minimum cost: " << fixed << setprecision(2) << getValue(path) << std::endl;
-    cout << "Path: ";
-    for (int node : path) {
-        cout << node << " -> ";
+
+    //cout << "--** Simulated Annealing **--" << endl;
+    cout << "--** Test2 **--" << endl;
+    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+
+    if(print_path){
+        cout << "Path: ";
+        for (int node : path) {
+            cout << node << " -> ";
+        }
+        cout << "0" << endl;
     }
-    cout << "0" << endl;
-    std::cout << "Execution time: " << aco_duration.count() << " seconds" << std::endl;
+
+    cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
 }

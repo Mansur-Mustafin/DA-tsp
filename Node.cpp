@@ -28,7 +28,6 @@ double Node::getDistance(const Node& toNode) {
     double lat2 = toNode.latitude;
     double lon2 = toNode.longitude;
 
-
     double dLat = (lat2 - lat1) * M_PI / 180.0;
     double dLon = (lon2 - lon1) * M_PI / 180.0;
 
