@@ -1,0 +1,102 @@
+\hypertarget{class_node}{}\doxysection{Node Class Reference}
+\label{class_node}\index{Node@{Node}}
+
+
+Class representing a node of a \mbox{\hyperlink{class_graph}{Graph}}.  
+
+
+
+
+{\ttfamily \#include $<$Node.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_node_ac99c0cc34c1b505ffe6bf10e4be80146}{get\+Distance}} (const \mbox{\hyperlink{class_node}{Node}} \&to\+Node)
+\begin{DoxyCompactList}\small\item\em Calculates the distance between current node and another node This functions calculates the distance between the current \mbox{\hyperlink{class_node}{Node}} and the other \mbox{\hyperlink{class_node}{Node}} given in parameter to\+Node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_node_a59a543130a10c95f1e8642cf8c5645e8}\label{class_node_a59a543130a10c95f1e8642cf8c5645e8}} 
+int {\bfseries id}
+\item 
+\mbox{\Hypertarget{class_node_a18e537ee3be0b0f494e54d19486b532b}\label{class_node_a18e537ee3be0b0f494e54d19486b532b}} 
+double {\bfseries latitude}
+\item 
+\mbox{\Hypertarget{class_node_af1772ed9e687d1e230f21c8fdf955ee9}\label{class_node_af1772ed9e687d1e230f21c8fdf955ee9}} 
+double {\bfseries longitude}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+istream \& \mbox{\hyperlink{class_node_afa81c205560605ce23af35e287b1f6d0}{operator$>$$>$}} (istream \&in, \mbox{\hyperlink{class_node}{Node}} \&node)
+\item 
+ostream \& \mbox{\hyperlink{class_node_a12a6538760b6035a07483b0a40d926e4}{operator$<$$<$}} (ostream \&out, const \mbox{\hyperlink{class_node}{Node}} \&node)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a node of a \mbox{\hyperlink{class_graph}{Graph}}. 
+
+This class represents the node of a \mbox{\hyperlink{class_graph}{Graph}} and has attributes, id, latitude and longitude. This class represents real global positions, represented by the attributes latitude and longitude. The attribute id allows the node to be easily identified. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_node_ac99c0cc34c1b505ffe6bf10e4be80146}\label{class_node_ac99c0cc34c1b505ffe6bf10e4be80146}} 
+\index{Node@{Node}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double Node\+::get\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_node}{Node}} \&}]{to\+Node }\end{DoxyParamCaption})}
+
+
+
+Calculates the distance between current node and another node This functions calculates the distance between the current \mbox{\hyperlink{class_node}{Node}} and the other \mbox{\hyperlink{class_node}{Node}} given in parameter to\+Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Node} & -\/ Destination \mbox{\hyperlink{class_node}{Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double with the calculated distance between the nodes 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_node_a12a6538760b6035a07483b0a40d926e4}\label{class_node_a12a6538760b6035a07483b0a40d926e4}} 
+\index{Node@{Node}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{out,  }\item[{const \mbox{\hyperlink{class_node}{Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+This operator specifies how an object of the class \mbox{\hyperlink{class_node}{Node}} should be written to an output stream 
+\begin{DoxyParams}{Parameters}
+{\em out} & -\/ Output stream \\
+\hline
+{\em node} & -\/ \mbox{\hyperlink{class_node}{Node}} to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output stream with the \mbox{\hyperlink{class_node}{Node}} given by parameter node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_afa81c205560605ce23af35e287b1f6d0}\label{class_node_afa81c205560605ce23af35e287b1f6d0}} 
+\index{Node@{Node}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{istream \&}]{in,  }\item[{\mbox{\hyperlink{class_node}{Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+This operator specifies how an object of the class \mbox{\hyperlink{class_node}{Node}} should be read into an input stream 
+\begin{DoxyParams}{Parameters}
+{\em in} & -\/ Input stream \\
+\hline
+{\em node} & -\/ \mbox{\hyperlink{class_node}{Node}} to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Input stream with the \mbox{\hyperlink{class_node}{Node}} given by parameter node 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Node.\+h\item 
+Node.\+cpp\end{DoxyCompactItemize}

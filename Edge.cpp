@@ -4,6 +4,13 @@
 
 #include "Edge.h"
 
+/**
+ * Boolean function used to determine if a string contains just a number.
+ *
+ * @param s - string being analysed by the function
+ * @return false if the string contains any character not representative of a number or if the string is empty
+ * and true otherwise
+ */
 bool is_number(const string &s) {
     for (char x : s) {
         if (x < '0' || x > '9') {
