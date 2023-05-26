@@ -338,7 +338,7 @@ void Graph::Task3(bool print_path){
                 distance_matrix[i][adj[i][j].to] = adj[i][j].dist;
         }
     }
-    vector <int> path = ACO(distance_matrix, max_iter, num_ants, alpha, beta, rho);
+    vector <int> path = ACO(distance_matrix, 100, 10, 1.0, 2.0, 0.1);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
 
@@ -397,26 +397,26 @@ double Graph::getValue(vector <int>& v, bool out) {
     return sum;
 }
 
-int Graph::id(int a) {
-    if (a >= V) return 0;
-    return a;
+int Graph::id(int a) const {
+    return a >= V ? 0: a;
 }
 
 void Graph::getSample(double t, vector <int>& v, double& curValue) {
 
-    int l = getRand(1, v.size() - 1), r = getRand(1, v.size() - 1);
+    int l = getRand(1, v.size() - 1);
+    int r = getRand(1, v.size() - 1);
 
     if(l > r) swap(l, r);
 
     if(l == r) return;
 
-    double tmpValue = curValue - getDistance(v[l], v[id(l + 1)]) \
-                                - getDistance(v[l - 1], v[l]) \
-                                - getDistance(v[r - 1], v[r]) \
-                                - getDistance(v[r], v[id(r + 1)]) \
-                                + getDistance(v[l - 1], v[r]) \
-                                + getDistance(v[r], v[id(l + 1)]) \
-                                + getDistance(v[r - 1], v[l]) \
+    double tmpValue = curValue - getDistance(v[l], v[id(l + 1)])
+                                - getDistance(v[l - 1], v[l])
+                                - getDistance(v[r - 1], v[r])
+                                - getDistance(v[r], v[id(r + 1)])
+                                + getDistance(v[l - 1], v[r])
+                                + getDistance(v[r], v[id(l + 1)])
+                                + getDistance(v[r - 1], v[l])
                                 + getDistance(v[l], v[id(r + 1)]);
 
     if(r - l == 1){
@@ -477,4 +477,19 @@ void Graph::Task4(bool print_path){
     }
 
     cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
+}
+
+// TODO TEST -----------------------------------------------------------------------------------------------------------
+
+void Graph::test(){
+    vector<vector<Edge>> p = primMST();
+
+    for(int i = 0; i < p.size(); i++){
+        cout << i << " -> { ";
+        for(auto el : p[i]){
+            cout << el.to << ", ";
+        }
+        cout << "} \n";
+    }
+
 }
