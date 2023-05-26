@@ -24,6 +24,7 @@ public:
     Graph(const string &input_edge_name, const string &input_node_name = "");
     void print_edges();
     void print_nodes();
+    void write_to_file(const std::string& text);
     void Task1(bool print_path = true);
     void Task2(bool print_path = true);
     void Task3(bool print_path = true);

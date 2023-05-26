@@ -96,6 +96,42 @@ void Graph::print_nodes() {
     }
 }
 
+void Graph::write_to_file(const std::string& text) {
+    std::ofstream outputFile("output.txt", std::ios::app);
+
+    if (outputFile.is_open()) {
+        int textLength = text.length();
+        int startPos = 0;
+        int maxCharsPerLine = 80; // Maximum number of characters per line
+
+        while (textLength > maxCharsPerLine) {
+            int writeLength = maxCharsPerLine;
+            std::string line = text.substr(startPos, writeLength);
+
+            // Trim the line to end at the last arrow separator
+            size_t lastArrowPos = line.find_last_of("->");
+            if (lastArrowPos != std::string::npos) {
+                line = line.substr(0, lastArrowPos + 2);
+            }
+
+            outputFile << line << '\n';
+
+            startPos += line.length();
+            textLength -= writeLength;
+        }
+
+        if (textLength > 0) {
+            std::string remainingText = text.substr(startPos);
+            outputFile << remainingText;
+        }
+
+        outputFile.close();
+        std::cout << "Text has been written to the file.\n";
+    } else {
+        std::cerr << "Unable to open the output file.\n";
+    }
+}
+
 float findStart(const vector<Edge>& v){
     for(auto el : v){
         if(el.to == 0){
@@ -159,11 +195,14 @@ void Graph::Task1(bool print_path) {
     cout << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
 
     if(print_path){
-        cout << "Path: ";
+        std::ofstream outputFile("output.txt", std::ios::trunc);
+        outputFile.close();
+        std::string pathString = "Path: ";
         for (int node : path) {
-            cout << node << " -> ";
+            pathString += std::to_string(node) + "->";
         }
-        cout << "0" << endl;
+        pathString += "0";
+        write_to_file(pathString);
     }
 
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
@@ -238,11 +277,15 @@ void Graph::Task2(bool print_path){
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
     if(print_path){
-        cout << "Path: ";
+        std::ofstream outputFile("output.txt", std::ios::trunc);
+        outputFile.close();
+
+        std::string pathString = "Path: ";
         for (int node : path) {
-            cout << node << " -> ";
+            pathString += std::to_string(node) + "->";
         }
-        cout << "0" << endl;
+        pathString += "0";
+        write_to_file(pathString);
     }
 
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
@@ -345,13 +388,19 @@ void Graph::Task3(bool print_path){
     //cout << "--** ACO **--" << endl;
     cout << "--** Test1 **--" << endl;
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+
     if(print_path){
-        cout << "Path: ";
+        std::ofstream outputFile("output.txt", std::ios::trunc);
+        outputFile.close();
+
+        std::string pathString = "Path: ";
         for (int node : path) {
-            cout << node << " -> ";
+            pathString += std::to_string(node) + "->";
         }
-        cout << "0" << endl;
+        pathString += "0";
+        write_to_file(pathString);
     }
+
     cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
 }
 
@@ -469,11 +518,15 @@ void Graph::Task4(bool print_path){
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
     if(print_path){
-        cout << "Path: ";
+        std::ofstream outputFile("output.txt", std::ios::trunc);
+        outputFile.close();
+
+        std::string pathString = "Path: ";
         for (int node : path) {
-            cout << node << " -> ";
+            pathString += std::to_string(node) + "->";
         }
-        cout << "0" << endl;
+        pathString += "0";
+        write_to_file(pathString);
     }
 
     cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
