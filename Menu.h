@@ -18,7 +18,7 @@ public:
     void Task2_3_1();
     void Task2_3_2();
 private:
-    Graph g = Graph ("edges_1.csv", "nodes_1.csv");
+    Graph g = Graph ("edges_25.csv");
 
 };
 
