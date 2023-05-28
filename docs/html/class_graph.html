@@ -76,20 +76,26 @@ $(function() {
   <div class="headertitle"><div class="title">Graph Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class representing a <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>.  
+ <a href="class_graph.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_graph_8h_source.html">Graph.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a46f6c3cedc2ac55f0fd44d625484367a"><td class="memItemLeft" align="right" valign="top"><a id="a46f6c3cedc2ac55f0fd44d625484367a" name="a46f6c3cedc2ac55f0fd44d625484367a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Graph</b> (const string &amp;input_edge_name, const string &amp;input_node_name=&quot;&quot;)</td></tr>
+<tr class="memitem:a46f6c3cedc2ac55f0fd44d625484367a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a46f6c3cedc2ac55f0fd44d625484367a">Graph</a> (const string &amp;input_edge_name, const string &amp;input_node_name=&quot;&quot;)</td></tr>
+<tr class="memdesc:a46f6c3cedc2ac55f0fd44d625484367a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of the class <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>.  <a href="class_graph.html#a46f6c3cedc2ac55f0fd44d625484367a">More...</a><br /></td></tr>
 <tr class="separator:a46f6c3cedc2ac55f0fd44d625484367a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d4f2852ab668f822b91d8f37555e156"><td class="memItemLeft" align="right" valign="top"><a id="a1d4f2852ab668f822b91d8f37555e156" name="a1d4f2852ab668f822b91d8f37555e156"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print_edges</b> ()</td></tr>
+<tr class="memdesc:a1d4f2852ab668f822b91d8f37555e156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the edges of the <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>. <br /></td></tr>
 <tr class="separator:a1d4f2852ab668f822b91d8f37555e156"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1afff0f002170048a6f180b62e5b965"><td class="memItemLeft" align="right" valign="top"><a id="ac1afff0f002170048a6f180b62e5b965" name="ac1afff0f002170048a6f180b62e5b965"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print_nodes</b> ()</td></tr>
+<tr class="memdesc:ac1afff0f002170048a6f180b62e5b965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the nodes of the <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>. <br /></td></tr>
 <tr class="separator:ac1afff0f002170048a6f180b62e5b965"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a842fe85533f9245a4e5a2990254159eb"><td class="memItemLeft" align="right" valign="top"><a id="a842fe85533f9245a4e5a2990254159eb" name="a842fe85533f9245a4e5a2990254159eb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Task1</b> (bool print_path=true)</td></tr>
+<tr class="memitem:a842fe85533f9245a4e5a2990254159eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a842fe85533f9245a4e5a2990254159eb">Task1</a> (bool print_path=true)</td></tr>
 <tr class="separator:a842fe85533f9245a4e5a2990254159eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26a5a1f2af86e477395d8b8e15f4de3a"><td class="memItemLeft" align="right" valign="top"><a id="a26a5a1f2af86e477395d8b8e15f4de3a" name="a26a5a1f2af86e477395d8b8e15f4de3a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Task2</b> (bool print_path=true)</td></tr>
@@ -116,9 +122,75 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>file_edge_name</b> 
 string&#160;</td><td class="memItemRight" valign="bottom"><b>file_nodes_name</b> = &quot;&quot;</td></tr>
 <tr class="separator:ad6b9f331efbd8874158fe0a868b7df23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Class representing a <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>. </p>
+<p >This class represents a <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a> with a vector of its nodes and a vector of vectors of its edges, as well as the name of the files from which the nodes and edges are loaded. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a46f6c3cedc2ac55f0fd44d625484367a" name="a46f6c3cedc2ac55f0fd44d625484367a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46f6c3cedc2ac55f0fd44d625484367a">&#9670;&#160;</a></span>Graph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Graph::Graph </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>input_edge_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>input_node_name</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor of the class <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_edge_name</td><td>- Name of the file from which the edges are loaded </td></tr>
+    <tr><td class="paramname">input_node_name</td><td>- Name of the file from which the nodes are loaded </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a842fe85533f9245a4e5a2990254159eb" name="a842fe85533f9245a4e5a2990254159eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a842fe85533f9245a4e5a2990254159eb">&#9670;&#160;</a></span>Task1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::Task1 </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>print_path</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">print_path</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_graph_8h_source.html">Graph.h</a></li>
-<li>Graph.cpp</li>
+<li>C:/Users/Barbosa/Desktop/DA/Projeto 2/DA-tsp/<a class="el" href="_graph_8h_source.html">Graph.h</a></li>
+<li>C:/Users/Barbosa/Desktop/DA/Projeto 2/DA-tsp/Graph.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -26,6 +26,7 @@ public:
 
     /**
      * This operator specifies how an object of the class Node should be read into an input stream
+     *
      * @param in - Input stream
      * @param node - Node to be read
      * @return Input stream with the Node given by parameter node
@@ -34,6 +35,7 @@ public:
 
     /**
      * This operator specifies how an object of the class Node should be written to an output stream
+     *
      * @param out - Output stream
      * @param node - Node to be written
      * @return Output stream with the Node given by parameter node
@@ -43,6 +45,7 @@ public:
     /**
      * @brief Calculates the distance between current node and another node
      * This functions calculates the distance between the current Node and the other Node given in parameter toNode
+     *
      * @param toNode - Destination Node
      * @return double with the calculated distance between the nodes
      */

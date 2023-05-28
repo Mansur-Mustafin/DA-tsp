@@ -26,6 +26,7 @@ public:
 
     /**
      * This operator specifies how an object of the class Edge should be read into an input stream
+     *
      * @param in - Input stream
      * @param edge - Edge to be read
      * @return Input stream with the Edge given by parameter edge
@@ -34,6 +35,7 @@ public:
 
     /**
      * This operator specifies how an object of the class Edge should be written to an output stream
+     *
      * @param out - Output stream
      * @param edge - Edge to be written
      * @return Output stream with the Edge given by parameter edge

@@ -19,11 +19,36 @@
 
 using namespace std;
 
+/**
+ * @brief Class representing a Graph
+ *
+ * This class represents a Graph with a vector of its nodes and a vector of vectors of its edges, as well as the name of
+ * the files from which the nodes and edges are loaded.
+ */
 class Graph {
 public:
+    /**
+     * @brief Constructor of the class Graph
+     *
+     * @param input_edge_name - Name of the file from which the edges are loaded
+     * @param input_node_name - Name of the file from which the nodes are loaded
+     */
     Graph(const string &input_edge_name, const string &input_node_name = "");
+
+    /**
+     * @brief Prints the edges of the Graph
+     */
     void print_edges();
+
+    /**
+     * @brief Prints the nodes of the Graph
+     */
     void print_nodes();
+
+    /**
+     *
+     * @param print_path
+     */
     void Task1(bool print_path = true);
     void Task2(bool print_path = true);
     void Task3(bool print_path = true);
@@ -54,7 +79,22 @@ private:
     vector <int> simulatedAnnealing(int n);
     vector<vector<Edge>> primMST();
     void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath);
+
+    /**
+     * @brief Adds a vertex (or vertices) to the Graph
+     *
+     * @param input_name - Name of the file containing the information about the vertex (or vertices)
+     * @return 0 if successful, -1 otherwise
+     */
     int input_vertex(const string &input_name);
+
+    /**
+     * @brief Adds an edge (or edges) to the Graph and the respective nodes that correspond to said edge(s)
+     *
+     * @param input_name - Name of the file containing the information about the vertex (or vertices)
+     * @param have_nodes - Boolean parameter that determines if the edges have associated nodes to be inserted as well
+     * @return  0 if successful, -1 otherwise
+     */
     int input_edge(const string &input_name, bool have_nodes);
 };
 
