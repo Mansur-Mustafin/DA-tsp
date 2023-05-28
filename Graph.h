@@ -47,13 +47,14 @@ public:
 
     /**
      *
-     * @param print_path
+     * @param text
      */
+    void write_to_file(const std::string& text);
     void Task1(bool print_path = true);
     void Task2(bool print_path = true);
     void Task3(bool print_path = true);
     void Task4(bool print_path = true);
-
+    void test();
 
     // fields
     vector<vector<Edge>> adj;
@@ -63,15 +64,11 @@ public:
 
 private:
     //ACO fields
-    int max_iter = 100;
-    int num_ants = 10;
-    double alpha = 1.0;
-    double beta = 2.0;
-    double rho = 0.1;
     float UP_EPS = 1e9;
-    int V = adj.size();
 
-    int id(int id);
+
+    int V = 0;
+    int id(int a) const;
     double getDistance(int from, int to);
     double getValue(vector <int>& v, bool out = false);
     vector <int> ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);

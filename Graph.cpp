@@ -96,6 +96,42 @@ void Graph::print_nodes() {
     }
 }
 
+void Graph::write_to_file(const std::string& text) {
+    std::ofstream outputFile("output.txt", std::ios::app);
+
+    if (outputFile.is_open()) {
+        int textLength = text.length();
+        int startPos = 0;
+        int maxCharsPerLine = 80; // Maximum number of characters per line
+
+        while (textLength > maxCharsPerLine) {
+            int writeLength = maxCharsPerLine;
+            std::string line = text.substr(startPos, writeLength);
+
+            // Trim the line to end at the last arrow separator
+            size_t lastArrowPos = line.find_last_of("->");
+            if (lastArrowPos != std::string::npos) {
+                line = line.substr(0, lastArrowPos + 2);
+            }
+
+            outputFile << line << '\n';
+
+            startPos += line.length();
+            textLength -= writeLength;
+        }
+
+        if (textLength > 0) {
+            std::string remainingText = text.substr(startPos);
+            outputFile << remainingText;
+        }
+
+        outputFile.close();
+        std::cout << "Text has been written to the file.\n";
+    } else {
+        std::cerr << "Unable to open the output file.\n";
+    }
+}
+
 float findStart(const vector<Edge>& v){
     for(auto el : v){
         if(el.to == 0){
@@ -159,11 +195,14 @@ void Graph::Task1(bool print_path) {
     cout << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
 
     if(print_path){
-        cout << "Path: ";
+        std::ofstream outputFile("output.txt", std::ios::trunc);
+        outputFile.close();
+        std::string pathString = "Path: ";
         for (int node : path) {
-            cout << node << " -> ";
+            pathString += std::to_string(node) + "->";
         }
-        cout << "0" << endl;
+        pathString += "0";
+        write_to_file(pathString);
     }
 
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
@@ -238,11 +277,15 @@ void Graph::Task2(bool print_path){
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
     if(print_path){
-        cout << "Path: ";
+        std::ofstream outputFile("output.txt", std::ios::trunc);
+        outputFile.close();
+
+        std::string pathString = "Path: ";
         for (int node : path) {
-            cout << node << " -> ";
+            pathString += std::to_string(node) + "->";
         }
-        cout << "0" << endl;
+        pathString += "0";
+        write_to_file(pathString);
     }
 
     cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
@@ -338,20 +381,26 @@ void Graph::Task3(bool print_path){
                 distance_matrix[i][adj[i][j].to] = adj[i][j].dist;
         }
     }
-    vector <int> path = ACO(distance_matrix, max_iter, num_ants, alpha, beta, rho);
+    vector <int> path = ACO(distance_matrix, 100, 10, 1.0, 2.0, 0.1);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
 
     //cout << "--** ACO **--" << endl;
     cout << "--** Test1 **--" << endl;
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+
     if(print_path){
-        cout << "Path: ";
+        std::ofstream outputFile("output.txt", std::ios::trunc);
+        outputFile.close();
+
+        std::string pathString = "Path: ";
         for (int node : path) {
-            cout << node << " -> ";
+            pathString += std::to_string(node) + "->";
         }
-        cout << "0" << endl;
+        pathString += "0";
+        write_to_file(pathString);
     }
+
     cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
 }
 
@@ -397,26 +446,26 @@ double Graph::getValue(vector <int>& v, bool out) {
     return sum;
 }
 
-int Graph::id(int a) {
-    if (a >= V) return 0;
-    return a;
+int Graph::id(int a) const {
+    return a >= V ? 0: a;
 }
 
 void Graph::getSample(double t, vector <int>& v, double& curValue) {
 
-    int l = getRand(1, v.size() - 1), r = getRand(1, v.size() - 1);
+    int l = getRand(1, v.size() - 1);
+    int r = getRand(1, v.size() - 1);
 
     if(l > r) swap(l, r);
 
     if(l == r) return;
 
-    double tmpValue = curValue - getDistance(v[l], v[id(l + 1)]) \
-                                - getDistance(v[l - 1], v[l]) \
-                                - getDistance(v[r - 1], v[r]) \
-                                - getDistance(v[r], v[id(r + 1)]) \
-                                + getDistance(v[l - 1], v[r]) \
-                                + getDistance(v[r], v[id(l + 1)]) \
-                                + getDistance(v[r - 1], v[l]) \
+    double tmpValue = curValue - getDistance(v[l], v[id(l + 1)])
+                                - getDistance(v[l - 1], v[l])
+                                - getDistance(v[r - 1], v[r])
+                                - getDistance(v[r], v[id(r + 1)])
+                                + getDistance(v[l - 1], v[r])
+                                + getDistance(v[r], v[id(l + 1)])
+                                + getDistance(v[r - 1], v[l])
                                 + getDistance(v[l], v[id(r + 1)]);
 
     if(r - l == 1){
@@ -469,12 +518,31 @@ void Graph::Task4(bool print_path){
     cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
     if(print_path){
-        cout << "Path: ";
+        std::ofstream outputFile("output.txt", std::ios::trunc);
+        outputFile.close();
+
+        std::string pathString = "Path: ";
         for (int node : path) {
-            cout << node << " -> ";
+            pathString += std::to_string(node) + "->";
         }
-        cout << "0" << endl;
+        pathString += "0";
+        write_to_file(pathString);
     }
 
     cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
+}
+
+// TODO TEST -----------------------------------------------------------------------------------------------------------
+
+void Graph::test(){
+    vector<vector<Edge>> p = primMST();
+
+    for(int i = 0; i < p.size(); i++){
+        cout << i << " -> { ";
+        for(auto el : p[i]){
+            cout << el.to << ", ";
+        }
+        cout << "} \n";
+    }
+
 }
