@@ -23,11 +23,11 @@ void {\bfseries print\+\_\+nodes} ()
 void \mbox{\hyperlink{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}{write\+\_\+to\+\_\+file}} (const std\+::string \&text)
 \begin{DoxyCompactList}\small\item\em Writes text into a file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a842fe85533f9245a4e5a2990254159eb}{Task1}} (bool print\+\_\+path=true)
-\item 
+\begin{DoxyCompactList}\small\item\em Asks the user for the data necessary to accomplish Task 1, using a Backtracking Algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}{Task2}} (bool print\+\_\+path=true)
 \item 
 void \mbox{\hyperlink{class_graph_a00787ed623d23871b1424b34542e22c3}{Task3}} (bool print\+\_\+path=true)
-\item 
+\begin{DoxyCompactList}\small\item\em Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}{Task4}} (bool print\+\_\+path=true)
 \item 
 \mbox{\Hypertarget{class_graph_a64516282c804cd4b2029f8a8c6c2d968}\label{class_graph_a64516282c804cd4b2029f8a8c6c2d968}} 
@@ -52,7 +52,7 @@ string {\bfseries file\+\_\+nodes\+\_\+name} = \char`\"{}\char`\"{}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{class_graph_a69dc1c8a8a72cfb996f92ffa6033fdfb}{id}} (int a) const
-\item 
+\begin{DoxyCompactList}\small\item\em Verifies if the integer given is a valid id of a node in the \mbox{\hyperlink{class_graph}{Graph}}. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_graph_ac2702571c28c29a5157ec34590439d1d}{get\+Distance}} (int from, int to)
 \begin{DoxyCompactList}\small\item\em This function returns the distance between two nodes. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_graph_aedf8896f598856ccb7e59b580c9ae03b}{get\+Value}} (vector$<$ int $>$ \&v, bool out=false)
@@ -66,7 +66,7 @@ vector$<$ int $>$ \mbox{\hyperlink{class_graph_a2c2bdf61796a96ffd338ba33903c1cfe
 vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ \mbox{\hyperlink{class_graph_a1f1b34a2287d2b601cef862d8bd01223}{prim\+MST}} ()
 \item 
 void \mbox{\hyperlink{class_graph_a39166db679f4128dbe8edf17788fe809}{tsp\+Back\+Tracking}} (vector$<$ bool $>$ \&v, int curr\+Pos, size\+\_\+t n, int count, float cost, float \&ans, vector$<$ int $>$ \&path, vector$<$ int $>$ \&best\+Path)
-\item 
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem using a Backtracking Algorithm. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_graph_af992c3d4c6e881c570fc6270284e03b0}{input\+\_\+vertex}} (const string \&input\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Adds a vertex (or vertices) to the \mbox{\hyperlink{class_graph}{Graph}}. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_graph_a65c582ebf3611794a7e7100795578d0c}{input\+\_\+edge}} (const string \&input\+\_\+name, bool have\+\_\+nodes)
@@ -216,13 +216,20 @@ This function\textquotesingle{}s time complexity is O(\+N $\ast$ A) where N is t
 {\footnotesize\ttfamily int Graph\+::id (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
+
+Verifies if the integer given is a valid id of a node in the \mbox{\hyperlink{class_graph}{Graph}}. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em a} & \\
+{\em a} & -\/ Integer representing the id of the pretended node \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+0 if the given integer is invalid (bigger than the number of nodes in the \mbox{\hyperlink{class_graph}{Graph}}), the given integer otherwise
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function\textquotesingle{}s time complexity is O(1). 
+\end{DoxyNote}
 \mbox{\Hypertarget{class_graph_a65c582ebf3611794a7e7100795578d0c}\label{class_graph_a65c582ebf3611794a7e7100795578d0c}} 
 \index{Graph@{Graph}!input\_edge@{input\_edge}}
 \index{input\_edge@{input\_edge}!Graph@{Graph}}
@@ -301,8 +308,14 @@ This function creates an object of the class \mbox{\hyperlink{class_node}{Node}}
 {\footnotesize\ttfamily void Graph\+::\+Task1 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
+
+Asks the user for the data necessary to accomplish Task 1, using a Backtracking Algorithm. 
+
+This function is responsible for asking for the necessary data to the user to accomplish Task 1, utilising the function \mbox{\hyperlink{class_graph_a39166db679f4128dbe8edf17788fe809}{tsp\+Back\+Tracking()}}.
+
+
 \begin{DoxyParams}{Parameters}
-{\em print\+\_\+path} & \\
+{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}\label{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}} 
@@ -313,7 +326,7 @@ This function creates an object of the class \mbox{\hyperlink{class_node}{Node}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em print\+\_\+path} & \\
+{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_graph_a00787ed623d23871b1424b34542e22c3}\label{class_graph_a00787ed623d23871b1424b34542e22c3}} 
@@ -323,8 +336,14 @@ This function creates an object of the class \mbox{\hyperlink{class_node}{Node}}
 {\footnotesize\ttfamily void Graph\+::\+Task3 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
+
+Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm. 
+
+This function is responsible for asking for the necessary data to the user to accomplish Task 3, utilising the function \mbox{\hyperlink{class_graph_ac237fa8de1d025303f2f42e99ceba59c}{ACO()}}, which stands for \char`\"{}\+Ant Colony Optimization\char`\"{}.
+
+
 \begin{DoxyParams}{Parameters}
-{\em print\+\_\+path} & \\
+{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}\label{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}} 
@@ -345,26 +364,32 @@ This function creates an object of the class \mbox{\hyperlink{class_node}{Node}}
 {\footnotesize\ttfamily void Graph\+::tsp\+Back\+Tracking (\begin{DoxyParamCaption}\item[{vector$<$ bool $>$ \&}]{v,  }\item[{int}]{curr\+Pos,  }\item[{size\+\_\+t}]{n,  }\item[{int}]{count,  }\item[{float}]{cost,  }\item[{float \&}]{ans,  }\item[{vector$<$ int $>$ \&}]{path,  }\item[{vector$<$ int $>$ \&}]{best\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+
+Solves the Traveling Salesman Problem using a Backtracking Algorithm. 
+
+This functions uses a Backtracking algorithm to solve the Traveling Salesman Problem (TSP). It does this by initializing a vector \char`\"{}v\char`\"{} that is used to keep track the visited nodes where \char`\"{}v\mbox{[}i\mbox{]}\char`\"{} is true if the node represented by \char`\"{}i\char`\"{} has been visited. The functions uses recursion to explore all the possible paths from the \char`\"{}curr\+Pos\char`\"{} and updates the \char`\"{}best\+Path\char`\"{} and its respective cost \char`\"{}ans\char`\"{} if a shorter path is found. The algorithms uses pruning techniques to optimize the search, avoiding unnecessary exploration of paths with a higher cost than the current best path.
+
+
 \begin{DoxyParams}{Parameters}
-{\em v} & \\
+{\em v} & -\/ Vector of boolean that indicates which nodes have been visited and which havent \\
 \hline
-{\em curr\+Pos} & \\
+{\em curr\+Pos} & -\/ The current position (in this case the current node) being visited. \\
 \hline
-{\em n} & \\
+{\em n} & -\/ Total number of nodes in the \mbox{\hyperlink{class_graph}{Graph}} \\
 \hline
-{\em count} & \\
+{\em count} & -\/ Number of nodes that have been visited \\
 \hline
-{\em cost} & \\
+{\em cost} & -\/ Total cost of the current path \\
 \hline
-{\em ans} & \\
+{\em ans} & -\/ Reference to the best cost found so far \\
 \hline
-{\em path} & \\
+{\em path} & -\/ Vector of integers representing the path being explored \\
 \hline
-{\em best\+Path} & \\
+{\em best\+Path} & -\/ A reference to the vector of integers representing the best path found so far\\
 \hline
 \end{DoxyParams}
 \begin{DoxyNote}{Note}
-
+This function\textquotesingle{}s time complexity is O(n!) where n is the number of nodes of the \mbox{\hyperlink{class_graph}{Graph}} 
 \end{DoxyNote}
 \mbox{\Hypertarget{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}\label{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}} 
 \index{Graph@{Graph}!write\_to\_file@{write\_to\_file}}

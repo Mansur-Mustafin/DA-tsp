@@ -53,23 +53,31 @@ public:
     void write_to_file(const std::string& text);
 
     /**
-     * @brief
+     * @brief Asks the user for the data necessary to accomplish Task 1, using a Backtracking Algorithm
      *
-     * @param print_path
+     * This function is responsible for asking for the necessary data to the user to accomplish Task 1, utilising the
+     * function tspBackTracking().
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
      */
     void Task1(bool print_path = true);
 
     /**
      * @brief
      *
-     * @param print_path
+     *
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
      */
     void Task2(bool print_path = true);
 
     /**
-     * @brief
+     * @brief Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm
      *
-     * @param print_path
+     * This function is responsible for asking for the necessary data to the user to accomplish Task 3, utilising the
+     * function ACO(), which stands for "Ant Colony Optimization".
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
      */
     void Task3(bool print_path = true);
 
@@ -99,10 +107,12 @@ private:
     int V = 0;
 
     /**
-     * @brief
+     * @brief Verifies if the integer given is a valid id of a node in the Graph
      *
-     * @param a
-     * @return
+     * @param a - Integer representing the id of the pretended node
+     * @return 0 if the given integer is invalid (bigger than the number of nodes in the Graph), the given integer otherwise
+     *
+     * @note This function's time complexity is O(1).
      */
     int id(int a) const;
 
@@ -188,18 +198,24 @@ private:
     vector<vector<Edge>> primMST();
 
     /**
-     * @brief
+     * @brief Solves the Traveling Salesman Problem using a Backtracking Algorithm
      *
-     * @param v
-     * @param currPos
-     * @param n
-     * @param count
-     * @param cost
-     * @param ans
-     * @param path
-     * @param bestPath
+     * This functions uses a Backtracking algorithm to solve the Traveling Salesman Problem (TSP). It does this by initializing
+     * a vector "v" that is used to keep track the visited nodes where "v[i]" is true if the node represented by "i" has been visited.
+     * The functions uses recursion to explore all the possible paths from the "currPos" and updates the "bestPath" and its
+     * respective cost "ans" if a shorter path is found. The algorithms uses pruning techniques to optimize the search, avoiding
+     * unnecessary exploration of paths with a higher cost than the current best path.
      *
-     * @note
+     * @param v - Vector of boolean that indicates which nodes have been visited and which havent
+     * @param currPos - The current position (in this case the current node) being visited.
+     * @param n - Total number of nodes in the Graph
+     * @param count - Number of nodes that have been visited
+     * @param cost - Total cost of the current path
+     * @param ans - Reference to the best cost found so far
+     * @param path - Vector of integers representing the path being explored
+     * @param bestPath - A reference to the vector of integers representing the best path found so far
+     *
+     * @note This function's time complexity is O(n!) where n is the number of nodes of the Graph
      */
     void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath);
 
