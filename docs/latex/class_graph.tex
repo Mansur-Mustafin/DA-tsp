@@ -20,16 +20,18 @@ void {\bfseries print\+\_\+edges} ()
 \mbox{\Hypertarget{class_graph_ac1afff0f002170048a6f180b62e5b965}\label{class_graph_ac1afff0f002170048a6f180b62e5b965}} 
 void {\bfseries print\+\_\+nodes} ()
 \begin{DoxyCompactList}\small\item\em Prints the nodes of the \mbox{\hyperlink{class_graph}{Graph}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}{write\+\_\+to\+\_\+file}} (const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Writes text into a file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a842fe85533f9245a4e5a2990254159eb}{Task1}} (bool print\+\_\+path=true)
 \item 
-\mbox{\Hypertarget{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}\label{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}} 
-void {\bfseries Task2} (bool print\+\_\+path=true)
+void \mbox{\hyperlink{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}{Task2}} (bool print\+\_\+path=true)
 \item 
-\mbox{\Hypertarget{class_graph_a00787ed623d23871b1424b34542e22c3}\label{class_graph_a00787ed623d23871b1424b34542e22c3}} 
-void {\bfseries Task3} (bool print\+\_\+path=true)
+void \mbox{\hyperlink{class_graph_a00787ed623d23871b1424b34542e22c3}{Task3}} (bool print\+\_\+path=true)
 \item 
-\mbox{\Hypertarget{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}\label{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}} 
-void {\bfseries Task4} (bool print\+\_\+path=true)
+void \mbox{\hyperlink{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}{Task4}} (bool print\+\_\+path=true)
+\item 
+\mbox{\Hypertarget{class_graph_a64516282c804cd4b2029f8a8c6c2d968}\label{class_graph_a64516282c804cd4b2029f8a8c6c2d968}} 
+void {\bfseries test} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -45,6 +47,38 @@ string {\bfseries file\+\_\+edge\+\_\+name} = \char`\"{}tourism.\+csv\char`\"{}
 \item 
 \mbox{\Hypertarget{class_graph_ad6b9f331efbd8874158fe0a868b7df23}\label{class_graph_ad6b9f331efbd8874158fe0a868b7df23}} 
 string {\bfseries file\+\_\+nodes\+\_\+name} = \char`\"{}\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_graph_a69dc1c8a8a72cfb996f92ffa6033fdfb}{id}} (int a) const
+\item 
+double \mbox{\hyperlink{class_graph_ac2702571c28c29a5157ec34590439d1d}{get\+Distance}} (int from, int to)
+\begin{DoxyCompactList}\small\item\em This function returns the distance between two nodes. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_graph_aedf8896f598856ccb7e59b580c9ae03b}{get\+Value}} (vector$<$ int $>$ \&v, bool out=false)
+\begin{DoxyCompactList}\small\item\em Calculates the value of a given path in the graph. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \mbox{\hyperlink{class_graph_ac237fa8de1d025303f2f42e99ceba59c}{ACO}} (std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&distance\+\_\+matrix, int max\+\_\+iter=100, int num\+\_\+ants=10, double alpha=1.\+0, double beta=2.\+0, double rho=0.\+1)
+\begin{DoxyCompactList}\small\item\em Uses the Ant Colony Optimization (ACO) on a distance matrix to find the best path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a3e0530df9057911b527116678c3fce82}{get\+Sample}} (double t, vector$<$ int $>$ \&v, double \&cur\+Value)
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{class_graph_a2c2bdf61796a96ffd338ba33903c1cfe}{simulated\+Annealing}} (int n)
+\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ \mbox{\hyperlink{class_graph_a1f1b34a2287d2b601cef862d8bd01223}{prim\+MST}} ()
+\item 
+void \mbox{\hyperlink{class_graph_a39166db679f4128dbe8edf17788fe809}{tsp\+Back\+Tracking}} (vector$<$ bool $>$ \&v, int curr\+Pos, size\+\_\+t n, int count, float cost, float \&ans, vector$<$ int $>$ \&path, vector$<$ int $>$ \&best\+Path)
+\item 
+int \mbox{\hyperlink{class_graph_af992c3d4c6e881c570fc6270284e03b0}{input\+\_\+vertex}} (const string \&input\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Adds a vertex (or vertices) to the \mbox{\hyperlink{class_graph}{Graph}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_a65c582ebf3611794a7e7100795578d0c}{input\+\_\+edge}} (const string \&input\+\_\+name, bool have\+\_\+nodes)
+\begin{DoxyCompactList}\small\item\em Adds an edge (or edges) to the \mbox{\hyperlink{class_graph}{Graph}} and the respective nodes that correspond to said edge(s) if desired. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a355d43d0908eb7b15c77b6770fe3fa66}\label{class_graph_a355d43d0908eb7b15c77b6770fe3fa66}} 
+float {\bfseries UP\+\_\+\+EPS} = 1e9
+\item 
+\mbox{\Hypertarget{class_graph_a2b722f7cfa7a21e4cb5fae488b3d4dcc}\label{class_graph_a2b722f7cfa7a21e4cb5fae488b3d4dcc}} 
+int {\bfseries V} = 0
 \end{DoxyCompactItemize}
 
 
@@ -74,6 +108,192 @@ Constructor of the class \mbox{\hyperlink{class_graph}{Graph}}.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_ac237fa8de1d025303f2f42e99ceba59c}\label{class_graph_ac237fa8de1d025303f2f42e99ceba59c}} 
+\index{Graph@{Graph}!ACO@{ACO}}
+\index{ACO@{ACO}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{ACO()}{ACO()}}
+{\footnotesize\ttfamily vector$<$ int $>$ Graph\+::\+ACO (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&}]{distance\+\_\+matrix,  }\item[{int}]{max\+\_\+iter = {\ttfamily 100},  }\item[{int}]{num\+\_\+ants = {\ttfamily 10},  }\item[{double}]{alpha = {\ttfamily 1.0},  }\item[{double}]{beta = {\ttfamily 2.0},  }\item[{double}]{rho = {\ttfamily 0.1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Uses the Ant Colony Optimization (ACO) on a distance matrix to find the best path. 
+
+This functions uses the Ant Colony Optimization algorithm to find the best path in a given distance matrix. It does this by initializing a pheromone matrix, creating ant paths, updating the pheromone levels and then iterates for a given amount of maximum iterations. Once finished, returns the best path found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance\+\_\+matrix} & -\/ The distance matrix representing the distance between nodes \\
+\hline
+{\em max\+\_\+iter} & -\/ Maximum number of iterations \\
+\hline
+{\em num\+\_\+ants} & -\/ Number of ants (or paths) to be created in each iteration \\
+\hline
+{\em alpha} & -\/ Pheromone factor that determines the influence of pheromone levels \\
+\hline
+{\em beta} & -\/ Distance factor that determines the influence of distance values \\
+\hline
+{\em rho} & -\/ Evaporation rate of a pheromone \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of integers representing the best path found
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function\textquotesingle{}s time complexity can be given as O(max\+\_\+iter $\ast$ num\+\_\+ants $\ast$ n$^\wedge$2) where max\+\_\+iter is the maximum number of iterations, num\+\_\+ants is the number of ants given and n is the size of the distance matrix. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_graph_ac2702571c28c29a5157ec34590439d1d}\label{class_graph_ac2702571c28c29a5157ec34590439d1d}} 
+\index{Graph@{Graph}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double Graph\+::get\+Distance (\begin{DoxyParamCaption}\item[{int}]{from,  }\item[{int}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This function returns the distance between two nodes. 
+
+This function calculates the distance between two given nodes. This distance is calculated by calling the \mbox{\hyperlink{class_node_ac99c0cc34c1b505ffe6bf10e4be80146}{Node\+::get\+Distance}} function defined in the file \mbox{\hyperlink{_node_8h_source}{Node.\+h}} if the two given nodes are not adjacent. If they are adjacent, then the function returns the distance between them given by the edge that connects them.
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & -\/ Integer representing the starting \mbox{\hyperlink{class_node}{Node}} \\
+\hline
+{\em to} & -\/ Integer representing the target \mbox{\hyperlink{class_node}{Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the distance between the two given nodes
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function has a time complexity of O(\+N) where N is the number of adjacent nodes of the \char`\"{}from\char`\"{} node. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_graph_a3e0530df9057911b527116678c3fce82}\label{class_graph_a3e0530df9057911b527116678c3fce82}} 
+\index{Graph@{Graph}!getSample@{getSample}}
+\index{getSample@{getSample}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getSample()}{getSample()}}
+{\footnotesize\ttfamily void Graph\+::get\+Sample (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{vector$<$ int $>$ \&}]{v,  }\item[{double \&}]{cur\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+{\em v} & \\
+\hline
+{\em cur\+Value} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+\mbox{\Hypertarget{class_graph_aedf8896f598856ccb7e59b580c9ae03b}\label{class_graph_aedf8896f598856ccb7e59b580c9ae03b}} 
+\index{Graph@{Graph}!getValue@{getValue}}
+\index{getValue@{getValue}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily double Graph\+::get\+Value (\begin{DoxyParamCaption}\item[{vector$<$ int $>$ \&}]{v,  }\item[{bool}]{out = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calculates the value of a given path in the graph. 
+
+This function calculates the value of a given path represented by a vector of integers in the graph. The value is calculated by adding up the distances between consecutive nodes in the path using the \mbox{\hyperlink{class_graph_ac2702571c28c29a5157ec34590439d1d}{Graph\+::get\+Distance}} function. Optionally, it can also print the intermediate sums if the {\ttfamily out} parameter is set to {\ttfamily true}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & -\/ vector of integers representing a path on the \mbox{\hyperlink{class_graph}{Graph}} \\
+\hline
+{\em out} & -\/ boolean flag that determines if the result should be printed. Default is \char`\"{}false\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the given path.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function\textquotesingle{}s time complexity is O(\+N $\ast$ A) where N is the number of nodes in the given path and A is the number of adjacent nodes of each node present in the given path. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_graph_a69dc1c8a8a72cfb996f92ffa6033fdfb}\label{class_graph_a69dc1c8a8a72cfb996f92ffa6033fdfb}} 
+\index{Graph@{Graph}!id@{id}}
+\index{id@{id}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily int Graph\+::id (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a65c582ebf3611794a7e7100795578d0c}\label{class_graph_a65c582ebf3611794a7e7100795578d0c}} 
+\index{Graph@{Graph}!input\_edge@{input\_edge}}
+\index{input\_edge@{input\_edge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{input\_edge()}{input\_edge()}}
+{\footnotesize\ttfamily int Graph\+::input\+\_\+edge (\begin{DoxyParamCaption}\item[{const string \&}]{input\+\_\+name,  }\item[{bool}]{have\+\_\+nodes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Adds an edge (or edges) to the \mbox{\hyperlink{class_graph}{Graph}} and the respective nodes that correspond to said edge(s) if desired. 
+
+This function creates an object of the class \mbox{\hyperlink{class_edge}{Edge}} and inputs it into the vectors of vectors of edges, corresponding to the nodes it connects.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+name} & -\/ Name of the file containing the information about the edge (or edges) \\
+\hline
+{\em have\+\_\+nodes} & -\/ Boolean flag that determines if the edges have associated nodes to be inserted as well \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, -\/1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_af992c3d4c6e881c570fc6270284e03b0}\label{class_graph_af992c3d4c6e881c570fc6270284e03b0}} 
+\index{Graph@{Graph}!input\_vertex@{input\_vertex}}
+\index{input\_vertex@{input\_vertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{input\_vertex()}{input\_vertex()}}
+{\footnotesize\ttfamily int Graph\+::input\+\_\+vertex (\begin{DoxyParamCaption}\item[{const string \&}]{input\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Adds a vertex (or vertices) to the \mbox{\hyperlink{class_graph}{Graph}}. 
+
+This function creates an object of the class \mbox{\hyperlink{class_node}{Node}} and inputs it into the nodes vector of the \mbox{\hyperlink{class_graph}{Graph}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+name} & -\/ Name of the file containing the information about the vertex (or vertices) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, -\/1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a1f1b34a2287d2b601cef862d8bd01223}\label{class_graph_a1f1b34a2287d2b601cef862d8bd01223}} 
+\index{Graph@{Graph}!primMST@{primMST}}
+\index{primMST@{primMST}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{primMST()}{primMST()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ Graph\+::prim\+MST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+\mbox{\Hypertarget{class_graph_a2c2bdf61796a96ffd338ba33903c1cfe}\label{class_graph_a2c2bdf61796a96ffd338ba33903c1cfe}} 
+\index{Graph@{Graph}!simulatedAnnealing@{simulatedAnnealing}}
+\index{simulatedAnnealing@{simulatedAnnealing}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{simulatedAnnealing()}{simulatedAnnealing()}}
+{\footnotesize\ttfamily vector$<$ int $>$ Graph\+::simulated\+Annealing (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
 \mbox{\Hypertarget{class_graph_a842fe85533f9245a4e5a2990254159eb}\label{class_graph_a842fe85533f9245a4e5a2990254159eb}} 
 \index{Graph@{Graph}!Task1@{Task1}}
 \index{Task1@{Task1}!Graph@{Graph}}
@@ -83,6 +303,82 @@ Constructor of the class \mbox{\hyperlink{class_graph}{Graph}}.
 
 \begin{DoxyParams}{Parameters}
 {\em print\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}\label{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}} 
+\index{Graph@{Graph}!Task2@{Task2}}
+\index{Task2@{Task2}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Task2()}{Task2()}}
+{\footnotesize\ttfamily void Graph\+::\+Task2 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em print\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a00787ed623d23871b1424b34542e22c3}\label{class_graph_a00787ed623d23871b1424b34542e22c3}} 
+\index{Graph@{Graph}!Task3@{Task3}}
+\index{Task3@{Task3}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Task3()}{Task3()}}
+{\footnotesize\ttfamily void Graph\+::\+Task3 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em print\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}\label{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}} 
+\index{Graph@{Graph}!Task4@{Task4}}
+\index{Task4@{Task4}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Task4()}{Task4()}}
+{\footnotesize\ttfamily void Graph\+::\+Task4 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em print\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a39166db679f4128dbe8edf17788fe809}\label{class_graph_a39166db679f4128dbe8edf17788fe809}} 
+\index{Graph@{Graph}!tspBackTracking@{tspBackTracking}}
+\index{tspBackTracking@{tspBackTracking}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{tspBackTracking()}{tspBackTracking()}}
+{\footnotesize\ttfamily void Graph\+::tsp\+Back\+Tracking (\begin{DoxyParamCaption}\item[{vector$<$ bool $>$ \&}]{v,  }\item[{int}]{curr\+Pos,  }\item[{size\+\_\+t}]{n,  }\item[{int}]{count,  }\item[{float}]{cost,  }\item[{float \&}]{ans,  }\item[{vector$<$ int $>$ \&}]{path,  }\item[{vector$<$ int $>$ \&}]{best\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \\
+\hline
+{\em curr\+Pos} & \\
+\hline
+{\em n} & \\
+\hline
+{\em count} & \\
+\hline
+{\em cost} & \\
+\hline
+{\em ans} & \\
+\hline
+{\em path} & \\
+\hline
+{\em best\+Path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+\mbox{\Hypertarget{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}\label{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}} 
+\index{Graph@{Graph}!write\_to\_file@{write\_to\_file}}
+\index{write\_to\_file@{write\_to\_file}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{write\_to\_file()}{write\_to\_file()}}
+{\footnotesize\ttfamily void Graph\+::write\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Writes text into a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \\
 \hline
 \end{DoxyParams}
 
