@@ -21,6 +21,8 @@ Graph::Graph(const string &input_edge_name, const string &input_node_name) {
     file_edge_name = input_edge_name;
     file_nodes_name = input_node_name;
     V = adj.size();
+    write_to_file(file_edge_name);
+    write_to_file("\n");
     if(V < 2){
         cout << "Bro..." << endl;
         exit(-1);
@@ -112,7 +114,7 @@ void Graph::print_nodes() {
     }
 }
 
-void write_to_file(const std::string& text) {
+void Graph::write_to_file(const std::string& text) {
     std::ofstream outputFile("output.txt", std::ios::app);
 
     if (outputFile.is_open()) {

@@ -49,7 +49,7 @@ public:
      *
      * @param text
      */
-    //void write_to_file(const std::string& text);
+    void write_to_file(const std::string& text);
     void Task1(bool print_path = true);
     void Task2(bool print_path = true);
     void Task3(bool print_path = true);
