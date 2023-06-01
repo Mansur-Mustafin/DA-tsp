@@ -50,7 +50,6 @@ public:
      *
      * @param text
      */
-<<<<<<< HEAD
     void write_to_file(const std::string& text);
 
     /**
@@ -61,9 +60,6 @@ public:
      *
      * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
      */
-=======
-    //void write_to_file(const std::string& text);
->>>>>>> e24d46b9b82b028c90cc9aa1e1fd4c0dca646d47
     void Task1(bool print_path = true);
 
     /**
