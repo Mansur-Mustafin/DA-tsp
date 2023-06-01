@@ -126,9 +126,6 @@ void Graph::write_to_file(const std::string& text) {
         }
 
         outputFile.close();
-        std::cout << "Text has been written to the file.\n";
-    } else {
-        std::cerr << "Unable to open the output file.\n";
     }
 }
 
@@ -191,21 +188,30 @@ void Graph::Task1(bool print_path) {
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
-    cout << "--** Backtracking **--" << endl;
-    cout << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
+    //cout << "--** Backtracking **--" << endl;
+    //cout << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
+
+    //limpa o ficheiro antes de escrever
+    std::ofstream outputFile("output.txt", std::ios::trunc);
+    outputFile.close();
+
+    write_to_file("--** Backtracking **--\n");
+    write_to_file("Minimum cost: ");
+    write_to_file(std::to_string(ans));
+
+    write_to_file("Execution time: ");
+    write_to_file(std::to_string(backtracking_duration.count()));
+    write_to_file(" seconds\n");
 
     if(print_path){
-        std::ofstream outputFile("output.txt", std::ios::trunc);
-        outputFile.close();
         std::string pathString = "Path: ";
         for (int node : path) {
             pathString += std::to_string(node) + "->";
         }
-        pathString += "0";
+        pathString += "0\n\n";
         write_to_file(pathString);
     }
 
-    cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
 }
 
 // TODO Task2 ----------------------------------------------------------------------------------------------------------
@@ -273,22 +279,29 @@ void Graph::Task2(bool print_path){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
-    cout << "--** Triangular approximation **--" << endl;
-    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+    //cout << "--** Triangular approximation **--" << endl;
+    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+
+    std::ofstream outputFile("output.txt", std::ios::trunc);
+    outputFile.close();
+
+    write_to_file("--** Triangular approximation **--\n");
+    write_to_file("Minimum cost: ");
+    write_to_file(std::to_string(getValue(path)));
+    write_to_file("\n");
+
+    write_to_file("Execution time: ");
+    write_to_file(std::to_string(backtracking_duration.count()));
+    write_to_file(" seconds\n");
 
     if(print_path){
-        std::ofstream outputFile("output.txt", std::ios::trunc);
-        outputFile.close();
-
         std::string pathString = "Path: ";
         for (int node : path) {
             pathString += std::to_string(node) + "->";
         }
-        pathString += "0";
+        pathString += "0\n\n";
         write_to_file(pathString);
     }
-
-    cout << "Execution time: " << backtracking_duration.count() << " seconds" << endl;
 }
 
 // TODO Task3 ----------------------------------------------------------------------------------------------------------
@@ -386,22 +399,30 @@ void Graph::Task3(bool print_path){
     chrono::duration<double> aco_duration = end - start;
 
     //cout << "--** ACO **--" << endl;
-    cout << "--** Test1 **--" << endl;
-    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+    //cout << "--** Test1 **--" << endl;
+    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+
+    std::ofstream outputFile("output.txt", std::ios::trunc);
+    outputFile.close();
+
+    write_to_file("--** Test1 **--\n");
+    write_to_file("Minimum cost: ");
+    write_to_file(std::to_string(getValue(path)));
+    write_to_file("\n");
+
+    write_to_file("Execution time: ");
+    write_to_file(std::to_string(aco_duration.count()));
+    write_to_file(" seconds\n");
 
     if(print_path){
-        std::ofstream outputFile("output.txt", std::ios::trunc);
-        outputFile.close();
 
         std::string pathString = "Path: ";
         for (int node : path) {
             pathString += std::to_string(node) + "->";
         }
-        pathString += "0";
+        pathString += "0\n\n";
         write_to_file(pathString);
     }
-
-    cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
 }
 
 // TODO TASK4 ----------------------------------------------------------------------------------------------------------
@@ -514,22 +535,30 @@ void Graph::Task4(bool print_path){
     chrono::duration<double> aco_duration = end - start;
 
     //cout << "--** Simulated Annealing **--" << endl;
-    cout << "--** Test2 **--" << endl;
-    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+    //cout << "--** Test2 **--" << endl;
+    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+
+    std::ofstream outputFile("output.txt", std::ios::trunc);
+    outputFile.close();
+
+    write_to_file("--** Test2 **--\n");
+    write_to_file("Minimum cost: ");
+    write_to_file(std::to_string(getValue(path)));
+    write_to_file("\n");
+
+    write_to_file("Execution time: ");
+    write_to_file(std::to_string(aco_duration.count()));
+    write_to_file(" seconds\n");
 
     if(print_path){
-        std::ofstream outputFile("output.txt", std::ios::trunc);
-        outputFile.close();
 
         std::string pathString = "Path: ";
         for (int node : path) {
             pathString += std::to_string(node) + "->";
         }
-        pathString += "0";
+        pathString += "0\n\n";
         write_to_file(pathString);
     }
-
-    cout << "Execution time: " << aco_duration.count() << " seconds" << endl;
 }
 
 // TODO TEST -----------------------------------------------------------------------------------------------------------

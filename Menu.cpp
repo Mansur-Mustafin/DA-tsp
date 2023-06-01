@@ -118,7 +118,7 @@ void Menu::Task2_2(){
             break;
         default:
             cerr << "Invalid input" << endl << endl;
-            Task2_1();
+            Task2_2();
     }
 }
 
@@ -147,7 +147,7 @@ void Menu::Task2_3_1(){
             break;
         default:
             cerr << "Invalid input" << endl << endl;
-            Task2_1();
+            Task2_3_1();
     }
 }
 
@@ -176,7 +176,7 @@ void Menu::Task2_3_2(){
             break;
         default:
             cerr << "Invalid input" << endl << endl;
-            Task2_1();
+            Task2_3_2();
     }
 }
 
