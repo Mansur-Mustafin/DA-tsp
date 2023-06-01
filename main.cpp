@@ -25,7 +25,6 @@ int main() {
         g.test();
         //g.Task3(false);
         g.Task4(false);
-        g.Task4_2();
     }
 
     return 0;
