@@ -311,10 +311,6 @@ void Graph::Task2(bool print_path){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
-    //cout << "--** Triangular approximation **--" << endl;
-    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
-
-
     write_to_file("--** Triangular approximation **--\n");
     write_to_file("Minimum cost: ");
     write_to_file(std::to_string(getValue(path)));
@@ -413,7 +409,6 @@ vector <int> Graph::ACO(vector<vector<float>>& distance_matrix, int max_iter,
     return best_path;
 }
 
-
 void Graph::Task3(bool print_path){
     auto start = chrono::high_resolution_clock::now();
     int n = adj.size();
@@ -427,10 +422,6 @@ void Graph::Task3(bool print_path){
     vector <int> path = ACO(distance_matrix, 100, 10, 1.0, 2.0, 0.1);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
-
-    //cout << "--** ACO **--" << endl;
-    //cout << "--** Test1 **--" << endl;
-    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
 
     write_to_file("--** Test1 **--\n");
@@ -490,7 +481,6 @@ double Graph::getValue(vector <int>& v, bool out) {
     double sum = 0;
     for (int i = 0; i < v.size(); i++){
         sum += getDistance(v[i], v[(i + 1) % v.size()]);
-        if(out) cout << sum << endl;
     }
     return sum;
 }
@@ -562,11 +552,6 @@ void Graph::Task4(bool print_path){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
 
-    //cout << "--** Simulated Annealing **--" << endl;
-    //cout << "--** Test2 **--" << endl;
-    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
-
-
     write_to_file("--** Test2 **--\n");
     write_to_file("Minimum cost: ");
     write_to_file(std::to_string(getValue(path)));
@@ -622,8 +607,6 @@ void Graph::test(){
 
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
-
-    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
     write_to_file("--** Triangular approximation using matrix **--\n");
     write_to_file("Minimum cost: ");

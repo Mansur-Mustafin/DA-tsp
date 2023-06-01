@@ -66,7 +66,6 @@ private:
     //ACO fields
     float UP_EPS = 1e9;
 
-
     int V = 0;
     int id(int a) const;
     double getDistance(int from, int to);
