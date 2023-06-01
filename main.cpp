@@ -5,21 +5,22 @@
 int main() {
 
     try {
-        Menu menu;
-        menu.main_menu();
+        //Menu menu;
+        //menu.main_menu();
     }
     catch (exception& e) {
         cout << e.what() << '\n';
     }
 
-    //Graph g("edges_1.csv", "nodes_1.csv");
-    //Graph g ("edges_900.csv");
-    //cout << endl;
-    //cout << "Graph was constructed" << endl;
+    Graph g("edges.csv", "nodes.csv");
+    //Graph g("edges_25.csv");
+    cout << endl;
+    cout << "Graph was constructed" << endl;
+    g.test();
     //g.Task1(false);
     //cout << endl;
-    //g.Task2(false);
-    //cout << endl;
+    g.Task2(false);
+    cout << endl;
     //g.Task3(false);
     //cout << endl;
     //g.Task4(false);

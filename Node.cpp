@@ -37,7 +37,7 @@ double Node::getDistance(const Node& toNode) {
     double a = pow(sin(dLat / 2), 2) +
                pow(sin(dLon / 2), 2) *
                cos(lat1) * cos(lat2);
-    double rad = 6371;
+    double rad = 6371000;
     double c = 2 * asin(sqrt(a));
     return rad * c;
 }
