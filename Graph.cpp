@@ -112,7 +112,7 @@ void Graph::print_nodes() {
     }
 }
 
-void Graph::write_to_file(const std::string& text) {
+void write_to_file(const std::string& text) {
     std::ofstream outputFile("output.txt", std::ios::app);
 
     if (outputFile.is_open()) {
@@ -208,8 +208,6 @@ void Graph::Task1(bool print_path) {
     //cout << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
 
     //limpa o ficheiro antes de escrever
-    std::ofstream outputFile("output.txt", std::ios::trunc);
-    outputFile.close();
 
     write_to_file("--** Backtracking **--\n");
     write_to_file("Minimum cost: ");
@@ -217,7 +215,7 @@ void Graph::Task1(bool print_path) {
 
     write_to_file("Execution time: ");
     write_to_file(std::to_string(backtracking_duration.count()));
-    write_to_file(" seconds\n");
+    write_to_file(" seconds\n\n");
 
     if(print_path){
         std::string pathString = "Path: ";
@@ -313,8 +311,6 @@ void Graph::Task2(bool print_path){
     //cout << "--** Triangular approximation **--" << endl;
     //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
-    std::ofstream outputFile("output.txt", std::ios::trunc);
-    outputFile.close();
 
     write_to_file("--** Triangular approximation **--\n");
     write_to_file("Minimum cost: ");
@@ -323,7 +319,7 @@ void Graph::Task2(bool print_path){
 
     write_to_file("Execution time: ");
     write_to_file(std::to_string(backtracking_duration.count()));
-    write_to_file(" seconds\n");
+    write_to_file(" seconds\n\n");
 
     if(print_path){
         std::string pathString = "Path: ";
@@ -433,8 +429,6 @@ void Graph::Task3(bool print_path){
     //cout << "--** Test1 **--" << endl;
     //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
-    std::ofstream outputFile("output.txt", std::ios::trunc);
-    outputFile.close();
 
     write_to_file("--** Test1 **--\n");
     write_to_file("Minimum cost: ");
@@ -443,7 +437,7 @@ void Graph::Task3(bool print_path){
 
     write_to_file("Execution time: ");
     write_to_file(std::to_string(aco_duration.count()));
-    write_to_file(" seconds\n");
+    write_to_file(" seconds\n\n");
 
     if(print_path){
 
@@ -569,8 +563,6 @@ void Graph::Task4(bool print_path){
     //cout << "--** Test2 **--" << endl;
     //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
-    std::ofstream outputFile("output.txt", std::ios::trunc);
-    outputFile.close();
 
     write_to_file("--** Test2 **--\n");
     write_to_file("Minimum cost: ");
@@ -579,7 +571,7 @@ void Graph::Task4(bool print_path){
 
     write_to_file("Execution time: ");
     write_to_file(std::to_string(aco_duration.count()));
-    write_to_file(" seconds\n");
+    write_to_file(" seconds\n\n");
 
     if(print_path){
 
@@ -609,13 +601,13 @@ void Graph::test(){
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
             if(distance_matrix[i][j].dist + 1 > UP_EPS && i != j){
-                if(i == 1 && j < 10)
-                    cout << i << " " << j << endl;
                 distance_matrix[i][j].dist = nodes[i].getDistance(nodes[j]);
                 distance_matrix[i][j].to = j;
             }
         }
     }
+
+    auto start = chrono::high_resolution_clock::now();
 
     vector<vector<Edge>> p = primMST(distance_matrix);
 
@@ -625,6 +617,16 @@ void Graph::test(){
 
     preorderWalk(startNode, p, visited, path);
 
-    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> aco_duration = end - start;
 
+    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+
+    write_to_file("--** Triangular approximation using matrix **--\n");
+    write_to_file("Minimum cost: ");
+    write_to_file(std::to_string(getValue(path)));
+    write_to_file("\n");
+    write_to_file("Execution time: ");
+    write_to_file(std::to_string(aco_duration.count()));
+    write_to_file(" seconds\n\n");
 }
