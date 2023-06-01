@@ -21,6 +21,7 @@ Graph::Graph(const string &input_edge_name, const string &input_node_name) {
     file_edge_name = input_edge_name;
     file_nodes_name = input_node_name;
     V = adj.size();
+    write_to_file("File name: ");
     write_to_file(file_edge_name);
     write_to_file("\n");
     if(V < 2){
@@ -311,7 +312,7 @@ void Graph::Task2(bool print_path){
     chrono::duration<double> backtracking_duration = end - start;
 
     //cout << "--** Triangular approximation **--" << endl;
-    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
 
     write_to_file("--** Triangular approximation **--\n");

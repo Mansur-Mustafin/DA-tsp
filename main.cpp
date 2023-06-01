@@ -12,19 +12,19 @@ int main() {
         cout << e.what() << '\n';
     }
 
+    vector<string> files = {"edges_25.csv", "edges_50.csv", "edges_75.csv", "edges_100.csv",
+                            "edges_200.csv", "edges_300.csv", "edges_400.csv", "edges_500.csv",
+                            "edges_600.csv", "edges_700.csv", "edges_800.csv", "edges_900.csv"};
     //Graph g("edges.csv", "nodes.csv");
-    Graph g("edges_25.csv");
-    cout << endl;
-    cout << "Graph was constructed" << endl;
-    //g.Task1(false);
-    //cout << endl;
-    g.Task2(false);
-    //cout << endl;
-    g.test();
-    //cout << endl;
-    g.Task3(false);
-    //cout << endl;
-    g.Task4(false);
+    for(auto file: files){
+        Graph g(file);
+        cout << "Graph was constructed: " << file << endl;
+        //g.Task1(false); // isso so para tou graphs.
+        g.Task2(false);
+        g.test();
+        g.Task3(false);
+        g.Task4(false);
+    }
 
     //return 0;
 }
