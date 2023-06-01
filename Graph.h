@@ -74,7 +74,8 @@ private:
     vector <int> ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
     void getSample(double t, vector <int>& v, double& curValue);
     vector <int> simulatedAnnealing(int n);
-    vector<vector<Edge>> primMST();
+    vector<vector<Edge>> primMST(vector<vector<Edge>> adj);
+    void preorderWalk(int node, const vector<vector<Edge>> &mst, vector<bool> &visited, vector<int> &path);
     void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath);
 
     /**

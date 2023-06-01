@@ -19,10 +19,8 @@ using namespace std;
  */
 class Edge {
 public:
-    //int s;
     int to = -1;
     double dist = 1e9;
-    //int prev_pos = 0;
 
     /**
      * This operator specifies how an object of the class Edge should be read into an input stream
