@@ -280,7 +280,7 @@ void Graph::Task2(bool print_path){
     chrono::duration<double> backtracking_duration = end - start;
 
     //cout << "--** Triangular approximation **--" << endl;
-    //cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
+    cout << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
 
     std::ofstream outputFile("output.txt", std::ios::trunc);
     outputFile.close();
