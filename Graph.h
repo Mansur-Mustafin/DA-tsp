@@ -63,9 +63,10 @@ public:
     void Task1(bool print_path = true);
 
     /**
-     * @brief
+     * @brief Asks the user for the data necessary to accomplish Task 2, using a Triangular Aproximation Heuristic
      *
-     *
+     * This function is responsible for asking for the necessary data to the user to accomplish Task 2, utilising Prim's
+     * algorithm, represented by the function primMST() and the function preorderWalk().
      *
      * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
      */
@@ -82,14 +83,20 @@ public:
     void Task3(bool print_path = true);
 
     /**
-     * @brief
+     * @brief Asks the user for the data necessary to accomplish Task 4, using a Simulated Annealing Algorithm
+     *
+     * This function is responsible for asking for the necessary data to the user to accomplish Task 4, utilising the
+     * function simulatedAnnealing().
      *
      * @param print_path
      */
     void Task4(bool print_path = true);
 
     /**
-     * @brief
+     * @brief Does a Triangular Approximation using a Distance Matrix
+     *
+     * This function does a Triangular Approximation using a Distance Matrix. It uses Prim's algorithm represented in
+     * the function primMST() and the function preorderWalk().
      */
     void test();
 
@@ -168,41 +175,90 @@ private:
     vector <int> ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
 
     /**
-     * @brief
+     * @brief Generate a sample by modifying a vector of integers
      *
-     * @param t
-     * @param v
-     * @param curValue
+     * This function generates a sample by modifying the order of elements in the given vector "v".
+     * The sample modification follows the Simulated Annealing algorithm, where the swapping of elements is influenced
+     * by the given temperature "t" and the current value "curValue".
      *
-     * @note
+     * @param t - The temperature parameter used in the Simulated Annealing algorithm.
+     * @param v - A vector of integers representing the order of nodes to be modified.
+     * @param curValue A reference to the current value associated with the input vector "v".
+     *
+     * @note This function's time complexity is O(1) since it performs a fixed number of operations with no regard to
+     * the size of the given input vector.
      */
     void getSample(double t, vector <int>& v, double& curValue);
 
     /**
-     * @brief
+     * @brief Solves the Traveling Salesman Problem using the Simulated Annealing algorithm
      *
-     * @param n
-     * @return
+     * This function applies the Simulated Annealing algorithm to solve the Traveling Salesman Problem.
+     * It does this by initializing the temperature "t" to a high value and generating a random initial permutation of
+     * size "n" using the generateRandomPermutation() function.
+     * After this, the function calculates the initial cost of the permutation using the getValue() function. It then
+     * iteratively performs the simulated annealing process until the temperature "t" reaches zero.
+     * In each iteration, the function applies the getSample() function to generate a neighbouring solution and updates
+     * the cost "value".
+     * After this, the function returns the best solution (represented by "ans") that it found.
      *
-     * @note
+     * @param n - number of nodes in the Graph.
+     * @return a vector representing the best path found by the algorithm.
+     *
+     * @note This functions time complexity is O()
      */
     vector <int> simulatedAnnealing(int n);
 
     /**
-     * @brief
+     * @brief Calculates the Minimum Spanning Tree (MST) of a graph using Prim's Algorithm
      *
-     * @return
+     * This function calculates the Minimum Spanning Tree (MST) of a given graph using Prim's Algorithm.
+     * To begin, the function initializes necessary data structures such as "parent", "dist", "visitied" and a priority
+     * queue named "pq".
      *
-     * @note
+     * The vector "parent" stores the parent node and the corresponding edge weight for each node in the MST.
+     * The vector "dist" stores the minimum distance from the MST to each node.
+     * The vector "visited" keeps track of the nodes that have been visited.
+     * The priority queue "pq" is used to select the next node with the minimum distance.
+     *
+     * The functions starts constructing the MST from node 0 by setting its parent as -1 and the respective distance to 0.
+     * and adds this initial node to the priority queue.
+     * While the priority queue is not empty, the function extracts the node with the minimum distance from the queue. If it
+     * has been visited then it skips it, otherwise it marks the node as visited and iterates over its adjacent edges.
+     * For each unvisited adjacent node, it updates the minimum distance and parent if a shorter edge is found.
+     * After that, the updated nodes are added to the priority queue.
+     *
+     * After the MST is constructed, the function creates a new adjacency list "mst" for the edges belonging to the MST.
+     * Then the function iterates over the "parent" vector and adds the edges to the adjacency list "mst". Note that "mst"
+     * is a bidirectional graph, so both ends of an edge are added to their respective nodes.
+     *
+     * After this, the functions returns the adjacency list "mst" representing the MST of the Graph.
+     *
+     * @param adj - Adjacency list representing a weighted Graph.
+     * @return Adjacency list representing the Minimum Spanning Tree of the graph.
+     *
+     * @note This function has a time complexity of O(E * log(V)) where E is the number of edges and V is the number of
+     * vertices in the Graph
      */
     vector<vector<Edge>> primMST(vector<vector<Edge>> adj);
 
     /**
+     * @brief Performs a preorder walk on the Minimum Spanning Tree (MST) starting from a given node
+     *
+     * This function performs a preorder walk on the Minimum Spanning Tree (MST) starting from the specified node.
+     * It visits each node in the MST in a preorder traversal manner, where the current node is visited before its
+     * children nodes.
+     *
+     * This function performs a preorder walk on the Minimum Spanning Tree (MST( starting from the given node.
+     * It does this by visiting each node in the MST in a preorder path, where the current node is visited before its
+     * children are.
      * 
-     * @param node
-     * @param mst
-     * @param visited
-     * @param path
+     * @param node - The starting node.
+     * @param mst - The Minimum Spanning Tree (MST) represented as an adjacency list.
+     * @param visited - A vector of boolean values representing the nodes that have been visited and those who have not.
+     * @param path - The vector that stores the nodes visited during the preorder walk.
+     *
+     * @note This function's time complexity is O().
      */
     void preorderWalk(int node, const vector<vector<Edge>> &mst, vector<bool> &visited, vector<int> &path);
 

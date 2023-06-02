@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="3-Wbwe1J_400x400.jpg"/></td>
   <td id="projectalign">
    <div id="projectname">DA TSP 2023
    </div>
+   <div id="projectbrief">Project made for the curricular unit Design of Algorithms with the intent of analysing the Traveling Salesman Problem and developing heuristics to solve it. Project developed by group g03_2.</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_graph.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -104,14 +126,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_nodes</b> ()</t
 <tr class="memdesc:a842fe85533f9245a4e5a2990254159eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks the user for the data necessary to accomplish Task 1, using a Backtracking Algorithm.  <a href="class_graph.html#a842fe85533f9245a4e5a2990254159eb">More...</a><br /></td></tr>
 <tr class="separator:a842fe85533f9245a4e5a2990254159eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26a5a1f2af86e477395d8b8e15f4de3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a26a5a1f2af86e477395d8b8e15f4de3a">Task2</a> (bool print_path=true)</td></tr>
+<tr class="memdesc:a26a5a1f2af86e477395d8b8e15f4de3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks the user for the data necessary to accomplish Task 2, using a Triangular Aproximation Heuristic.  <a href="class_graph.html#a26a5a1f2af86e477395d8b8e15f4de3a">More...</a><br /></td></tr>
 <tr class="separator:a26a5a1f2af86e477395d8b8e15f4de3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00787ed623d23871b1424b34542e22c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a00787ed623d23871b1424b34542e22c3">Task3</a> (bool print_path=true)</td></tr>
 <tr class="memdesc:a00787ed623d23871b1424b34542e22c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm.  <a href="class_graph.html#a00787ed623d23871b1424b34542e22c3">More...</a><br /></td></tr>
 <tr class="separator:a00787ed623d23871b1424b34542e22c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ca5cb441104af0b6ade8be39d71dbbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4ca5cb441104af0b6ade8be39d71dbbd">Task4</a> (bool print_path=true)</td></tr>
+<tr class="memdesc:a4ca5cb441104af0b6ade8be39d71dbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks the user for the data necessary to accomplish Task 4, using a Simulated Annealing Algorithm.  <a href="class_graph.html#a4ca5cb441104af0b6ade8be39d71dbbd">More...</a><br /></td></tr>
 <tr class="separator:a4ca5cb441104af0b6ade8be39d71dbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64516282c804cd4b2029f8a8c6c2d968"><td class="memItemLeft" align="right" valign="top"><a id="a64516282c804cd4b2029f8a8c6c2d968" name="a64516282c804cd4b2029f8a8c6c2d968"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>test</b> ()</td></tr>
+<tr class="memitem:a64516282c804cd4b2029f8a8c6c2d968"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a64516282c804cd4b2029f8a8c6c2d968">test</a> ()</td></tr>
+<tr class="memdesc:a64516282c804cd4b2029f8a8c6c2d968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does a Triangular Approximation using a Distance Matrix.  <a href="class_graph.html#a64516282c804cd4b2029f8a8c6c2d968">More...</a><br /></td></tr>
 <tr class="separator:a64516282c804cd4b2029f8a8c6c2d968"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -144,11 +168,17 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:ac237fa8de1d025303f2f42e99ceba59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses the Ant Colony Optimization (ACO) on a distance matrix to find the best path.  <a href="class_graph.html#ac237fa8de1d025303f2f42e99ceba59c">More...</a><br /></td></tr>
 <tr class="separator:ac237fa8de1d025303f2f42e99ceba59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e0530df9057911b527116678c3fce82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a3e0530df9057911b527116678c3fce82">getSample</a> (double t, vector&lt; int &gt; &amp;v, double &amp;curValue)</td></tr>
+<tr class="memdesc:a3e0530df9057911b527116678c3fce82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a sample by modifying a vector of integers.  <a href="class_graph.html#a3e0530df9057911b527116678c3fce82">More...</a><br /></td></tr>
 <tr class="separator:a3e0530df9057911b527116678c3fce82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c2bdf61796a96ffd338ba33903c1cfe"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a2c2bdf61796a96ffd338ba33903c1cfe">simulatedAnnealing</a> (int n)</td></tr>
+<tr class="memdesc:a2c2bdf61796a96ffd338ba33903c1cfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the Traveling Salesman Problem using the Simulated Annealing algorithm.  <a href="class_graph.html#a2c2bdf61796a96ffd338ba33903c1cfe">More...</a><br /></td></tr>
 <tr class="separator:a2c2bdf61796a96ffd338ba33903c1cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f1b34a2287d2b601cef862d8bd01223"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a1f1b34a2287d2b601cef862d8bd01223">primMST</a> ()</td></tr>
-<tr class="separator:a1f1b34a2287d2b601cef862d8bd01223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9c7adb858c81fb6561980eb7b6c378"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4b9c7adb858c81fb6561980eb7b6c378">primMST</a> (vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> &gt; &gt; adj)</td></tr>
+<tr class="memdesc:a4b9c7adb858c81fb6561980eb7b6c378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the Minimum Spanning Tree (MST) of a graph using Prim's Algorithm.  <a href="class_graph.html#a4b9c7adb858c81fb6561980eb7b6c378">More...</a><br /></td></tr>
+<tr class="separator:a4b9c7adb858c81fb6561980eb7b6c378"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3690127bdb66f5b6960e75dd995d789a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a3690127bdb66f5b6960e75dd995d789a">preorderWalk</a> (int node, const vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> &gt; &gt; &amp;mst, vector&lt; bool &gt; &amp;visited, vector&lt; int &gt; &amp;path)</td></tr>
+<tr class="memdesc:a3690127bdb66f5b6960e75dd995d789a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a preorder walk on the Minimum Spanning Tree (MST) starting from a given node.  <a href="class_graph.html#a3690127bdb66f5b6960e75dd995d789a">More...</a><br /></td></tr>
+<tr class="separator:a3690127bdb66f5b6960e75dd995d789a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39166db679f4128dbe8edf17788fe809"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a39166db679f4128dbe8edf17788fe809">tspBackTracking</a> (vector&lt; bool &gt; &amp;v, int currPos, size_t n, int count, float cost, float &amp;ans, vector&lt; int &gt; &amp;path, vector&lt; int &gt; &amp;bestPath)</td></tr>
 <tr class="memdesc:a39166db679f4128dbe8edf17788fe809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the Traveling Salesman Problem using a Backtracking Algorithm.  <a href="class_graph.html#a39166db679f4128dbe8edf17788fe809">More...</a><br /></td></tr>
 <tr class="separator:a39166db679f4128dbe8edf17788fe809"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -373,15 +403,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = 0</td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Generate a sample by modifying a vector of integers. </p>
+<p >This function generates a sample by modifying the order of elements in the given vector "v". The sample modification follows the Simulated Annealing algorithm, where the swapping of elements is influenced by the given temperature "t" and the current value "curValue".</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td></td></tr>
-    <tr><td class="paramname">v</td><td></td></tr>
-    <tr><td class="paramname">curValue</td><td></td></tr>
+    <tr><td class="paramname">t</td><td>- The temperature parameter used in the Simulated Annealing algorithm. </td></tr>
+    <tr><td class="paramname">v</td><td>- A vector of integers representing the order of nodes to be modified. </td></tr>
+    <tr><td class="paramname">curValue</td><td>A reference to the current value associated with the input vector "v".</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function's time complexity is O(1) since it performs a fixed number of operations with no regard to the size of the given input vector. </dd></dl>
 
 </div>
 </div>
@@ -552,8 +585,70 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = 0</td></tr>
 
 </div>
 </div>
-<a id="a1f1b34a2287d2b601cef862d8bd01223" name="a1f1b34a2287d2b601cef862d8bd01223"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f1b34a2287d2b601cef862d8bd01223">&#9670;&#160;</a></span>primMST()</h2>
+<a id="a3690127bdb66f5b6960e75dd995d789a" name="a3690127bdb66f5b6960e75dd995d789a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3690127bdb66f5b6960e75dd995d789a">&#9670;&#160;</a></span>preorderWalk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::preorderWalk </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>visited</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs a preorder walk on the Minimum Spanning Tree (MST) starting from a given node. </p>
+<p >This function performs a preorder walk on the Minimum Spanning Tree (MST) starting from the specified node. It visits each node in the MST in a preorder traversal manner, where the current node is visited before its children nodes.</p>
+<p >This function performs a preorder walk on the Minimum Spanning Tree (MST( starting from the given node. It does this by visiting each node in the MST in a preorder path, where the current node is visited before its children are.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>- The starting node. </td></tr>
+    <tr><td class="paramname">mst</td><td>- The Minimum Spanning Tree (MST) represented as an adjacency list. </td></tr>
+    <tr><td class="paramname">visited</td><td>- A vector of boolean values representing the nodes that have been visited and those who have not. </td></tr>
+    <tr><td class="paramname">path</td><td>- The vector that stores the nodes visited during the preorder walk.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function's time complexity is O(). </dd></dl>
+
+</div>
+</div>
+<a id="a4b9c7adb858c81fb6561980eb7b6c378" name="a4b9c7adb858c81fb6561980eb7b6c378"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9c7adb858c81fb6561980eb7b6c378">&#9670;&#160;</a></span>primMST()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -564,7 +659,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = 0</td></tr>
         <tr>
           <td class="memname">vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> &gt; &gt; Graph::primMST </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> &gt; &gt;&#160;</td>
+          <td class="paramname"><em>adj</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -574,8 +670,21 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = 0</td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd></dd></dl>
+
+<p>Calculates the Minimum Spanning Tree (MST) of a graph using Prim's Algorithm. </p>
+<p >This function calculates the Minimum Spanning Tree (MST) of a given graph using Prim's Algorithm. To begin, the function initializes necessary data structures such as "parent", "dist", "visitied" and a priority queue named "pq".</p>
+<p >The vector "parent" stores the parent node and the corresponding edge weight for each node in the MST. The vector "dist" stores the minimum distance from the MST to each node. The vector "visited" keeps track of the nodes that have been visited. The priority queue "pq" is used to select the next node with the minimum distance.</p>
+<p >The functions starts constructing the MST from node 0 by setting its parent as -1 and the respective distance to 0. and adds this initial node to the priority queue. While the priority queue is not empty, the function extracts the node with the minimum distance from the queue. If it has been visited then it skips it, otherwise it marks the node as visited and iterates over its adjacent edges. For each unvisited adjacent node, it updates the minimum distance and parent if a shorter edge is found. After that, the updated nodes are added to the priority queue.</p>
+<p >After the MST is constructed, the function creates a new adjacency list "mst" for the edges belonging to the MST. Then the function iterates over the "parent" vector and adds the edges to the adjacency list "mst". Note that "mst" is a bidirectional graph, so both ends of an edge are added to their respective nodes.</p>
+<p >After this, the functions returns the adjacency list "mst" representing the MST of the <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adj</td><td>- Adjacency list representing a weighted <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Adjacency list representing the Minimum Spanning Tree of the graph.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function has a time complexity of O(E * log(V)) where E is the number of edges and V is the number of vertices in the <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a> </dd></dl>
 
 </div>
 </div>
@@ -602,14 +711,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = 0</td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Solves the Traveling Salesman Problem using the Simulated Annealing algorithm. </p>
+<p >This function applies the Simulated Annealing algorithm to solve the Traveling Salesman Problem. It does this by initializing the temperature "t" to a high value and generating a random initial permutation of size "n" using the generateRandomPermutation() function. After this, the function calculates the initial cost of the permutation using the <a class="el" href="class_graph.html#aedf8896f598856ccb7e59b580c9ae03b" title="Calculates the value of a given path in the graph.">getValue()</a> function. It then iteratively performs the simulated annealing process until the temperature "t" reaches zero. In each iteration, the function applies the <a class="el" href="class_graph.html#a3e0530df9057911b527116678c3fce82" title="Generate a sample by modifying a vector of integers.">getSample()</a> function to generate a neighbouring solution and updates the cost "value". After this, the function returns the best solution (represented by "ans") that it found.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">n</td><td></td></tr>
+    <tr><td class="paramname">n</td><td>- number of nodes in the <a class="el" href="class_graph.html" title="Class representing a Graph.">Graph</a>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector representing the best path found by the algorithm.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This functions time complexity is O() </dd></dl>
 
 </div>
 </div>
@@ -655,6 +767,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = 0</td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Asks the user for the data necessary to accomplish Task 2, using a Triangular Aproximation Heuristic. </p>
+<p >This function is responsible for asking for the necessary data to the user to accomplish Task 2, utilising Prim's algorithm, represented by the function <a class="el" href="class_graph.html#a4b9c7adb858c81fb6561980eb7b6c378" title="Calculates the Minimum Spanning Tree (MST) of a graph using Prim&#39;s Algorithm.">primMST()</a> and the function <a class="el" href="class_graph.html#a3690127bdb66f5b6960e75dd995d789a" title="Performs a preorder walk on the Minimum Spanning Tree (MST) starting from a given node.">preorderWalk()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">print_path</td><td>- Boolean flag that determines if the calculated path should be printed in the terminal. </td></tr>
@@ -706,12 +821,35 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = 0</td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Asks the user for the data necessary to accomplish Task 4, using a Simulated Annealing Algorithm. </p>
+<p >This function is responsible for asking for the necessary data to the user to accomplish Task 4, utilising the function <a class="el" href="class_graph.html#a2c2bdf61796a96ffd338ba33903c1cfe" title="Solves the Traveling Salesman Problem using the Simulated Annealing algorithm.">simulatedAnnealing()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">print_path</td><td></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a64516282c804cd4b2029f8a8c6c2d968" name="a64516282c804cd4b2029f8a8c6c2d968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64516282c804cd4b2029f8a8c6c2d968">&#9670;&#160;</a></span>test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::test </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Does a Triangular Approximation using a Distance Matrix. </p>
+<p >This function does a Triangular Approximation using a Distance Matrix. It uses Prim's algorithm represented in the function <a class="el" href="class_graph.html#a4b9c7adb858c81fb6561980eb7b6c378" title="Calculates the Minimum Spanning Tree (MST) of a graph using Prim&#39;s Algorithm.">primMST()</a> and the function <a class="el" href="class_graph.html#a3690127bdb66f5b6960e75dd995d789a" title="Performs a preorder walk on the Minimum Spanning Tree (MST) starting from a given node.">preorderWalk()</a>. </p>
 
 </div>
 </div>
@@ -835,9 +973,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = 0</td></tr>
 <li>C:/Users/Barbosa/Desktop/DA/Projeto 2/DA-tsp/Graph.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_graph.html">Graph</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
 </body>
 </html>
