@@ -63,6 +63,8 @@ public:
     string file_nodes_name = "";
 
 private:
+    std::ofstream out;
+
     //ACO fields
     float UP_EPS = 1e9;
 
@@ -75,7 +77,7 @@ private:
     vector <int> simulatedAnnealing(int n);
     vector<vector<Edge>> primMST(vector<vector<Edge>> tree);
     void preorderWalk(int node, const vector<vector<Edge>> &mst, vector<bool> &visited, vector<int> &path);
-    void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath);
+    void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, double cost, double &ans, vector<int> &path, vector<int> &bestPath);
 
     /**
      * @brief Adds a vertex (or vertices) to the Graph

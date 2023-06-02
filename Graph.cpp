@@ -11,7 +11,7 @@
 
 using namespace std;
 
-Graph::Graph(const string &input_edge_name, const string &input_node_name) {
+Graph::Graph(const string &input_edge_name, const string &input_node_name) : out("output.txt", std::ios::app){
     if(input_node_name.empty()) {
         if (input_edge(input_edge_name, false)) exit(-1);
     }else{
@@ -27,6 +27,9 @@ Graph::Graph(const string &input_edge_name, const string &input_node_name) {
     if(V < 2){
         cout << "Bro..." << endl;
         exit(-1);
+    }
+    if(!out){
+        cerr << "File: output.txt unable to open." << endl;
     }
 }
 
@@ -149,7 +152,7 @@ void Graph::write_to_file(const std::string& text) {
     }
 }
 
-float findStart(const vector<Edge>& v){
+double findStart(const vector<Edge>& v){
     for(auto el : v){
         if(el.to == 0){
             return el.dist;
@@ -169,7 +172,7 @@ double Graph::getDistance(int from, int to) {
 
 // TODO Task1 ----------------------------------------------------------------------------------------------------------
 
-void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath) {
+void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, double cost, double &ans, vector<int> &path, vector<int> &bestPath) {
 
     if (cost >= ans) return;
 
@@ -177,6 +180,10 @@ void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, f
         if (cost + findStart(adj[currPos]) < ans) {
             ans = cost + findStart(adj[currPos]);
             bestPath = path;
+            cout << fixed << setprecision(2) << ans << endl;
+            out << "Find the best path: " << fixed << setprecision(2) << ans << endl;
+            for(auto el: path) out << el << " ";
+            out << endl << endl;
         }
         return;
     }
@@ -199,7 +206,7 @@ void Graph::Task1(bool print_path) {
         v[i] = false;
 
     v[0] = true;
-    float ans = 1e9;
+    double ans = 1e9;
     vector<int> path = {0};
     vector<int> bestPath;
 
@@ -208,10 +215,6 @@ void Graph::Task1(bool print_path) {
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
-    //cout << "--** Backtracking **--" << endl;
-    //cout << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
-
-    //limpa o ficheiro antes de escrever
 
     write_to_file("--** Backtracking **--\n");
     write_to_file("Minimum cost: ");
@@ -270,9 +273,23 @@ vector<vector<Edge>> Graph::primMST(vector<vector<Edge>> tree) {
             int w = parent[i].first;
             double distance = parent[i].second;
             mst[w].push_back({i, distance});
-            mst[i].push_back({w, distance});
+            //mst[i].push_back({w, distance}); // mst bidirectional
         }
     }
+
+    /*
+    double cost = 0.0;
+    for(int i = 0; i < mst.size(); i++){
+        if(mst[i].empty()) continue;
+        cout << '[' << i << "] -> ";
+        for(auto el: mst[i]){
+            cout << el.to << ' ';
+            cost += el.dist;
+        }
+        cout << endl;
+    }
+    cout << "cost of mst: " << cost;
+    */
 
     return mst;
 }
@@ -288,13 +305,13 @@ void Graph::preorderWalk(int node, const vector<vector<Edge>> &mst, vector<bool>
 //        return nodes[a.to].latitude < nodes[b.to].latitude;
 //    });
 
- //   sort(children.begin(), children.end(), [&](const Edge &a, const Edge &b) {
- //       return nodes[a.to].getDistance(nodes[node]) < nodes[b.to].getDistance(nodes[node]);
- //   });
+    sort(children.begin(), children.end(), [&](const Edge &a, const Edge &b) {
+        return nodes[a.to].getDistance(nodes[node]) < nodes[b.to].getDistance(nodes[node]);
+    });
 
-     sort(children.begin(), children.end(), [&](const Edge &a, const Edge &b) {
-         return nodes[a.to].latitude < nodes[b.to].latitude;
-     });
+//     sort(children.begin(), children.end(), [&](const Edge &a, const Edge &b) {
+//         return nodes[a.to].latitude < nodes[b.to].latitude;
+//     });
 
     for (const Edge &edge : children) {
         if (!visited[edge.to]) {
@@ -329,7 +346,7 @@ void Graph::Task2(bool print_path){
     if(print_path){
         std::string pathString = "Path: ";
         for (int node : path) {
-            pathString += std::to_string(node) + " -> \n";
+            pathString += std::to_string(node) + " -> ";
         }
         pathString += "0\n\n";
         write_to_file(pathString);
