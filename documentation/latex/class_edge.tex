@@ -1,0 +1,76 @@
+\hypertarget{class_edge}{}\doxysection{Edge Class Reference}
+\label{class_edge}\index{Edge@{Edge}}
+
+
+Class representing an edge of a graph.  
+
+
+
+
+{\ttfamily \#include $<$Edge.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_edge_a7848f67e4e8ccb97be14506164d7a267}\label{class_edge_a7848f67e4e8ccb97be14506164d7a267}} 
+int {\bfseries to} = -\/1
+\item 
+\mbox{\Hypertarget{class_edge_af5e90ce4a035531bc90c710c86f9448f}\label{class_edge_af5e90ce4a035531bc90c710c86f9448f}} 
+double {\bfseries dist} = 1e9
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+istream \& \mbox{\hyperlink{class_edge_a429792380625402982fb396e25a190be}{operator$>$$>$}} (istream \&in, \mbox{\hyperlink{class_edge}{Edge}} \&edge)
+\item 
+ostream \& \mbox{\hyperlink{class_edge_a27b322a1cc9ea642a683390fcb867a8d}{operator$<$$<$}} (ostream \&out, const \mbox{\hyperlink{class_edge}{Edge}} \&edge)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing an edge of a graph. 
+
+This class represents the edge of a graph, with its attributes \char`\"{}to\char`\"{} and \char`\"{}dist\char`\"{}. \char`\"{}to\char`\"{} represents the index of the starting point of a next edge and \char`\"{}dist\char`\"{} represents the distance to said starting point 
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_edge_a27b322a1cc9ea642a683390fcb867a8d}\label{class_edge_a27b322a1cc9ea642a683390fcb867a8d}} 
+\index{Edge@{Edge}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{out,  }\item[{const \mbox{\hyperlink{class_edge}{Edge}} \&}]{edge }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+This operator specifies how an object of the class \mbox{\hyperlink{class_edge}{Edge}} should be written to an output stream
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & -\/ Output stream \\
+\hline
+{\em edge} & -\/ \mbox{\hyperlink{class_edge}{Edge}} to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output stream with the \mbox{\hyperlink{class_edge}{Edge}} given by parameter edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a429792380625402982fb396e25a190be}\label{class_edge_a429792380625402982fb396e25a190be}} 
+\index{Edge@{Edge}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{istream \&}]{in,  }\item[{\mbox{\hyperlink{class_edge}{Edge}} \&}]{edge }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+This operator specifies how an object of the class \mbox{\hyperlink{class_edge}{Edge}} should be read into an input stream
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & -\/ Input stream \\
+\hline
+{\em edge} & -\/ \mbox{\hyperlink{class_edge}{Edge}} to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Input stream with the \mbox{\hyperlink{class_edge}{Edge}} given by parameter edge 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Barbosa/\+Desktop/\+DA/\+Projeto 2/\+DA-\/tsp/Edge.\+h\end{DoxyCompactItemize}

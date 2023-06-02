@@ -30,7 +30,7 @@ void \mbox{\hyperlink{class_graph_a00787ed623d23871b1424b34542e22c3}{Task3}} (bo
 \begin{DoxyCompactList}\small\item\em Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}{Task4}} (bool print\+\_\+path=true)
 \begin{DoxyCompactList}\small\item\em Asks the user for the data necessary to accomplish Task 4, using a Simulated Annealing Algorithm. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_graph_a64516282c804cd4b2029f8a8c6c2d968}{test}} ()
+void \mbox{\hyperlink{class_graph_a41fbc44e6b98eee539a5b59305281c22}{Task2\+\_\+2}} (bool print\+\_\+path=true)
 \begin{DoxyCompactList}\small\item\em Does a Triangular Approximation using a Distance Matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -62,7 +62,7 @@ void \mbox{\hyperlink{class_graph_a3e0530df9057911b527116678c3fce82}{get\+Sample
 \begin{DoxyCompactList}\small\item\em Generate a sample by modifying a vector of integers. \end{DoxyCompactList}\item 
 vector$<$ int $>$ \mbox{\hyperlink{class_graph_a2c2bdf61796a96ffd338ba33903c1cfe}{simulated\+Annealing}} (int n)
 \begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem using the Simulated Annealing algorithm. \end{DoxyCompactList}\item 
-vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ \mbox{\hyperlink{class_graph_a4b9c7adb858c81fb6561980eb7b6c378}{prim\+MST}} (vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ adj)
+vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{prim\+MST}} (vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ tree)
 \begin{DoxyCompactList}\small\item\em Calculates the Minimum Spanning Tree (MST) of a graph using Prim\textquotesingle{}s Algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk}} (int node, const vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ \&mst, vector$<$ bool $>$ \&visited, vector$<$ int $>$ \&path)
 \begin{DoxyCompactList}\small\item\em Performs a preorder walk on the Minimum Spanning Tree (MST) starting from a given node. \end{DoxyCompactList}\item 
@@ -74,6 +74,9 @@ int \mbox{\hyperlink{class_graph_a65c582ebf3611794a7e7100795578d0c}{input\+\_\+e
 \begin{DoxyCompactList}\small\item\em Adds an edge (or edges) to the \mbox{\hyperlink{class_graph}{Graph}} and the respective nodes that correspond to said edge(s) if desired. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a991823be26be425471ffee3107da76c3}\label{class_graph_a991823be26be425471ffee3107da76c3}} 
+std\+::ofstream {\bfseries out}
 \item 
 \mbox{\Hypertarget{class_graph_a355d43d0908eb7b15c77b6770fe3fa66}\label{class_graph_a355d43d0908eb7b15c77b6770fe3fa66}} 
 float {\bfseries UP\+\_\+\+EPS} = 1e9
@@ -307,11 +310,11 @@ This function performs a preorder walk on the Minimum Spanning Tree (MST( starti
 \begin{DoxyNote}{Note}
 This function\textquotesingle{}s time complexity is O(). 
 \end{DoxyNote}
-\mbox{\Hypertarget{class_graph_a4b9c7adb858c81fb6561980eb7b6c378}\label{class_graph_a4b9c7adb858c81fb6561980eb7b6c378}} 
+\mbox{\Hypertarget{class_graph_a390e7707f5aace8f792ba63f2c11ef64}\label{class_graph_a390e7707f5aace8f792ba63f2c11ef64}} 
 \index{Graph@{Graph}!primMST@{primMST}}
 \index{primMST@{primMST}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{primMST()}{primMST()}}
-{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ Graph\+::prim\+MST (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$}]{adj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$ Graph\+::prim\+MST (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ $>$}]{tree }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -329,7 +332,7 @@ After this, the functions returns the adjacency list \char`\"{}mst\char`\"{} rep
 
 
 \begin{DoxyParams}{Parameters}
-{\em adj} & -\/ Adjacency list representing a weighted \mbox{\hyperlink{class_graph}{Graph}}. \\
+{\em tree} & -\/ Adjacency list representing a weighted \mbox{\hyperlink{class_graph}{Graph}}. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -388,7 +391,24 @@ This function is responsible for asking for the necessary data to the user to ac
 
 Asks the user for the data necessary to accomplish Task 2, using a Triangular Aproximation Heuristic. 
 
-This function is responsible for asking for the necessary data to the user to accomplish Task 2, utilising Prim\textquotesingle{}s algorithm, represented by the function \mbox{\hyperlink{class_graph_a4b9c7adb858c81fb6561980eb7b6c378}{prim\+MST()}} and the function \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk()}}.
+This function is responsible for asking for the necessary data to the user to accomplish Task 2, utilising Prim\textquotesingle{}s algorithm, represented by the function \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{prim\+MST()}} and the function \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk()}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a41fbc44e6b98eee539a5b59305281c22}\label{class_graph_a41fbc44e6b98eee539a5b59305281c22}} 
+\index{Graph@{Graph}!Task2\_2@{Task2\_2}}
+\index{Task2\_2@{Task2\_2}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Task2\_2()}{Task2\_2()}}
+{\footnotesize\ttfamily void Graph\+::\+Task2\+\_\+2 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Does a Triangular Approximation using a Distance Matrix. 
+
+This function does a Triangular Approximation using a Distance Matrix. It uses Prim\textquotesingle{}s algorithm represented in the function \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{prim\+MST()}} and the function \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk()}}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -426,20 +446,10 @@ This function is responsible for asking for the necessary data to the user to ac
 
 
 \begin{DoxyParams}{Parameters}
-{\em print\+\_\+path} & \\
+{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a64516282c804cd4b2029f8a8c6c2d968}\label{class_graph_a64516282c804cd4b2029f8a8c6c2d968}} 
-\index{Graph@{Graph}!test@{test}}
-\index{test@{test}!Graph@{Graph}}
-\doxysubsubsection{\texorpdfstring{test()}{test()}}
-{\footnotesize\ttfamily void Graph\+::test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Does a Triangular Approximation using a Distance Matrix. 
-
-This function does a Triangular Approximation using a Distance Matrix. It uses Prim\textquotesingle{}s algorithm represented in the function \mbox{\hyperlink{class_graph_a4b9c7adb858c81fb6561980eb7b6c378}{prim\+MST()}} and the function \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk()}}. \mbox{\Hypertarget{class_graph_a39166db679f4128dbe8edf17788fe809}\label{class_graph_a39166db679f4128dbe8edf17788fe809}} 
+\mbox{\Hypertarget{class_graph_a39166db679f4128dbe8edf17788fe809}\label{class_graph_a39166db679f4128dbe8edf17788fe809}} 
 \index{Graph@{Graph}!tspBackTracking@{tspBackTracking}}
 \index{tspBackTracking@{tspBackTracking}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{tspBackTracking()}{tspBackTracking()}}
@@ -485,12 +495,12 @@ Writes text into a file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em text} & \\
+{\em text} & -\/ Text to be written into the file \\
 \hline
 \end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/\+Barbosa/\+Desktop/\+DA/\+Projeto 2/\+DA-\/tsp/Graph.\+h\item 
-C\+:/\+Users/\+Barbosa/\+Desktop/\+DA/\+Projeto 2/\+DA-\/tsp/Graph.\+cpp\end{DoxyCompactItemize}
+C\+:/\+Users/\+Barbosa/\+Desktop/\+DA/\+Projeto 2/\+DA-\/tsp/code/Graph.\+h\item 
+C\+:/\+Users/\+Barbosa/\+Desktop/\+DA/\+Projeto 2/\+DA-\/tsp/code/Graph.\+cpp\end{DoxyCompactItemize}

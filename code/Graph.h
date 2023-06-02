@@ -48,7 +48,7 @@ public:
     /**
      * @brief Writes text into a file
      *
-     * @param text
+     * @param text - Text to be written into the file
      */
     void write_to_file(const std::string& text);
 
@@ -88,7 +88,7 @@ public:
      * This function is responsible for asking for the necessary data to the user to accomplish Task 4, utilising the
      * function simulatedAnnealing().
      *
-     * @param print_path
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
      */
     void Task4(bool print_path = true);
 
@@ -97,8 +97,10 @@ public:
      *
      * This function does a Triangular Approximation using a Distance Matrix. It uses Prim's algorithm represented in
      * the function primMST() and the function preorderWalk().
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
      */
-    void test();
+    void Task2_2(bool print_path = true);
 
     // fields
     vector<vector<Edge>> adj;
@@ -107,9 +109,10 @@ public:
     string file_nodes_name = "";
 
 private:
+    std::ofstream out;
+
     //ACO fields
     float UP_EPS = 1e9;
-
 
     int V = 0;
 
@@ -234,13 +237,13 @@ private:
      *
      * After this, the functions returns the adjacency list "mst" representing the MST of the Graph.
      *
-     * @param adj - Adjacency list representing a weighted Graph.
+     * @param tree - Adjacency list representing a weighted Graph.
      * @return Adjacency list representing the Minimum Spanning Tree of the graph.
      *
      * @note This function has a time complexity of O(E * log(V)) where E is the number of edges and V is the number of
      * vertices in the Graph
      */
-    vector<vector<Edge>> primMST(vector<vector<Edge>> adj);
+     vector<vector<Edge>> primMST(vector<vector<Edge>> tree);;
 
     /**
      * @brief Performs a preorder walk on the Minimum Spanning Tree (MST) starting from a given node
