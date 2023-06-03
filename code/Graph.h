@@ -50,11 +50,14 @@ public:
      * @param text
      */
     void write_to_file(const std::string& text);
-    void Task1(bool print_path = true);
-    void Task2(bool print_path = true);
-    void Task3(bool print_path = true);
-    void Task4(bool print_path = true);
-    void Task2_2(bool print_path = true);
+
+    void Task1(bool print_path = true);   // backtracking
+    void Task2(bool print_path = true);   // triangular approximation (slides)
+    void Task2_2(bool print_path = true); // triangular approximation (slides) MST by matrix
+    void Task3_1(bool print_path = true); // ACO
+    void Task3_2(bool print_path = true); // Temperature
+    void Task2_3(bool print_path = true); // Christofides Algorithm (used triangular inequality)
+
 
     // fields
     vector<vector<Edge>> adj;
