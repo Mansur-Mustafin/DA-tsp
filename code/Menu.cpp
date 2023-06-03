@@ -140,10 +140,10 @@ void Menu::Task2_3_1(){
 
     switch (answer) {
         case 1:
-            g.Task3(true);
+            g.Task3_1(true);
             break;
         case 2:
-            g.Task3(false);
+            g.Task3_1(false);
             break;
         default:
             cerr << "Invalid input" << endl << endl;
@@ -169,10 +169,10 @@ void Menu::Task2_3_2(){
 
     switch (answer) {
         case 1:
-            g.Task4(true);
+            g.Task3_2(true);
             break;
         case 2:
-            g.Task4(false);
+            g.Task3_2(false);
             break;
         default:
             cerr << "Invalid input" << endl << endl;
