@@ -308,7 +308,7 @@ This function performs a preorder walk on the Minimum Spanning Tree (MST( starti
 \hline
 \end{DoxyParams}
 \begin{DoxyNote}{Note}
-This function\textquotesingle{}s time complexity is O(). 
+This function\textquotesingle{}s time complexity is O(E $\ast$ log(\+E) + N $\ast$ E) where E is the number of edges of the Minimum Spanning Tree (MST) and N is the number of adjacent nodes of each node of the \char`\"{}children\char`\"{} vector. 
 \end{DoxyNote}
 \mbox{\Hypertarget{class_graph_a390e7707f5aace8f792ba63f2c11ef64}\label{class_graph_a390e7707f5aace8f792ba63f2c11ef64}} 
 \index{Graph@{Graph}!primMST@{primMST}}
@@ -355,14 +355,14 @@ This function applies the Simulated Annealing algorithm to solve the Traveling S
 
 
 \begin{DoxyParams}{Parameters}
-{\em n} & -\/ number of nodes in the \mbox{\hyperlink{class_graph}{Graph}}. \\
+{\em n} & -\/ number of nodes in the Permutation. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 a vector representing the best path found by the algorithm.
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-This functions time complexity is O() 
+This functions time complexity is O(n $\ast$ A) where n is the size of the permutation, and A is the number of adjacent edges of each node of the permutation. 
 \end{DoxyNote}
 \mbox{\Hypertarget{class_graph_a842fe85533f9245a4e5a2990254159eb}\label{class_graph_a842fe85533f9245a4e5a2990254159eb}} 
 \index{Graph@{Graph}!Task1@{Task1}}

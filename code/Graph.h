@@ -205,10 +205,11 @@ private:
      * the cost "value".
      * After this, the function returns the best solution (represented by "ans") that it found.
      *
-     * @param n - number of nodes in the Graph.
+     * @param n - number of nodes in the Permutation.
      * @return a vector representing the best path found by the algorithm.
      *
-     * @note This functions time complexity is O()
+     * @note This functions time complexity is O(n * A) where n is the size of the permutation, and A is the number of
+     * adjacent edges of each node of the permutation.
      */
     vector <int> simulatedAnnealing(int n);
 
@@ -261,7 +262,8 @@ private:
      * @param visited - A vector of boolean values representing the nodes that have been visited and those who have not.
      * @param path - The vector that stores the nodes visited during the preorder walk.
      *
-     * @note This function's time complexity is O().
+     * @note This function's time complexity is O(E * log(E) + N * E) where E is the number of edges of the Minimum
+     * Spanning Tree (MST) and N is the number of adjacent nodes of each node of the "children" vector.
      */
     void preorderWalk(int node, const vector<vector<Edge>> &mst, vector<bool> &visited, vector<int> &path);
 
