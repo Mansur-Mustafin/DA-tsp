@@ -14,6 +14,7 @@
 using namespace std;
 
 Graph::Graph(const string &input_edge_name, const string &input_node_name) : out("output.txt", ios::app){
+
     if(input_node_name.empty()) {
         if (input_edge(input_edge_name, false)) exit(-1);
     }else{
@@ -183,9 +184,9 @@ void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, d
             ans = cost + findStart(adj[currPos]);
             bestPath = path;
             cout << fixed << setprecision(2) << ans << endl;
-            out << "Find the best path: " << fixed << setprecision(2) << ans << endl;
-            for(auto el: path) out << el << " ";
-            out << endl << endl;
+            //out << "Find the best path: " << fixed << setprecision(2) << ans << endl;
+            //for(auto el: path) out << el << " ";
+            //out << endl << endl;
         }
         return;
     }
@@ -217,14 +218,9 @@ void Graph::Task1(bool print_path) {
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
-
-    write_to_file("--** Backtracking **--\n");
-    write_to_file("Minimum cost: ");
-    write_to_file(to_string(ans));
-
-    write_to_file("Execution time: ");
-    write_to_file(to_string(backtracking_duration.count()));
-    write_to_file(" seconds\n\n");
+    out << "--** Backtracking **--\n";
+    out << "Minimum cost: " << ans << endl;
+    out << "Execution time: " << backtracking_duration.count() << " seconds\n\n";
 
     if(print_path){
         string pathString = "Path: ";
@@ -275,7 +271,7 @@ vector<vector<Edge>> Graph::primMST(vector<vector<Edge>> tree) {
             int w = parent[i].first;
             double distance = parent[i].second;
             mst[w].push_back({i, distance});
-            //mst[i].push_back({w, distance}); // mst bidirectional
+            mst[i].push_back({w, distance}); // mst bidirectional
         }
     }
 
@@ -336,14 +332,9 @@ void Graph::Task2(bool print_path){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> backtracking_duration = end - start;
 
-    write_to_file("--** Triangular approximation **--\n");
-    write_to_file("Minimum cost: ");
-    write_to_file(to_string(getValue(path)));
-    write_to_file("\n");
-
-    write_to_file("Execution time: ");
-    write_to_file(to_string(backtracking_duration.count()));
-    write_to_file(" seconds\n\n");
+    out << "--** Triangular approximation **--\n";
+    out << "Minimum cost: " << getValue(path) << endl;
+    out << "Execution time: " << backtracking_duration.count() << " seconds\n\n";
 
     if(print_path){
         string pathString = "Path: ";
@@ -434,10 +425,10 @@ vector <int> Graph::ACO(vector<vector<float>>& distance_matrix, int max_iter,
     return best_path;
 }
 
-
 void Graph::Task3_1(bool print_path){
     auto start = chrono::high_resolution_clock::now();
     int n = adj.size();
+
     vector<vector<float>> distance_matrix(n, vector<float>(n, UP_EPS));
     for(int i=0; i < adj.size(); ++i){
         for(int j=0; j < adj[i].size(); ++j){
@@ -445,19 +436,14 @@ void Graph::Task3_1(bool print_path){
                 distance_matrix[i][adj[i][j].to] = adj[i][j].dist;
         }
     }
+
     vector <int> path = ACO(distance_matrix, 100, 10, 1.0, 2.0, 0.1);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
 
-
-    write_to_file("--** Test1 **--\n");
-    write_to_file("Minimum cost: ");
-    write_to_file(to_string(getValue(path)));
-    write_to_file("\n");
-
-    write_to_file("Execution time: ");
-    write_to_file(to_string(aco_duration.count()));
-    write_to_file(" seconds\n\n");
+    out << "--** Test1 **--\n";
+    out << "Minimum cost: " << getValue(path) << endl;
+    out << "Execution time: " << aco_duration.count() << " seconds\n\n";
 
     if(print_path){
 
@@ -525,19 +511,19 @@ void Graph::getSample(double t, vector <int>& v, double& curValue) {
     if(l == r) return;
 
     double tmpValue = curValue - getDistance(v[l], v[id(l + 1)])
-                      - getDistance(v[l - 1], v[l])
-                      - getDistance(v[r - 1], v[r])
-                      - getDistance(v[r], v[id(r + 1)])
-                      + getDistance(v[l - 1], v[r])
-                      + getDistance(v[r], v[id(l + 1)])
-                      + getDistance(v[r - 1], v[l])
-                      + getDistance(v[l], v[id(r + 1)]);
+                               - getDistance(v[l - 1], v[l])
+                               - getDistance(v[r - 1], v[r])
+                               - getDistance(v[r], v[id(r + 1)])
+                               + getDistance(v[l - 1], v[r])
+                               + getDistance(v[r], v[id(l + 1)])
+                               + getDistance(v[r - 1], v[l])
+                               + getDistance(v[l], v[id(r + 1)]);
 
     if(r - l == 1){
         tmpValue = curValue + getDistance(v[l], v[id(r + 1)])
-                   + getDistance(v[r], v[l - 1])
-                   - getDistance(v[l],v[l - 1])
-                   - getDistance(v[r],v[id(r + 1)]);
+                            + getDistance(v[r], v[l - 1])
+                            - getDistance(v[l],v[l - 1])
+                            - getDistance(v[r],v[id(r + 1)]);
     }
 
 
@@ -578,14 +564,9 @@ void Graph::Task3_2(bool print_path){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
 
-    write_to_file("--** Test2 **--\n");
-    write_to_file("Minimum cost: ");
-    write_to_file(to_string(getValue(path)));
-    write_to_file("\n");
-
-    write_to_file("Execution time: ");
-    write_to_file(to_string(aco_duration.count()));
-    write_to_file(" seconds\n\n");
+    out << "--** Test2 **--\n";
+    out << "Minimum cost: " << getValue(path) << endl;
+    out << "Execution time: " << aco_duration.count() << " seconds\n\n";
 
     if(print_path){
 
@@ -598,7 +579,7 @@ void Graph::Task3_2(bool print_path){
     }
 }
 
-// TODO TEST -----------------------------------------------------------------------------------------------------------
+// TODO TASK 2 USING MATRIX---------------------------------------------------------------------------------------------
 
 void Graph::Task2_2(bool print_path){
 
@@ -633,19 +614,16 @@ void Graph::Task2_2(bool print_path){
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> aco_duration = end - start;
 
-    write_to_file("--** Triangular approximation using matrix **--\n");
-    write_to_file("Minimum cost: ");
-    write_to_file(to_string(getValue(path)));
-    write_to_file("\n");
-    write_to_file("Execution time: ");
-    write_to_file(to_string(aco_duration.count()));
-    write_to_file(" seconds\n\n");
+    out << "--** Triangular approximation using matrix **--\n";
+    out << "Minimum cost: " << getValue(path) << endl;
+    out << "Execution time: " << aco_duration.count() << " seconds\n\n";
 
     if(print_path){
 
         string pathString = "Path: ";
         for (int node : path) {
             pathString += to_string(node) + "->";
+
         }
         pathString += "0\n\n";
         write_to_file(pathString);
@@ -655,8 +633,7 @@ void Graph::Task2_2(bool print_path){
 
 //TODO Christofides Algorithm ------------------------------------------------------------------------------------------
 
-/* Находим mst для графа и затем находим минимальное весовое
- сочетание (minimum-weight perfect matching) среди вершин с нечетными степенями в mst.*/
+// Находим mst для графа и затем находим минимальное весовое сочетание (minimum-weight perfect matching) среди вершин с нечетными степенями в mst.
 vector<pair<int, int>> findMatching(const vector<vector<Edge>>& mst) {
     size_t n = mst.size();
     vector<pair<int, int>> matching;

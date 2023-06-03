@@ -17,6 +17,7 @@ int main() {
     //                                      //{"edges_3.csv", "nodes_3.csv"},
 
     //Graph g("edges_25.csv");
+
     for(const auto& file: files){
         Graph g(file);
         cout << "Graph was constructed: " << file << endl;
@@ -26,6 +27,7 @@ int main() {
         //g.Task3_1(false);
         //g.Task3_2(false);
         g.Task2_3();
+
     }
 
     return 0;
