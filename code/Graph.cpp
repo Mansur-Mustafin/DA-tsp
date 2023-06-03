@@ -204,6 +204,13 @@ void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, d
 
 void Graph::Task1(bool print_path) {
     size_t n = adj.size();
+    if(n > 15){
+        cout << "Backtracking stop" << endl;
+        out << "--** Backtracking **--\n";
+        out << "This algorithm is inefficient for this size of graphs" << endl;
+        out << "I have one week left to complete the project, algorithm takes more.\n\n";
+        return;
+    }
     vector<bool> v(n);
     for (int i = 0; i < n; i++)
         v[i] = false;
@@ -219,7 +226,7 @@ void Graph::Task1(bool print_path) {
     chrono::duration<double> backtracking_duration = end - start;
 
     out << "--** Backtracking **--\n";
-    out << "Minimum cost: " << ans << endl;
+    out << "Minimum cost: " << fixed << setprecision(2) << ans << endl;
     out << "Execution time: " << backtracking_duration.count() << " seconds\n\n";
 
     if(print_path){
@@ -333,7 +340,7 @@ void Graph::Task2(bool print_path){
     chrono::duration<double> backtracking_duration = end - start;
 
     out << "--** Triangular approximation **--\n";
-    out << "Minimum cost: " << getValue(path) << endl;
+    out << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
     out << "Execution time: " << backtracking_duration.count() << " seconds\n\n";
 
     if(print_path){
@@ -442,7 +449,7 @@ void Graph::Task3_1(bool print_path){
     chrono::duration<double> aco_duration = end - start;
 
     out << "--** Test1 **--\n";
-    out << "Minimum cost: " << getValue(path) << endl;
+    out << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
     out << "Execution time: " << aco_duration.count() << " seconds\n\n";
 
     if(print_path){
@@ -565,7 +572,7 @@ void Graph::Task3_2(bool print_path){
     chrono::duration<double> aco_duration = end - start;
 
     out << "--** Test2 **--\n";
-    out << "Minimum cost: " << getValue(path) << endl;
+    out << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
     out << "Execution time: " << aco_duration.count() << " seconds\n\n";
 
     if(print_path){
@@ -615,7 +622,7 @@ void Graph::Task2_2(bool print_path){
     chrono::duration<double> aco_duration = end - start;
 
     out << "--** Triangular approximation using matrix **--\n";
-    out << "Minimum cost: " << getValue(path) << endl;
+    out << "Minimum cost: " << fixed << setprecision(2) << getValue(path) << endl;
     out << "Execution time: " << aco_duration.count() << " seconds\n\n";
 
     if(print_path){
