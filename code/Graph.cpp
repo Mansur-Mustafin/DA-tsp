@@ -8,6 +8,8 @@
 #include <limits>
 #include <queue>
 #include <iomanip>
+#include <algorithm>
+#include <climits>
 
 using namespace std;
 
@@ -523,19 +525,19 @@ void Graph::getSample(double t, vector <int>& v, double& curValue) {
     if(l == r) return;
 
     double tmpValue = curValue - getDistance(v[l], v[id(l + 1)])
-                               - getDistance(v[l - 1], v[l])
-                               - getDistance(v[r - 1], v[r])
-                               - getDistance(v[r], v[id(r + 1)])
-                               + getDistance(v[l - 1], v[r])
-                               + getDistance(v[r], v[id(l + 1)])
-                               + getDistance(v[r - 1], v[l])
-                               + getDistance(v[l], v[id(r + 1)]);
+                      - getDistance(v[l - 1], v[l])
+                      - getDistance(v[r - 1], v[r])
+                      - getDistance(v[r], v[id(r + 1)])
+                      + getDistance(v[l - 1], v[r])
+                      + getDistance(v[r], v[id(l + 1)])
+                      + getDistance(v[r - 1], v[l])
+                      + getDistance(v[l], v[id(r + 1)]);
 
     if(r - l == 1){
         tmpValue = curValue + getDistance(v[l], v[id(r + 1)])
-                            + getDistance(v[r], v[l - 1])
-                            - getDistance(v[l],v[l - 1])
-                            - getDistance(v[r],v[id(r + 1)]);
+                   + getDistance(v[r], v[l - 1])
+                   - getDistance(v[l],v[l - 1])
+                   - getDistance(v[r],v[id(r + 1)]);
     }
 
 
@@ -597,50 +599,6 @@ void Graph::Task4(bool print_path){
 }
 
 // TODO TEST -----------------------------------------------------------------------------------------------------------
-/*
-std::vector<std::vector<Edge>> primMST_second(const std::vector<std::vector<Edge>>& distance_matrix) {
-    size_t n = distance_matrix.size();
-    std::vector<std::pair<int, double>> parent(n, {-1, 0.0});
-    std::vector<double> dist(n, std::numeric_limits<double>::max());
-    std::vector<bool> visited(n, false);
-    std::priority_queue<std::pair<double, int>, std::vector<std::pair<double, int>>, std::greater<std::pair<double, int>>> pq;
-
-    parent[0] = {-1, 0.0};
-    dist[0] = 0;
-    pq.emplace(0, 0);
-
-    while (!pq.empty()) {
-        int u = pq.top().second;
-        pq.pop();
-
-        if (visited[u]) continue;
-        visited[u] = true;
-
-        for (int v = 0; v < n; ++v) {
-            double edge_dist = distance_matrix[u][v].dist;
-            if (!visited[v] && edge_dist < dist[v]) {
-                dist[v] = edge_dist;
-                parent[v] = {u, edge_dist};
-                pq.emplace(edge_dist, v);
-            }
-        }
-    }
-
-    std::vector<std::vector<Edge>> mst(n);
-
-    for (int i = 0; i < n; ++i) {
-        if (parent[i].first != -1) {
-            int u = parent[i].first;
-            double dist = parent[i].second;
-            mst[u].push_back({i, dist});
-            mst[i].push_back({u, dist});
-        }
-    }
-
-    return mst;
-}
-*/
-
 
 void Graph::Task2_2(bool print_path){
 
@@ -694,3 +652,146 @@ void Graph::Task2_2(bool print_path){
     }
 
 }
+
+//TODO Christofides Algorithm ------------------------------------------------------------------------------------------
+
+/* Находим mst для графа и затем находим минимальное весовое
+ сочетание (minimum-weight perfect matching) среди вершин с нечетными степенями в mst.*/
+vector<pair<int, int>> findMatching(const vector<vector<Edge>>& mst) {
+    size_t n = mst.size();
+    vector<pair<int, int>> matching;
+
+    vector<int> oddDegreeVertices;
+    for (int i = 0; i < n; i++) {
+        if (mst[i].size() % 2 != 0) {
+            oddDegreeVertices.push_back(i);
+        }
+    }
+
+    vector<bool> visited(n, false);
+    for (int u : oddDegreeVertices) {
+        if (!visited[u]) {
+            float minWeight = INT_MAX;
+            int minV = -1;
+
+            for (const Edge& e : mst[u]) {
+                int v = e.to;
+                float weight = e.dist;
+                if (!visited[v] && weight < minWeight) {
+                    minWeight = weight;
+                    minV = v;
+                }
+            }
+
+            if (minV != -1) {
+                matching.push_back({ u, minV });
+                visited[u] = true;
+                visited[minV] = true;
+            }
+        }
+    }
+
+    return matching;
+}
+
+// Создаем Эйлеров цикл сочетанием edges из MST и matching edges
+vector<int> createEulerianCircuit(const vector<vector<Edge>>& mst, const vector<pair<int, int>>& matching) {
+    size_t n = mst.size();
+    vector<int> circuit;
+
+    // Добавляем edges из MST в цикл
+    for (int u = 0; u < n; u++) {
+        for (const Edge& e : mst[u]) {
+            int v = e.to;
+            circuit.push_back(u);
+            circuit.push_back(v);
+        }
+    }
+
+    // Добавляем matching edges в цикл
+    for (const auto& match : matching) {
+        int u = match.first;
+        int v = match.second;
+        circuit.push_back(u);
+        circuit.push_back(v);
+    }
+
+    return circuit;
+}
+
+// Ищем Гамильтонов цикл, удаляя повторяющиеся вершины из йэлерова цикла
+vector<int> createHamiltonianCircuit(const vector<int>& eulerianCircuit) {
+    vector<int> hamiltonianCircuit;
+
+    set<int> visited;
+    for (int v : eulerianCircuit) {
+        if (visited.find(v) == visited.end()) {
+            hamiltonianCircuit.push_back(v);
+            visited.insert(v);
+        }
+    }
+
+    return hamiltonianCircuit;
+}
+
+// Локальная 2-Opt search оптимизация
+vector<int> twoOptLocalSearch(const vector<int>& circuit, const vector<vector<double>>& distanceMatrix) {
+    vector<int> bestPath = circuit;
+    int n = bestPath.size();
+
+    bool improvement = true;
+    while (improvement) {
+        improvement = false;
+
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 2; j < n - 1; j++) {
+                double d1 = distanceMatrix[bestPath[i]][bestPath[i + 1]] + distanceMatrix[bestPath[j]][bestPath[j + 1]];
+                double d2 = distanceMatrix[bestPath[i]][bestPath[j]] + distanceMatrix[bestPath[i + 1]][bestPath[j + 1]];
+
+                if (d2 < d1) {
+                    std::reverse(bestPath.begin() + i + 1, bestPath.begin() + j + 1);
+                    improvement = true;
+                }
+            }
+        }
+    }
+
+    return bestPath;
+}
+
+// Christofides algorithm
+vector<int> Graph::christofidesAlgorithm() {
+    // Находим  MST графа
+    vector<vector<Edge>> mst = primMST(adj);
+
+    // Находим minimum-weight perfect matching в MST
+    vector<pair<int, int>> matching = findMatching(mst);
+
+    // Создаем Эйлеров цикл
+    vector<int> eulerianCircuit = createEulerianCircuit(mst, matching);
+
+    // Гамильтонов цикл
+    vector<int> hamiltonianCircuit = createHamiltonianCircuit(eulerianCircuit);
+
+
+    int n = adj.size();
+    std::vector<std::vector<double>> distance_matrix(n, std::vector<double>(n, UP_EPS));
+    for(int i=0; i < adj.size(); ++i){
+        for(int j=0; j < adj[i].size(); ++j){
+            if( adj[i][j].to != -1 )
+                distance_matrix[i][adj[i][j].to] = adj[i][j].dist;
+        }
+    }
+
+    // Используем 2-opt оптимизацию
+    vector<int> bestPath = twoOptLocalSearch(hamiltonianCircuit, distance_matrix);
+
+    double ans = 0.0;
+    for(int s = 0; s < bestPath.size() - 1; s++){
+        ans += getDistance(bestPath[s], bestPath[s + 1]);
+    }
+    ans += getDistance(bestPath[bestPath.size() - 1], 0);
+    std::cout << "Minimum cost : " << std::fixed << ans << std::endl;
+    return bestPath;
+}
+

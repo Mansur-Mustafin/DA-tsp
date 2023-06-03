@@ -56,6 +56,8 @@ public:
     void Task4(bool print_path = true);
     void Task2_2(bool print_path = true);
 
+    vector<int> christofidesAlgorithm(); // NEW
+
     // fields
     vector<vector<Edge>> adj;
     vector<Node> nodes;
