@@ -49,7 +49,7 @@ public:
      *
      * @param text
      */
-    void write_to_file(const std::string& text);
+    static void write_to_file(const std::string& text);
 
     void Task1(bool print_path = true);   // backtracking
     void Task2(bool print_path = true);   // triangular approximation (slides)
@@ -74,11 +74,11 @@ private:
     int V = 0;
     int id(int a) const;
     double getDistance(int from, int to);
-    double getValue(vector <int>& v, bool out = false);
-    vector <int> ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
+    double getValue(vector <int>& v);
+    vector <int> ACO(std::vector<std::vector<double>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
     void getSample(double t, vector <int>& v, double& curValue);
     vector <int> simulatedAnnealing(int n);
-    vector<vector<Edge>> primMST(vector<vector<Edge>> tree);
+    static vector<vector<Edge>> primMST(vector<vector<Edge>> tree);
     void preorderWalk(int node, const vector<vector<Edge>> &mst, vector<bool> &visited, vector<int> &path);
     void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, double cost, double &ans, vector<int> &path, vector<int> &bestPath);
 
