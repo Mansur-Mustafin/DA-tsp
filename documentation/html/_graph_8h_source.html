@@ -123,6 +123,7 @@ $(document).ready(function(){initNavTree('_graph_8h_source.html',''); initResiza
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_graph.html#ac1afff0f002170048a6f180b62e5b965">print_nodes</a>();</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<<<<<<< HEAD
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_graph.html#a2043300d1f6dad3d8ce9fad12e237efe">write_to_file</a>(<span class="keyword">const</span> std::string&amp; text);</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_graph.html#a842fe85533f9245a4e5a2990254159eb">Task1</a>(<span class="keywordtype">bool</span> print_path = <span class="keyword">true</span>);</div>
@@ -172,6 +173,45 @@ $(document).ready(function(){initNavTree('_graph_8h_source.html',''); initResiza
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>};</div>
 <div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">#endif </span><span class="comment">//PROJECT_GRAPH_H</span></div>
+=======
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_graph.html#a842fe85533f9245a4e5a2990254159eb">Task1</a>(<span class="keywordtype">bool</span> print_path = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> Task2(<span class="keywordtype">bool</span> print_path = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> Task3_1(<span class="keywordtype">bool</span> print_path = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> Task3_2(<span class="keywordtype">bool</span> print_path = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// fields</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    vector&lt;vector&lt;Edge&gt;&gt; adj;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    vector&lt;Node&gt; nodes;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">string</span> file_edge_name = <span class="stringliteral">&quot;tourism.csv&quot;</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">string</span> file_nodes_name = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">//ACO fields</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">int</span> max_iter = 100;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">int</span> num_ants = 10;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">double</span> alpha = 1.0;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">double</span> beta = 2.0;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">double</span> rho = 0.1;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">float</span> UP_EPS = 1e9;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">int</span> V = adj.size();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">int</span> id(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">double</span> getDistance(<span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">double</span> getValue(vector &lt;int&gt;&amp; v, <span class="keywordtype">bool</span> out = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    vector &lt;int&gt; ACO(std::vector&lt;std::vector&lt;float&gt;&gt;&amp; distance_matrix, <span class="keywordtype">int</span> max_iter = 100, <span class="keywordtype">int</span> num_ants = 10, <span class="keywordtype">double</span> alpha = 1.0, <span class="keywordtype">double</span> beta = 2.0, <span class="keywordtype">double</span> rho = 0.1);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> getSample(<span class="keywordtype">double</span> t, vector &lt;int&gt;&amp; v, <span class="keywordtype">double</span>&amp; curValue);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    vector &lt;int&gt; simulatedAnnealing(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    vector&lt;vector&lt;Edge&gt;&gt; primMST();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> tspBackTracking(vector&lt;bool&gt; &amp;v, <span class="keywordtype">int</span> currPos, <span class="keywordtype">size_t</span> n, <span class="keywordtype">int</span> count, <span class="keywordtype">float</span> cost, <span class="keywordtype">float</span> &amp;ans, vector&lt;int&gt; &amp;path, vector&lt;int&gt; &amp;bestPath);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">int</span> input_vertex(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;input_name);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">int</span> input_edge(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;input_name, <span class="keywordtype">bool</span> have_nodes);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif </span><span class="comment">//PROJECT_GRAPH_H</span></div>
+>>>>>>> 0548dc5f2f29c4dedb94a2ec35d3ddcef0142b8c
 <div class="ttc" id="aclass_graph_html"><div class="ttname"><a href="class_graph.html">Graph</a></div><div class="ttdoc">Class representing a Graph.</div><div class="ttdef"><b>Definition:</b> Graph.h:28</div></div>
 <div class="ttc" id="aclass_graph_html_a00787ed623d23871b1424b34542e22c3"><div class="ttname"><a href="class_graph.html#a00787ed623d23871b1424b34542e22c3">Graph::Task3</a></div><div class="ttdeci">void Task3(bool print_path=true)</div><div class="ttdoc">Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm...</div><div class="ttdef"><b>Definition:</b> Graph.cpp:417</div></div>
 <div class="ttc" id="aclass_graph_html_a1d4f2852ab668f822b91d8f37555e156"><div class="ttname"><a href="class_graph.html#a1d4f2852ab668f822b91d8f37555e156">Graph::print_edges</a></div><div class="ttdeci">void print_edges()</div><div class="ttdoc">Prints the edges of the Graph.</div><div class="ttdef"><b>Definition:</b> Graph.cpp:97</div></div>

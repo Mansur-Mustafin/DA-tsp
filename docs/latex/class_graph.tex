@@ -20,18 +20,25 @@ void {\bfseries print\+\_\+edges} ()
 \mbox{\Hypertarget{class_graph_ac1afff0f002170048a6f180b62e5b965}\label{class_graph_ac1afff0f002170048a6f180b62e5b965}} 
 void {\bfseries print\+\_\+nodes} ()
 \begin{DoxyCompactList}\small\item\em Prints the nodes of the \mbox{\hyperlink{class_graph}{Graph}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}{write\+\_\+to\+\_\+file}} (const std\+::string \&text)
-\begin{DoxyCompactList}\small\item\em Writes text into a file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_graph_a842fe85533f9245a4e5a2990254159eb}{Task1}} (bool print\+\_\+path=true)
-\begin{DoxyCompactList}\small\item\em Asks the user for the data necessary to accomplish Task 1, using a Backtracking Algorithm. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}{Task2}} (bool print\+\_\+path=true)
-\begin{DoxyCompactList}\small\item\em Asks the user for the data necessary to accomplish Task 2, using a Triangular Aproximation Heuristic. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_graph_a00787ed623d23871b1424b34542e22c3}{Task3}} (bool print\+\_\+path=true)
-\begin{DoxyCompactList}\small\item\em Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}{Task4}} (bool print\+\_\+path=true)
 \begin{DoxyCompactList}\small\item\em Asks the user for the data necessary to accomplish Task 4, using a Simulated Annealing Algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a842fe85533f9245a4e5a2990254159eb}{Task1}} (bool print\+\_\+path=true)
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem, using a Backtracking Algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}{Task2}} (bool print\+\_\+path=true)
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem using a Triangular Aproximation Algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a41fbc44e6b98eee539a5b59305281c22}{Task2\+\_\+2}} (bool print\+\_\+path=true)
-\begin{DoxyCompactList}\small\item\em Does a Triangular Approximation using a Distance Matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem with a Triangular Approximation using a Distance Matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a9fda5f5f75f7aa7476294b403fd1d6c0}{Task2\+\_\+3}} (bool print\+\_\+path=true)
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem with a Triangular Approximation using Christofides Algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_acde55f048115065c7d51c684d2b77c82}{Task3\+\_\+1}} (bool print\+\_\+path=true)
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem, using an Ant Colony Optimization Algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_ada441849c6e0152a8592a930116401be}{Task3\+\_\+2}} (bool print\+\_\+path=true)
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem, using a Simulated Annealing Algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}{write\+\_\+to\+\_\+file}} (const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Writes a text into a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -372,9 +379,9 @@ This functions time complexity is O(n $\ast$ A) where n is the size of the permu
 
 
 
-Asks the user for the data necessary to accomplish Task 1, using a Backtracking Algorithm. 
+Solves the Traveling Salesman Problem, using a Backtracking Algorithm. 
 
-This function is responsible for asking for the necessary data to the user to accomplish Task 1, utilising the function \mbox{\hyperlink{class_graph_a39166db679f4128dbe8edf17788fe809}{tsp\+Back\+Tracking()}}.
+This function is responsible for solving the Traveling Salesman Problem, utilising the Backtracking algorithm represented by function \mbox{\hyperlink{class_graph_a39166db679f4128dbe8edf17788fe809}{tsp\+Back\+Tracking()}}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -389,9 +396,9 @@ This function is responsible for asking for the necessary data to the user to ac
 
 
 
-Asks the user for the data necessary to accomplish Task 2, using a Triangular Aproximation Heuristic. 
+Solves the Traveling Salesman Problem using a Triangular Aproximation Algorithm. 
 
-This function is responsible for asking for the necessary data to the user to accomplish Task 2, utilising Prim\textquotesingle{}s algorithm, represented by the function \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{prim\+MST()}} and the function \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk()}}.
+This function is responsible for solving the Traveling Salesman Problem, utilising Prim\textquotesingle{}s algorithm, represented by the function \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{prim\+MST()}} and the function \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk()}}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -406,30 +413,64 @@ This function is responsible for asking for the necessary data to the user to ac
 
 
 
-Does a Triangular Approximation using a Distance Matrix. 
+Solves the Traveling Salesman Problem with a Triangular Approximation using a Distance Matrix. 
 
-This function does a Triangular Approximation using a Distance Matrix. It uses Prim\textquotesingle{}s algorithm represented in the function \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{prim\+MST()}} and the function \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk()}}.
+This function solves the Traveling Salesman Problem by applying the Triangular Approximation Algorithm using a Distance Matrix. It uses Prim\textquotesingle{}s algorithm represented in the function \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{prim\+MST()}} and the function \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorder\+Walk()}}.
 
 
 \begin{DoxyParams}{Parameters}
 {\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a00787ed623d23871b1424b34542e22c3}\label{class_graph_a00787ed623d23871b1424b34542e22c3}} 
-\index{Graph@{Graph}!Task3@{Task3}}
-\index{Task3@{Task3}!Graph@{Graph}}
-\doxysubsubsection{\texorpdfstring{Task3()}{Task3()}}
-{\footnotesize\ttfamily void Graph\+::\+Task3 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_graph_a9fda5f5f75f7aa7476294b403fd1d6c0}\label{class_graph_a9fda5f5f75f7aa7476294b403fd1d6c0}} 
+\index{Graph@{Graph}!Task2\_3@{Task2\_3}}
+\index{Task2\_3@{Task2\_3}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Task2\_3()}{Task2\_3()}}
+{\footnotesize\ttfamily void Graph\+::\+Task2\+\_\+3 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
 
-Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm. 
+Solves the Traveling Salesman Problem with a Triangular Approximation using Christofides Algorithm. 
 
-This function is responsible for asking for the necessary data to the user to accomplish Task 3, utilising the function \mbox{\hyperlink{class_graph_ac237fa8de1d025303f2f42e99ceba59c}{ACO()}}, which stands for \char`\"{}\+Ant Colony Optimization\char`\"{}.
+This function solves the Traveling Salesman Problem with a Triangular Approximation Algorithm using Christofides Algorithm.
 
 
 \begin{DoxyParams}{Parameters}
-{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal. \\
+{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_acde55f048115065c7d51c684d2b77c82}\label{class_graph_acde55f048115065c7d51c684d2b77c82}} 
+\index{Graph@{Graph}!Task3\_1@{Task3\_1}}
+\index{Task3\_1@{Task3\_1}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Task3\_1()}{Task3\_1()}}
+{\footnotesize\ttfamily void Graph\+::\+Task3\+\_\+1 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Solves the Traveling Salesman Problem, using an Ant Colony Optimization Algorithm. 
+
+This function is responsible for solving the Traveling Salesman Problem, utilising the function \mbox{\hyperlink{class_graph_ac237fa8de1d025303f2f42e99ceba59c}{ACO()}}, which stands for \char`\"{}\+Ant Colony Optimization\char`\"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_ada441849c6e0152a8592a930116401be}\label{class_graph_ada441849c6e0152a8592a930116401be}} 
+\index{Graph@{Graph}!Task3\_2@{Task3\_2}}
+\index{Task3\_2@{Task3\_2}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Task3\_2()}{Task3\_2()}}
+{\footnotesize\ttfamily void Graph\+::\+Task3\+\_\+2 (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+path = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Solves the Traveling Salesman Problem, using a Simulated Annealing Algorithm. 
+
+This function is responsible for solving the Traveling Salesman Problem, utilising a Simulated Annealing Algorithm represented by the function \mbox{\hyperlink{class_graph_a2c2bdf61796a96ffd338ba33903c1cfe}{simulated\+Annealing()}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em print\+\_\+path} & -\/ Boolean flag that determines if the calculated path should be printed in the terminal \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}\label{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}} 
@@ -487,15 +528,15 @@ This function\textquotesingle{}s time complexity is O(n!) where n is the number 
 \index{Graph@{Graph}!write\_to\_file@{write\_to\_file}}
 \index{write\_to\_file@{write\_to\_file}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{write\_to\_file()}{write\_to\_file()}}
-{\footnotesize\ttfamily void Graph\+::write\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Graph\+::write\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Writes text into a file. 
+Writes a text into a file. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em text} & -\/ Text to be written into the file \\
+{\em text} & -\/ string to be written into a file \\
 \hline
 \end{DoxyParams}
 

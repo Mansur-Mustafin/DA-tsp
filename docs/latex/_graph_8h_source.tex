@@ -31,55 +31,59 @@
 \DoxyCodeLine{42 }
 \DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_ac1afff0f002170048a6f180b62e5b965}{print\_nodes}}();}
 \DoxyCodeLine{47 }
-\DoxyCodeLine{53     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}{write\_to\_file}}(\textcolor{keyword}{const} std::string\& text);}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{63     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a842fe85533f9245a4e5a2990254159eb}{Task1}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}{Task4}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{63     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}{write\_to\_file}}(\textcolor{keyword}{const} std::string\& text);}
 \DoxyCodeLine{64 }
-\DoxyCodeLine{73     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}{Task2}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a842fe85533f9245a4e5a2990254159eb}{Task1}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});   \textcolor{comment}{// backtracking}}
 \DoxyCodeLine{74 }
-\DoxyCodeLine{83     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a00787ed623d23871b1424b34542e22c3}{Task3}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{83     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a26a5a1f2af86e477395d8b8e15f4de3a}{Task2}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});  \textcolor{comment}{// triangular approximation (slides)}}
 \DoxyCodeLine{84 }
-\DoxyCodeLine{93     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a4ca5cb441104af0b6ade8be39d71dbbd}{Task4}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{93     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a41fbc44e6b98eee539a5b59305281c22}{Task2\_2}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true}); \textcolor{comment}{// triangular approximation (slides) MST by matrix}}
 \DoxyCodeLine{94 }
-\DoxyCodeLine{103     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a41fbc44e6b98eee539a5b59305281c22}{Task2\_2}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a9fda5f5f75f7aa7476294b403fd1d6c0}{Task2\_3}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true}); \textcolor{comment}{// Christofides Algorithm (used triangular inequality)}}
 \DoxyCodeLine{104 }
-\DoxyCodeLine{105     \textcolor{comment}{// fields}}
-\DoxyCodeLine{106     vector<vector<Edge>> adj;}
-\DoxyCodeLine{107     vector<Node> nodes;}
-\DoxyCodeLine{108     \textcolor{keywordtype}{string} file\_edge\_name = \textcolor{stringliteral}{"{}tourism.csv"{}};}
-\DoxyCodeLine{109     \textcolor{keywordtype}{string} file\_nodes\_name = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{110 }
-\DoxyCodeLine{111 \textcolor{keyword}{private}:}
-\DoxyCodeLine{112     std::ofstream out;}
-\DoxyCodeLine{113 }
-\DoxyCodeLine{114     \textcolor{comment}{//ACO fields}}
-\DoxyCodeLine{115     \textcolor{keywordtype}{float} UP\_EPS = 1e9;}
-\DoxyCodeLine{116 }
-\DoxyCodeLine{117     \textcolor{keywordtype}{int} V = 0;}
-\DoxyCodeLine{118 }
-\DoxyCodeLine{127     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a69dc1c8a8a72cfb996f92ffa6033fdfb}{id}}(\textcolor{keywordtype}{int} a) \textcolor{keyword}{const};}
-\DoxyCodeLine{128 }
-\DoxyCodeLine{142     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_graph_ac2702571c28c29a5157ec34590439d1d}{getDistance}}(\textcolor{keywordtype}{int} from, \textcolor{keywordtype}{int} to);}
-\DoxyCodeLine{143 }
-\DoxyCodeLine{158     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_graph_aedf8896f598856ccb7e59b580c9ae03b}{getValue}}(vector <int>\& v, \textcolor{keywordtype}{bool} out = \textcolor{keyword}{false});}
-\DoxyCodeLine{159 }
-\DoxyCodeLine{178     vector <int> \mbox{\hyperlink{class_graph_ac237fa8de1d025303f2f42e99ceba59c}{ACO}}(std::vector<std::vector<float>>\& distance\_matrix, \textcolor{keywordtype}{int} max\_iter = 100, \textcolor{keywordtype}{int} num\_ants = 10, \textcolor{keywordtype}{double} alpha = 1.0, \textcolor{keywordtype}{double} beta = 2.0, \textcolor{keywordtype}{double} rho = 0.1);}
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_acde55f048115065c7d51c684d2b77c82}{Task3\_1}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true}); \textcolor{comment}{// ACO}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{123     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_ada441849c6e0152a8592a930116401be}{Task3\_2}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true}); \textcolor{comment}{// Temperature}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     \textcolor{comment}{// fields}}
+\DoxyCodeLine{126     vector<vector<Edge>> adj;}
+\DoxyCodeLine{127     vector<Node> nodes;}
+\DoxyCodeLine{128     \textcolor{keywordtype}{string} file\_edge\_name = \textcolor{stringliteral}{"{}tourism.csv"{}};}
+\DoxyCodeLine{129     \textcolor{keywordtype}{string} file\_nodes\_name = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{keyword}{private}:}
+\DoxyCodeLine{132     std::ofstream out;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{comment}{//ACO fields}}
+\DoxyCodeLine{135     \textcolor{keywordtype}{float} UP\_EPS = 1e9;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{keywordtype}{int} V = 0;}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{147     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a69dc1c8a8a72cfb996f92ffa6033fdfb}{id}}(\textcolor{keywordtype}{int} a) \textcolor{keyword}{const};}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{162     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_graph_ac2702571c28c29a5157ec34590439d1d}{getDistance}}(\textcolor{keywordtype}{int} from, \textcolor{keywordtype}{int} to);}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{178     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_graph_aedf8896f598856ccb7e59b580c9ae03b}{getValue}}(vector <int>\& v, \textcolor{keywordtype}{bool} out = \textcolor{keyword}{false});}
 \DoxyCodeLine{179 }
-\DoxyCodeLine{194     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a3e0530df9057911b527116678c3fce82}{getSample}}(\textcolor{keywordtype}{double} t, vector <int>\& v, \textcolor{keywordtype}{double}\& curValue);}
-\DoxyCodeLine{195 }
-\DoxyCodeLine{214     vector <int> \mbox{\hyperlink{class_graph_a2c2bdf61796a96ffd338ba33903c1cfe}{simulatedAnnealing}}(\textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{198     vector <int> \mbox{\hyperlink{class_graph_ac237fa8de1d025303f2f42e99ceba59c}{ACO}}(std::vector<std::vector<float>>\& distance\_matrix, \textcolor{keywordtype}{int} max\_iter = 100, \textcolor{keywordtype}{int} num\_ants = 10, \textcolor{keywordtype}{double} alpha = 1.0, \textcolor{keywordtype}{double} beta = 2.0, \textcolor{keywordtype}{double} rho = 0.1);}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{214     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a3e0530df9057911b527116678c3fce82}{getSample}}(\textcolor{keywordtype}{double} t, vector <int>\& v, \textcolor{keywordtype}{double}\& curValue);}
 \DoxyCodeLine{215 }
-\DoxyCodeLine{247      vector<vector<Edge>> \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{primMST}}(vector<vector<Edge>> tree);;}
-\DoxyCodeLine{248 }
-\DoxyCodeLine{268     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorderWalk}}(\textcolor{keywordtype}{int} node, \textcolor{keyword}{const} vector<vector<Edge>> \&mst, vector<bool> \&visited, vector<int> \&path);}
-\DoxyCodeLine{269 }
-\DoxyCodeLine{290     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a39166db679f4128dbe8edf17788fe809}{tspBackTracking}}(vector<bool> \&v, \textcolor{keywordtype}{int} currPos, \textcolor{keywordtype}{size\_t} n, \textcolor{keywordtype}{int} count, \textcolor{keywordtype}{float} cost, \textcolor{keywordtype}{float} \&ans, vector<int> \&path, vector<int> \&bestPath);}
-\DoxyCodeLine{291 }
-\DoxyCodeLine{300     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_af992c3d4c6e881c570fc6270284e03b0}{input\_vertex}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&input\_name);}
-\DoxyCodeLine{301 }
-\DoxyCodeLine{312     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a65c582ebf3611794a7e7100795578d0c}{input\_edge}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&input\_name, \textcolor{keywordtype}{bool} have\_nodes);}
-\DoxyCodeLine{313 \};}
-\DoxyCodeLine{314 }
-\DoxyCodeLine{315 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJECT\_GRAPH\_H}}
+\DoxyCodeLine{234     vector <int> \mbox{\hyperlink{class_graph_a2c2bdf61796a96ffd338ba33903c1cfe}{simulatedAnnealing}}(\textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{267      vector<vector<Edge>> \mbox{\hyperlink{class_graph_a390e7707f5aace8f792ba63f2c11ef64}{primMST}}(vector<vector<Edge>> tree);;}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{288     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a3690127bdb66f5b6960e75dd995d789a}{preorderWalk}}(\textcolor{keywordtype}{int} node, \textcolor{keyword}{const} vector<vector<Edge>> \&mst, vector<bool> \&visited, vector<int> \&path);}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{310     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a39166db679f4128dbe8edf17788fe809}{tspBackTracking}}(vector<bool> \&v, \textcolor{keywordtype}{int} currPos, \textcolor{keywordtype}{size\_t} n, \textcolor{keywordtype}{int} count, \textcolor{keywordtype}{float} cost, \textcolor{keywordtype}{float} \&ans, vector<int> \&path, vector<int> \&bestPath);}
+\DoxyCodeLine{311 }
+\DoxyCodeLine{320     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_af992c3d4c6e881c570fc6270284e03b0}{input\_vertex}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&input\_name);}
+\DoxyCodeLine{321 }
+\DoxyCodeLine{332     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a65c582ebf3611794a7e7100795578d0c}{input\_edge}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&input\_name, \textcolor{keywordtype}{bool} have\_nodes);}
+\DoxyCodeLine{333 \};}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{335 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJECT\_GRAPH\_H}}
 
 \end{DoxyCode}

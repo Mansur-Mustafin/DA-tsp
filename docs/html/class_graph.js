@@ -16,8 +16,9 @@ var class_graph =
     [ "Task1", "class_graph.html#a842fe85533f9245a4e5a2990254159eb", null ],
     [ "Task2", "class_graph.html#a26a5a1f2af86e477395d8b8e15f4de3a", null ],
     [ "Task2_2", "class_graph.html#a41fbc44e6b98eee539a5b59305281c22", null ],
-    [ "Task3", "class_graph.html#a00787ed623d23871b1424b34542e22c3", null ],
+    [ "Task2_3", "class_graph.html#a9fda5f5f75f7aa7476294b403fd1d6c0", null ],
+    [ "Task3_1", "class_graph.html#acde55f048115065c7d51c684d2b77c82", null ],
+    [ "Task3_2", "class_graph.html#ada441849c6e0152a8592a930116401be", null ],
     [ "Task4", "class_graph.html#a4ca5cb441104af0b6ade8be39d71dbbd", null ],
-    [ "tspBackTracking", "class_graph.html#a39166db679f4128dbe8edf17788fe809", null ],
-    [ "write_to_file", "class_graph.html#a2043300d1f6dad3d8ce9fad12e237efe", null ]
+    [ "tspBackTracking", "class_graph.html#a39166db679f4128dbe8edf17788fe809", null ]
 ];

@@ -24,34 +24,34 @@ public:
     void choose_network();
 
     /**
-     * @brief Displays the Menu that allows to add an edge to the Graph being used
+     * @brief Displays the Menu that allows to use the Backtracking Algorithm
      */
-    void add_edge();
+    void Backtracking();
 
     /**
-     * @brief Displays the Menu that allows to add a node to the Graph being used
+     * @brief Displays the Menu that allows to use the Triangular Approximation Algorithm
      */
-    void add_node();
+    void Triangular_Approximation();
 
     /**
-     * @brief Displays the Menu that allows to use the Backtracking Algorithm, corresponding to the Task 2.1
+     * @brief Displays the Menu that allows to use the Triangular Approximation Algorithm using a a Distance Matrix
      */
-    void Task2_1();
+    void Triangular_Approximation_using_matrix();
 
     /**
-     * @brief Displays the Menu that allows to use the Triangular Approximation Heuristic, corresponding to the Task 2.2
+     * @brief Displays the Menu that allows to use the Ant Colony Optimization Algorithm
      */
-    void Task2_2();
+    void ACO();
 
     /**
-     * @brief
+     * @brief Displays the Menu that allows to use the Simulated Annealing Algorithm
      */
-    void Task2_3_1();
+    void Temp();
 
     /**
-     * @brief
+     * @brief Displays the Menu that allows to use Triangular Approximation, using Christofides Algorithm
      */
-    void Task2_3_2();
+    void Triangular_approximation_using_Christofides();
 private:
     Graph g = Graph ("edges_25.csv");
 

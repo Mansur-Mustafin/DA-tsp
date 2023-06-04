@@ -46,43 +46,6 @@ public:
     void print_nodes();
 
     /**
-     * @brief Writes text into a file
-     *
-     * @param text - Text to be written into the file
-     */
-    void write_to_file(const std::string& text);
-
-    /**
-     * @brief Asks the user for the data necessary to accomplish Task 1, using a Backtracking Algorithm
-     *
-     * This function is responsible for asking for the necessary data to the user to accomplish Task 1, utilising the
-     * function tspBackTracking().
-     *
-     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
-     */
-    void Task1(bool print_path = true);
-
-    /**
-     * @brief Asks the user for the data necessary to accomplish Task 2, using a Triangular Aproximation Heuristic
-     *
-     * This function is responsible for asking for the necessary data to the user to accomplish Task 2, utilising Prim's
-     * algorithm, represented by the function primMST() and the function preorderWalk().
-     *
-     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
-     */
-    void Task2(bool print_path = true);
-
-    /**
-     * @brief Asks the user for the data necessary to accomplish Task 3, using an Ant Colony Optimization Algorithm
-     *
-     * This function is responsible for asking for the necessary data to the user to accomplish Task 3, utilising the
-     * function ACO(), which stands for "Ant Colony Optimization".
-     *
-     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
-     */
-    void Task3(bool print_path = true);
-
-    /**
      * @brief Asks the user for the data necessary to accomplish Task 4, using a Simulated Annealing Algorithm
      *
      * This function is responsible for asking for the necessary data to the user to accomplish Task 4, utilising the
@@ -93,14 +56,71 @@ public:
     void Task4(bool print_path = true);
 
     /**
-     * @brief Does a Triangular Approximation using a Distance Matrix
+     * @brief Writes a text into a file
      *
-     * This function does a Triangular Approximation using a Distance Matrix. It uses Prim's algorithm represented in
-     * the function primMST() and the function preorderWalk().
+     * @param text - string to be written into a file
+     */
+    static void write_to_file(const std::string& text);
+
+    /**
+     * @brief Solves the Traveling Salesman Problem, using a Backtracking Algorithm
+     *
+     * This function is responsible for solving the Traveling Salesman Problem, utilising the Backtracking algorithm
+     * represented by function tspBackTracking().
      *
      * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
      */
-    void Task2_2(bool print_path = true);
+    void Task1(bool print_path = true);   // backtracking
+
+    /**
+     * @brief Solves the Traveling Salesman Problem using a Triangular Aproximation Algorithm
+     *
+     * This function is responsible for solving the Traveling Salesman Problem, utilising Prim's
+     * algorithm, represented by the function primMST() and the function preorderWalk().
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
+     */
+    void Task2(bool print_path = true);  // triangular approximation (slides)
+
+    /**
+     * @brief Solves the Traveling Salesman Problem with a Triangular Approximation using a Distance Matrix
+     *
+     * This function solves the Traveling Salesman Problem by applying the Triangular Approximation Algorithm using a
+     * Distance Matrix. It uses Prim's algorithm represented in the function primMST() and the function preorderWalk().
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
+     */
+    void Task2_2(bool print_path = true); // triangular approximation (slides) MST by matrix
+
+    /**
+     * @brief Solves the Traveling Salesman Problem with a Triangular Approximation using Christofides Algorithm
+     *
+     * This function solves the Traveling Salesman Problem with a Triangular Approximation Algorithm using Christofides
+     * Algorithm.
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal
+     */
+    void Task2_3(bool print_path = true); // Christofides Algorithm (used triangular inequality)
+
+    /**
+     * @brief Solves the Traveling Salesman Problem, using an Ant Colony Optimization Algorithm
+     *
+     * This function is responsible for solving the Traveling Salesman Problem, utilising the function ACO(), which
+     * stands for "Ant Colony Optimization".
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal
+     */
+    void Task3_1(bool print_path = true); // ACO
+
+    /**
+     * @brief Solves the Traveling Salesman Problem, using a Simulated Annealing Algorithm
+     *
+     * This function is responsible for solving the Traveling Salesman Problem, utilising a Simulated Annealing Algorithm
+     * represented by the function simulatedAnnealing().
+     *
+     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal
+     */
+    void Task3_2(bool print_path = true); // Temperature
 
     // fields
     vector<vector<Edge>> adj;

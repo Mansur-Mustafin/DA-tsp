@@ -30,6 +30,7 @@
 \DoxyCodeLine{42 }
 \DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_ac1afff0f002170048a6f180b62e5b965}{print\_nodes}}();}
 \DoxyCodeLine{47 }
+<<<<<<< HEAD
 \DoxyCodeLine{53     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a2043300d1f6dad3d8ce9fad12e237efe}{write\_to\_file}}(\textcolor{keyword}{const} std::string\& text);}
 \DoxyCodeLine{54 }
 \DoxyCodeLine{63     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a842fe85533f9245a4e5a2990254159eb}{Task1}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
@@ -79,5 +80,44 @@
 \DoxyCodeLine{308 \};}
 \DoxyCodeLine{309 }
 \DoxyCodeLine{310 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJECT\_GRAPH\_H}}
+=======
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a842fe85533f9245a4e5a2990254159eb}{Task1}}(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} Task2(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} Task3_1(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} Task3_2(\textcolor{keywordtype}{bool} print\_path = \textcolor{keyword}{true});}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{comment}{// fields}}
+\DoxyCodeLine{59     vector<vector<Edge>> adj;}
+\DoxyCodeLine{60     vector<Node> nodes;}
+\DoxyCodeLine{61     \textcolor{keywordtype}{string} file\_edge\_name = \textcolor{stringliteral}{"{}tourism.csv"{}};}
+\DoxyCodeLine{62     \textcolor{keywordtype}{string} file\_nodes\_name = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keyword}{private}:}
+\DoxyCodeLine{65     \textcolor{comment}{//ACO fields}}
+\DoxyCodeLine{66     \textcolor{keywordtype}{int} max\_iter = 100;}
+\DoxyCodeLine{67     \textcolor{keywordtype}{int} num\_ants = 10;}
+\DoxyCodeLine{68     \textcolor{keywordtype}{double} alpha = 1.0;}
+\DoxyCodeLine{69     \textcolor{keywordtype}{double} beta = 2.0;}
+\DoxyCodeLine{70     \textcolor{keywordtype}{double} rho = 0.1;}
+\DoxyCodeLine{71     \textcolor{keywordtype}{float} UP\_EPS = 1e9;}
+\DoxyCodeLine{72     \textcolor{keywordtype}{int} V = adj.size();}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{int} id(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{75     \textcolor{keywordtype}{double} getDistance(\textcolor{keywordtype}{int} from, \textcolor{keywordtype}{int} to);}
+\DoxyCodeLine{76     \textcolor{keywordtype}{double} getValue(vector <int>\& v, \textcolor{keywordtype}{bool} out = \textcolor{keyword}{false});}
+\DoxyCodeLine{77     vector <int> ACO(std::vector<std::vector<float>>\& distance\_matrix, \textcolor{keywordtype}{int} max\_iter = 100, \textcolor{keywordtype}{int} num\_ants = 10, \textcolor{keywordtype}{double} alpha = 1.0, \textcolor{keywordtype}{double} beta = 2.0, \textcolor{keywordtype}{double} rho = 0.1);}
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} getSample(\textcolor{keywordtype}{double} t, vector <int>\& v, \textcolor{keywordtype}{double}\& curValue);}
+\DoxyCodeLine{79     vector <int> simulatedAnnealing(\textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{80     vector<vector<Edge>> primMST();}
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} tspBackTracking(vector<bool> \&v, \textcolor{keywordtype}{int} currPos, \textcolor{keywordtype}{size\_t} n, \textcolor{keywordtype}{int} count, \textcolor{keywordtype}{float} cost, \textcolor{keywordtype}{float} \&ans, vector<int> \&path, vector<int> \&bestPath);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{89     \textcolor{keywordtype}{int} input\_vertex(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&input\_name);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{98     \textcolor{keywordtype}{int} input\_edge(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&input\_name, \textcolor{keywordtype}{bool} have\_nodes);}
+\DoxyCodeLine{99 \};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJECT\_GRAPH\_H}}
+>>>>>>> 0548dc5f2f29c4dedb94a2ec35d3ddcef0142b8c
 
 \end{DoxyCode}
