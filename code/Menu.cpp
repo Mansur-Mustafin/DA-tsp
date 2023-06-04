@@ -97,6 +97,20 @@ void Menu::runAllAlgorithms(){
     g.Task2_3(false);
 }
 
+void printFileContent() {
+    ifstream file("output.txt");
+
+    if (file.is_open()) {
+        string line;
+        while (getline(file, line)) {
+            cout << line << '\n';
+        }
+        file.close();
+    } else {
+        cout << "Unable to open output.txt\n";
+    }
+}
+
 void Menu::Backtracking() {
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
@@ -211,7 +225,7 @@ void Menu::ACO(){
     }
 }
 
-void Menu::Temp(){
+void Menu::Annealing(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
             "|       Yes [1]                   No  [2]          | \n"
@@ -224,7 +238,7 @@ void Menu::Temp(){
         cerr << "Invalid input" << endl;
         cin.clear();
         cin.ignore(INT_MAX, '\n');
-        Temp();
+        Annealing();
     }
 
     switch (answer) {
@@ -239,7 +253,7 @@ void Menu::Temp(){
     }
 }
 
-void Menu::Triangular_approximation_using_Christofides(){
+void Menu::Christofides(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
             "|       Yes [1]                   No  [2]          | \n"
@@ -252,7 +266,7 @@ void Menu::Triangular_approximation_using_Christofides(){
         cerr << "Invalid input" << endl;
         cin.clear();
         cin.ignore(INT_MAX, '\n');
-        ACO();
+        Christofides();
     }
 
     switch (answer) {
@@ -278,15 +292,16 @@ void Menu::main_menu() {
                    "| Triangular Approximation                              [22] |\n"
                    "| Triangular Approximation using matrix                 [23] |\n"
                    "| ACO                                                   [24] |\n"
-                   "| Temp                                                  [25] |\n"
-                   "| Triangular approximation using Christofides Algorithm [26] |\n"
+                   "| Annealing                                             [25] |\n"
+                   "| Christofides Algorithm                                [26] |\n"
                    "|============================================================|\n"
                    "|                      Other operations                      |\n"
                    "|============================================================|\n"
                    "| Run all algorithms                                    [11] |\n"
                    "| Show all edges                                        [12] |\n"
                    "| Show all nodes                                        [13] |\n"
-                   "| Change files                                          [14] |\n"
+                   "| Show output                                           [14] |\n"
+                   "| Change files                                          [15] |\n"
                    "| Exit                                                  [0]  |\n"
                    "|============================================================|\n";
 
@@ -323,11 +338,11 @@ void Menu::main_menu() {
                 break;
 
             case 25:
-                Temp();
+                Annealing();
                 break;
 
             case 26:
-                Triangular_approximation_using_Christofides();
+                Christofides();
                 break;
 
             case 11:
@@ -343,6 +358,10 @@ void Menu::main_menu() {
                 break;
 
             case 14:
+                printFileContent();
+                break;
+
+            case 15:
                 change_file();
                 break;
 

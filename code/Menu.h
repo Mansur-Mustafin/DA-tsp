@@ -46,12 +46,12 @@ public:
     /**
      * @brief Displays the Menu that allows to use the Simulated Annealing Algorithm
      */
-    void Temp();
+    void Annealing();
 
     /**
      * @brief Displays the Menu that allows to use Triangular Approximation, using Christofides Algorithm
      */
-    void Triangular_approximation_using_Christofides();
+    void Christofides();
 private:
     Graph g = Graph ("edges_25.csv");
 
