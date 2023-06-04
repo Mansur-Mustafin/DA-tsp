@@ -7,14 +7,39 @@ using namespace std;
 
 void Menu::change_file() {
     string nodes,edges;
-    cout<<"Please enter the name of the edges file without extension:\n";
-    getline(cin>>ws,nodes);
-    cout<<endl;
-    cout<<"Please enter the name of the nodes file without extension:\n";
-    getline(cin,edges);
-    cout<<endl;
-    g = Graph(edges + ".csv", nodes + ".csv");
-    main_menu();
+    int n;
+    cout<<"How may files do you want to use?\n";
+    cin>>n;
+
+    if (cin.fail() || cin.peek() != '\n') {
+        cerr << "Invalid input" << endl;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        change_file();
+    }
+
+    switch (n) {
+        case 1:
+            cout<<"Please enter the name of the edges file without extension:\n";
+            getline(cin>>ws,edges);
+            cout<<endl;
+            g = Graph(edges + ".csv");
+            main_menu();
+            break;
+        case 2:
+            cout<<"Please enter the name of the edges file without extension:\n";
+            getline(cin>>ws,edges);
+            cout<<endl;
+            cout<<"Please enter the name of the nodes file without extension:\n";
+            getline(cin,nodes);
+            cout<<endl;
+            g = Graph(edges + ".csv", nodes + ".csv");
+            main_menu();
+            break;
+        default:
+            cerr<<"So e possivel usar 1 ou 2 ficheiros"<<endl;
+            change_file();
+    }
 }
 
 void Menu::choose_network(){
@@ -36,14 +61,7 @@ void Menu::choose_network(){
 
     switch (answer) {
         case 1:
-            cout<<"Please enter the name of the nodes file without extension:\n";
-            getline(cin>>ws,nodes);
-            cout<<endl;
-            cout<<"Please enter the name of the edges file without extension:\n";
-            getline(cin,edges);
-            cout<<endl;
-            g = Graph(edges + ".csv", nodes + ".csv");
-            main_menu();
+            change_file();
             break;
         case 2:
             main_menu();
@@ -52,6 +70,15 @@ void Menu::choose_network(){
             cerr << "Invalid input" << endl << endl;
             choose_network();
     }
+}
+
+void Menu::runAllAlgorithms(){
+    g.Task1(false);
+    g.Task2(false);
+    g.Task2_2(false);
+    g.Task3_1(false);
+    g.Task3_2(false);
+    g.Task2_3(false);
 }
 
 void Menu::Backtracking() {
@@ -246,8 +273,9 @@ void Menu::main_menu() {
                    "|============================================================|\n"
                    "|                      Other operations                      |\n"
                    "|============================================================|\n"
-                   "| Change files                                        [13]   |\n"
-                   "| Exit                                                [0]    |\n"
+                   "| Run all agorithms                                     [11] |\n"
+                   "| Change files                                          [12] |\n"
+                   "| Exit                                                  [0]  |\n"
                    "|============================================================|\n";
 
         cout << endl;
@@ -290,7 +318,11 @@ void Menu::main_menu() {
                 Triangular_approximation_using_Christofides();
                 break;
 
-            case 13:
+            case 11:
+                runAllAlgorithms();
+                break;
+
+            case 12:
                 change_file();
                 break;
 

@@ -1,5 +1,3 @@
-
-
 #ifndef PROJECT_MENU_H
 #define PROJECT_MENU_H
 
@@ -22,6 +20,8 @@ public:
      * @brief Displays the Menu that allows to choose a network to be used
      */
     void choose_network();
+
+    void runAllAlgorithms();
 
     /**
      * @brief Displays the Menu that allows to use the Backtracking Algorithm

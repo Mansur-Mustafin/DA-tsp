@@ -6,7 +6,7 @@ int main() {
 
     try {
         Menu menu;
-        menu.main_menu();
+        menu.choose_network();
     }
     catch (exception& e) {
         cout << e.what() << '\n';
