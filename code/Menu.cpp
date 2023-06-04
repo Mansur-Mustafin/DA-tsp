@@ -37,8 +37,7 @@ void Menu::change_file() {
             main_menu();
             break;
         default:
-            cerr<<"So e possivel usar 1 ou 2 ficheiros"<<endl;
-            change_file();
+           break;
     }
 }
 
@@ -46,7 +45,7 @@ void Menu::choose_network(){
     string nodes,edges;
     cout<<"          Do you want to change the network?\n"
           "|==================================================| \n"
-          "|       Yes [1]                   No  [2]         | \n"
+          "|       Yes [1]                   No  [2]          | \n"
           "|==================================================| " << endl;
     int answer;
     cin>>answer;
@@ -67,8 +66,7 @@ void Menu::choose_network(){
             main_menu();
             break;
         default:
-            cerr << "Invalid input" << endl << endl;
-            choose_network();
+            break;
     }
 }
 
@@ -84,7 +82,7 @@ void Menu::runAllAlgorithms(){
 void Menu::Backtracking() {
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
-            "|       Yes [1]                   No  [2]         | \n"
+            "|       Yes [1]                   No  [2]          | \n"
             "|==================================================| " << endl;
     int answer;
     cin >> answer;
@@ -107,15 +105,14 @@ void Menu::Backtracking() {
             break;
 
         default:
-            cerr << "Invalid input" << endl << endl;
-            Backtracking();
+            break;
     }
 }
 
 void Menu::Triangular_Approximation(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
-            "|       Yes [1]                   No  [2]         | \n"
+            "|       Yes [1]                   No  [2]          | \n"
             "|==================================================| " << endl;
     int answer;
     cin >> answer;
@@ -136,15 +133,14 @@ void Menu::Triangular_Approximation(){
             g.Task2(false);
             break;
         default:
-            cerr << "Invalid input" << endl << endl;
-            Triangular_Approximation();
+            break;
     }
 }
 
 void Menu::Triangular_Approximation_using_matrix(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
-            "|       Yes [1]                   No  [2]         | \n"
+            "|       Yes [1]                   No  [2]          | \n"
             "|==================================================| " << endl;
     int answer;
     cin >> answer;
@@ -165,15 +161,14 @@ void Menu::Triangular_Approximation_using_matrix(){
             g.Task2_2(false);
             break;
         default:
-            cerr << "Invalid input" << endl << endl;
-            Triangular_Approximation_using_matrix();
+           break;
     }
 }
 
 void Menu::ACO(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
-            "|       Yes [1]                   No  [2]         | \n"
+            "|       Yes [1]                   No  [2]          | \n"
             "|==================================================| " << endl;
     int answer;
     cin >> answer;
@@ -194,15 +189,14 @@ void Menu::ACO(){
             g.Task3_1(false);
             break;
         default:
-            cerr << "Invalid input" << endl << endl;
-            ACO();
+            break;
     }
 }
 
 void Menu::Temp(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
-            "|       Yes [1]                   No  [2]         | \n"
+            "|       Yes [1]                   No  [2]          | \n"
             "|==================================================| " << endl;
     int answer;
     cin >> answer;
@@ -223,15 +217,14 @@ void Menu::Temp(){
             g.Task3_2(false);
             break;
         default:
-            cerr << "Invalid input" << endl << endl;
-            Temp();
+            break;
     }
 }
 
 void Menu::Triangular_approximation_using_Christofides(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
-            "|       Yes [1]                   No  [2]         | \n"
+            "|       Yes [1]                   No  [2]          | \n"
             "|==================================================| " << endl;
     int answer;
     cin >> answer;
@@ -252,8 +245,7 @@ void Menu::Triangular_approximation_using_Christofides(){
             g.Task2_3(false);
             break;
         default:
-            cerr << "Invalid input" << endl << endl;
-            ACO();
+            break;
     }
 }
 
@@ -273,7 +265,7 @@ void Menu::main_menu() {
                    "|============================================================|\n"
                    "|                      Other operations                      |\n"
                    "|============================================================|\n"
-                   "| Run all agorithms                                     [11] |\n"
+                   "| Run all algorithms                                    [11] |\n"
                    "| Show all edges                                        [12] |\n"
                    "| Show all nodes                                        [13] |\n"
                    "| Change files                                          [14] |\n"
