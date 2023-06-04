@@ -11,6 +11,7 @@ public:
     void main_menu();
     void change_file();
     void choose_network();
+    void runAllAlgorithms();
     void Backtracking();
     void Triangular_Approximation();
     void Triangular_Approximation_using_matrix();
