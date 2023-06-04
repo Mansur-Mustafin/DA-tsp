@@ -5,6 +5,12 @@ using namespace std;
 
 //function and variables names are temporary
 
+int check_files(const string& file_name){
+    ifstream fin(file_name);
+    if(!fin.is_open()) return -1;
+    return 0;
+}
+
 void Menu::change_file() {
     string nodes,edges;
     int n;
@@ -17,12 +23,18 @@ void Menu::change_file() {
         cin.ignore(INT_MAX, '\n');
         change_file();
     }
-
+    int check_files_flag = 0;
     switch (n) {
         case 1:
             cout<<"Please enter the name of the edges file without extension:\n";
             getline(cin>>ws,edges);
             cout<<endl;
+
+            check_files_flag = check_files(edges + ".csv");
+            if(check_files_flag < 0){
+                change_file();
+            }
+
             g = Graph(edges + ".csv");
             main_menu();
             break;
@@ -33,6 +45,12 @@ void Menu::change_file() {
             cout<<"Please enter the name of the nodes file without extension:\n";
             getline(cin,nodes);
             cout<<endl;
+
+            check_files_flag = check_files(edges + ".csv") + check_files(nodes + ".csv");
+            if(check_files_flag < 0){
+                change_file();
+            }
+
             g = Graph(edges + ".csv", nodes + ".csv");
             main_menu();
             break;
@@ -43,7 +61,7 @@ void Menu::change_file() {
 
 void Menu::choose_network(){
     string nodes,edges;
-    cout<<"          Do you want to change the network?\n"
+    cout<<"          Do you want to change the files?\n"
           "|==================================================| \n"
           "|       Yes [1]                   No  [2]          | \n"
           "|==================================================| " << endl;
