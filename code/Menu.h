@@ -11,12 +11,12 @@ public:
     void main_menu();
     void change_file();
     void choose_network();
-    void add_edge();
-    void add_node();
-    void Task2_1();
-    void Task2_2();
-    void Task2_3_1();
-    void Task2_3_2();
+    void Backtracking();
+    void Triangular_Approximation();
+    void Triangular_Approximation_using_matrix();
+    void ACO();
+    void Temp();
+    void Triangular_approximation_using_Christofides();
 private:
     Graph g = Graph ("edges_25.csv");
 

@@ -54,15 +54,7 @@ void Menu::choose_network(){
     }
 }
 
-void Menu::add_node(){
-    //to be done
-}
-
-void Menu::add_edge(){
-   //to be done
-}
-
-void Menu::Task2_1() {
+void Menu::Backtracking() {
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
             "|       Yes [1]                   No  [2]         | \n"
@@ -75,7 +67,7 @@ void Menu::Task2_1() {
         cerr << "Invalid input" << endl;
         cin.clear();
         cin.ignore(INT_MAX, '\n');
-        Task2_1();
+        Backtracking();
     }
 
     switch (answer) {
@@ -89,11 +81,11 @@ void Menu::Task2_1() {
 
         default:
             cerr << "Invalid input" << endl << endl;
-            Task2_1();
+            Backtracking();
     }
 }
 
-void Menu::Task2_2(){
+void Menu::Triangular_Approximation(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
             "|       Yes [1]                   No  [2]         | \n"
@@ -106,7 +98,7 @@ void Menu::Task2_2(){
         cerr << "Invalid input" << endl;
         cin.clear();
         cin.ignore(INT_MAX, '\n');
-        Task2_1();
+        Triangular_Approximation();
     }
 
     switch (answer) {
@@ -118,11 +110,11 @@ void Menu::Task2_2(){
             break;
         default:
             cerr << "Invalid input" << endl << endl;
-            Task2_2();
+            Triangular_Approximation();
     }
 }
 
-void Menu::Task2_3_1(){
+void Menu::Triangular_Approximation_using_matrix(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
             "|       Yes [1]                   No  [2]         | \n"
@@ -135,7 +127,36 @@ void Menu::Task2_3_1(){
         cerr << "Invalid input" << endl;
         cin.clear();
         cin.ignore(INT_MAX, '\n');
-        Task2_1();
+        Triangular_Approximation_using_matrix();
+    }
+
+    switch (answer) {
+        case 1:
+            g.Task2_2(true);
+            break;
+        case 2:
+            g.Task2_2(false);
+            break;
+        default:
+            cerr << "Invalid input" << endl << endl;
+            Triangular_Approximation_using_matrix();
+    }
+}
+
+void Menu::ACO(){
+    cout << "          Do you want to print the path ?\n"
+            "|==================================================| \n"
+            "|       Yes [1]                   No  [2]         | \n"
+            "|==================================================| " << endl;
+    int answer;
+    cin >> answer;
+    cout << endl;
+
+    if (cin.fail() || cin.peek() != '\n') {
+        cerr << "Invalid input" << endl;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        ACO();
     }
 
     switch (answer) {
@@ -147,11 +168,11 @@ void Menu::Task2_3_1(){
             break;
         default:
             cerr << "Invalid input" << endl << endl;
-            Task2_3_1();
+            ACO();
     }
 }
 
-void Menu::Task2_3_2(){
+void Menu::Temp(){
     cout << "          Do you want to print the path ?\n"
             "|==================================================| \n"
             "|       Yes [1]                   No  [2]         | \n"
@@ -164,7 +185,7 @@ void Menu::Task2_3_2(){
         cerr << "Invalid input" << endl;
         cin.clear();
         cin.ignore(INT_MAX, '\n');
-        Task2_1();
+        Temp();
     }
 
     switch (answer) {
@@ -176,7 +197,36 @@ void Menu::Task2_3_2(){
             break;
         default:
             cerr << "Invalid input" << endl << endl;
-            Task2_3_2();
+            Temp();
+    }
+}
+
+void Menu::Triangular_approximation_using_Christofides(){
+    cout << "          Do you want to print the path ?\n"
+            "|==================================================| \n"
+            "|       Yes [1]                   No  [2]         | \n"
+            "|==================================================| " << endl;
+    int answer;
+    cin >> answer;
+    cout << endl;
+
+    if (cin.fail() || cin.peek() != '\n') {
+        cerr << "Invalid input" << endl;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        ACO();
+    }
+
+    switch (answer) {
+        case 1:
+            g.Task2_3(true);
+            break;
+        case 2:
+            g.Task2_3(false);
+            break;
+        default:
+            cerr << "Invalid input" << endl << endl;
+            ACO();
     }
 }
 
@@ -188,16 +238,16 @@ void Menu::main_menu() {
                    "|                       TSP Algorithms                       |\n"
                    "|=========================================================== |\n"
                    "| Backtracking Algorithm                                [21] |\n"
-                   "| Triangular Approximation Heuristic                    [22] |\n"
-                   "| Other Heuristics v1                                   [23] |\n"
-                   "| Other Heuristics v2                                   [24] |\n"
+                   "| Triangular Approximation                              [22] |\n"
+                   "| Triangular Approximation using matrix                 [23] |\n"
+                   "| ACO                                                   [24] |\n"
+                   "| Temp                                                  [25] |\n"
+                   "| Triangular approximation using Christofides Algorithm [26] |\n"
                    "|============================================================|\n"
                    "|                      Other operations                      |\n"
                    "|============================================================|\n"
-                   "| Add nodes to the network                            [11]  |\n"
-                   "| Add edges to the network                            [12]  |\n"
-                   "| Change files                                        [13]  |\n"
-                   "| Exit                                                [0]   |\n"
+                   "| Change files                                        [13]   |\n"
+                   "| Exit                                                [0]    |\n"
                    "|============================================================|\n";
 
         cout << endl;
@@ -217,27 +267,27 @@ void Menu::main_menu() {
                 exit(0);
 
             case 21:
-                Task2_1();
+                Backtracking();
                 break;
 
             case 22:
-                Task2_2();
+                Triangular_Approximation();
                 break;
 
             case 23:
-                Task2_3_1();
+                Triangular_Approximation_using_matrix();
                 break;
 
             case 24:
-                Task2_3_2();
+                ACO();
                 break;
 
-            case 11:
-                add_node();
+            case 25:
+                Temp();
                 break;
 
-            case 12:
-                add_edge();
+            case 26:
+                Triangular_approximation_using_Christofides();
                 break;
 
             case 13:
