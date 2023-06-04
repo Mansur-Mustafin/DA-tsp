@@ -115,6 +115,7 @@ void Graph::print_nodes() {
         cout << "There is no nodes file" << endl;
     }else{
         cout << "Nodes file name: " << file_nodes_name << endl << endl;
+        cout << "[id] (latitude;longitude)" << endl;
         for(auto n: nodes){
             cout << n << endl;
         }

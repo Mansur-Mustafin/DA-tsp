@@ -18,7 +18,7 @@ istream &operator>>(istream &in, Node &node) {
 }
 
 ostream &operator<<(ostream &out, const Node &node) {
-    out << '[' << node.id << ']';
+    out << '[' << node.id << "] (" << node.latitude << ';' << node.longitude << ')';
     return out;
 }
 
