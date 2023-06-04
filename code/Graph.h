@@ -50,7 +50,7 @@ public:
      *
      * @param text - string to be written into a file
      */
-    static void write_to_file(const std::string& text);
+    static void write_to_file(const string& text);
 
     /**
      * @brief Solves the Traveling Salesman Problem, using a Backtracking Algorithm
@@ -116,7 +116,7 @@ public:
     vector<vector<Edge>> adj;
     vector<Node> nodes;
     string file_edge_name = "tourism.csv";
-    string file_nodes_name = "";
+    string file_nodes_name;
 
 private:
     std::ofstream out;
@@ -165,7 +165,7 @@ private:
      * @note This function's time complexity is O(N * A) where N is the number of nodes in the given path and A is the
      * number of adjacent nodes of each node present in the given path.
      */
-    double getValue(vector <int>& v, bool out = false);
+    double getValue(vector <int>& v);
 
     /**
      * @brief Uses the Ant Colony Optimization (ACO) on a distance matrix to find the best path
@@ -185,7 +185,7 @@ private:
      * @note This function's time complexity can be given as O(max_iter * num_ants * n^2) where max_iter is the maximum
      * number of iterations, num_ants is the number of ants given and n is the size of the distance matrix.
      */
-    vector <int> ACO(std::vector<std::vector<float>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
+    vector <int> ACO(std::vector<std::vector<double>>& distance_matrix, int max_iter = 100, int num_ants = 10, double alpha = 1.0, double beta = 2.0, double rho = 0.1);
 
     /**
      * @brief Generate a sample by modifying a vector of integers
@@ -297,7 +297,7 @@ private:
      *
      * @note This function's time complexity is O(n!) where n is the number of nodes of the Graph
      */
-    void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, float cost, float &ans, vector<int> &path, vector<int> &bestPath);
+    void tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, double cost, double &ans, vector<int> &path, vector<int> &bestPath);
 
     /**
      * @brief Adds a vertex (or vertices) to the Graph
