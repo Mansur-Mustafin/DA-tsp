@@ -274,7 +274,9 @@ void Menu::main_menu() {
                    "|                      Other operations                      |\n"
                    "|============================================================|\n"
                    "| Run all agorithms                                     [11] |\n"
-                   "| Change files                                          [12] |\n"
+                   "| Show all edges                                        [12] |\n"
+                   "| Show all nodes                                        [13] |\n"
+                   "| Change files                                          [14] |\n"
                    "| Exit                                                  [0]  |\n"
                    "|============================================================|\n";
 
@@ -323,6 +325,14 @@ void Menu::main_menu() {
                 break;
 
             case 12:
+                g.print_edges();
+                break;
+
+            case 13:
+                g.print_nodes();
+                break;
+
+            case 14:
                 change_file();
                 break;
 
