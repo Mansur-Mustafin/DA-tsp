@@ -19,6 +19,5 @@ var class_graph =
     [ "Task2_3", "class_graph.html#a9fda5f5f75f7aa7476294b403fd1d6c0", null ],
     [ "Task3_1", "class_graph.html#acde55f048115065c7d51c684d2b77c82", null ],
     [ "Task3_2", "class_graph.html#ada441849c6e0152a8592a930116401be", null ],
-    [ "Task4", "class_graph.html#a4ca5cb441104af0b6ade8be39d71dbbd", null ],
     [ "tspBackTracking", "class_graph.html#a39166db679f4128dbe8edf17788fe809", null ]
 ];

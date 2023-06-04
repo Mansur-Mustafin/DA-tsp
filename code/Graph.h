@@ -46,16 +46,6 @@ public:
     void print_nodes();
 
     /**
-     * @brief Asks the user for the data necessary to accomplish Task 4, using a Simulated Annealing Algorithm
-     *
-     * This function is responsible for asking for the necessary data to the user to accomplish Task 4, utilising the
-     * function simulatedAnnealing().
-     *
-     * @param print_path - Boolean flag that determines if the calculated path should be printed in the terminal.
-     */
-    void Task4(bool print_path = true);
-
-    /**
      * @brief Writes a text into a file
      *
      * @param text - string to be written into a file
