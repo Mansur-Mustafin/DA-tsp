@@ -193,7 +193,7 @@ void Graph::tspBackTracking(vector<bool> &v, int currPos, size_t n, int count, d
         if (cost + findStart(adj[currPos]) < ans) {
             ans = cost + findStart(adj[currPos]);
             bestPath = path;
-            cout << fixed << setprecision(2) << ans << endl;
+            //cout << fixed << setprecision(2) << ans << endl;
             //out << "Find the best path: " << fixed << setprecision(2) << ans << endl;
             //for(auto el: path) out << el << " ";
             //out << endl << endl;
@@ -240,7 +240,7 @@ void Graph::Task1(bool show_path) {
     out << "Execution time: " << backtracking_duration.count() << " seconds\n" << endl;
 
     if(show_path)
-        printPath(path);
+        printPath(bestPath);
 
 }
 
