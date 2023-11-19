@@ -32,4 +32,4 @@ Analyse the Travelling Salesperson Problem (TSP) and design heuristics to solve 
 * [Francisco Gonçalves de Sousa](https://github.com/FranciscoS0usa)
 * [José Nuno Barbosa Quintas](https://github.com/JoseQuintas2021)
 
-Grade: x/20
+Grade: 20/20
